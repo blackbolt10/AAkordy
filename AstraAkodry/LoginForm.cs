@@ -85,6 +85,7 @@ namespace AstraAkodry
                 }
             }
             DeleteLoginScreen();
+            passwordTB.Focus();
         }
 
         private void WczytajOperatorow()
@@ -165,31 +166,6 @@ namespace AstraAkodry
             catch(Exception) { }
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-            if(passwordTB.Text != "" && loginCB.SelectedIndex != -1)
-            {
-                if(passwordTB.Text == ZnajdzHasloOperatora())
-                {
-                    ZapiszLoginID();
-
-                    MainForm main = new MainForm();
-                    main.ShowDialog();
-
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Podane hasło jest nieprawidłowe.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    passwordTB.Text = "";
-                }
-            }
-            else
-            {
-                MessageBox.Show("Nie wybrano operatora lub nie wpisano hasła.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private string ZnajdzHasloOperatora()
         {
             String haslo = "";
@@ -248,6 +224,45 @@ namespace AstraAkodry
             key.SetValue("OstatnioZalogowanyOperatorID", operatorzyDT.Rows[loginCB.SelectedIndex]["OPR_OprId"].ToString());
 
             key.Close();
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            if(passwordTB.Text != "" && loginCB.SelectedIndex != -1)
+            {
+                if(passwordTB.Text == ZnajdzHasloOperatora())
+                {
+                    ZapiszLoginID();
+
+                    MainForm.IDOperatora = operatorzyDT.Rows[loginCB.SelectedIndex]["OPR_OprId"].ToString();
+                    MainForm.nazwaOperatora = loginCB.Items[loginCB.SelectedIndex].ToString();
+                    MainForm.hasloOperatora = passwordTB.Text;
+
+                    this.Hide();
+
+                    MainForm main = new MainForm();
+                    main.ShowDialog();
+
+                    if(!main.czyWylogowano)
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        passwordTB.Text = "";
+                        this.Show();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Podane hasło jest nieprawidłowe.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    passwordTB.Text = "";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nie wybrano operatora lub nie wpisano hasła.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

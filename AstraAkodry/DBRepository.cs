@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AstraAkodry
 {
@@ -55,6 +56,23 @@ namespace AstraAkodry
             catch(Exception) { }
 
             return connectionResult;
+        }
+
+        public bool HasloForm_ZmienHaslo(String noweHaslo, ref string result)
+        {
+            String zapytanie = "update GAL_Operatorzy set OPR_Haslo = '" + noweHaslo + "' where OPR_OprId = " + MainForm.IDOperatora;
+
+            try
+            {
+                query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("HasloForm_ZmienHaslo()", result);
+                return false;
+            }
         }
 
         public Boolean GetAppVersion(ref String result, ref String error)
