@@ -58,6 +58,27 @@ namespace AstraAkodry
             return connectionResult;
         }
 
+        public bool OperatorzyForm_ZaladujOperatorzyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
+        {
+            String zapytanie = "SELECT * FROM GAL_Operatorzy where OPR_OprId <> 1";
+            if(!@checked)
+            {
+                zapytanie += " and OPR_Archiwalny <> 1";
+            }
+
+            try
+            {
+                pomDataTable =  query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("OperatorzyForm_ZaladujOperatorzyDGV()", result);
+                return false;
+            }
+        }
+
         public bool HasloForm_ZmienHaslo(String noweHaslo, ref string result)
         {
             String zapytanie = "update GAL_Operatorzy set OPR_Haslo = '" + noweHaslo + "' where OPR_OprId = " + MainForm.IDOperatora;
@@ -75,6 +96,54 @@ namespace AstraAkodry
             }
         }
 
+        public bool OperatorzyChangeForm_AddNewOperator(string imie, string nazwisko, int uprawnienia, string archiwalny, ref string result)
+        {
+            String zapytanieString = "INSERT INTO GAL_Operatorzy VALUES ('"+ imie + "', '"+ nazwisko + "', '', " + uprawnienia+", "+ archiwalny + ")";
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("OperatorzyChangeForm_AddNewOperator()", exc.Message);
+                return false;
+            }
+        }
+
+        public bool OperatorzyForm_UsunOperatora(string IDOperatora, ref string result)
+        {
+            String zapytanieString = "UPDATE GAL_Operatorzy SET OPR_Archiwalny = 1 WHERE OPR_OprId ="+ IDOperatora;
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("OperatorzyForm_UsunOperatora()", exc.Message);
+                return false;
+            }
+        }
+
+        public bool OperatorzyChangeForm_ChangeOperator(string oPR_OprId, string imie, string nazwisko, int uprawnienia, string archiwalny, ref string result)
+        {
+            String zapytanieString = "UPDATE GAL_Operatorzy SET OPR_Imie = '"+ imie + "',OPR_Nazwisko = '"+ nazwisko + "',OPR_Uprwnienia = " + uprawnienia + " ,OPR_Archiwalny = " + archiwalny + " WHERE OPR_OprId = " + oPR_OprId;
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("OperatorzyChangeForm_ChangeOperator()", exc.Message);
+                return false;
+            }
+        }
+
         public Boolean GetAppVersion(ref String result, ref String error)
         {
             try
@@ -88,9 +157,8 @@ namespace AstraAkodry
             {
                 error = exc.Message;
                 ErrorReport("GetAppVersion()", exc.Message);
+                return false;
             }
-
-            return false;
         }
 
         private void ErrorReport(string v, string message)

@@ -16,7 +16,7 @@ namespace AstraAkodry
 
         private LoginForm loginForm;
         private Konfiguracja.Ustawienia.AkordyForm akordyForm;
-        private Konfiguracja.Ustawienia.OperatorzyForm operatorzyForm;
+        private Konfiguracja.Ustawienia.Operatorzy.OperatorzyForm operatorzyForm;
         private Konfiguracja.Ustawienia.PracownicyForm pracownicyForm;
         private Konfiguracja.HasloForm hasloForm;
         private Recepcja.RaportRecepcjaForm raportRecepcjaForm;
@@ -162,7 +162,7 @@ namespace AstraAkodry
         {
             if(operatorzyForm == null || operatorzyForm.IsDisposed)
             {
-                operatorzyForm = new Konfiguracja.Ustawienia.OperatorzyForm();
+                operatorzyForm = new Konfiguracja.Ustawienia.Operatorzy.OperatorzyForm();
                 operatorzyForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
                 operatorzyForm.Shown += new System.EventHandler(mdiChild_Activate);
                 operatorzyForm.MdiParent = this;

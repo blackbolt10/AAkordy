@@ -68,10 +68,16 @@
     <Compile Include="Konfiguracja\Ustawienia\AkordyForm.Designer.cs">
       <DependentUpon>AkordyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Konfiguracja\Ustawienia\OperatorzyForm.cs">
+    <Compile Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Konfiguracja\Ustawienia\OperatorzyForm.Designer.cs">
+    <Compile Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyChangeForm.Designer.cs">
+      <DependentUpon>OperatorzyChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyForm.Designer.cs">
       <DependentUpon>OperatorzyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Konfiguracja\Ustawienia\PracownicyForm.cs">
@@ -113,7 +119,10 @@
     <EmbeddedResource Include="Konfiguracja\Ustawienia\AkordyForm.resx">
       <DependentUpon>AkordyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Konfiguracja\Ustawienia\OperatorzyForm.resx">
+    <EmbeddedResource Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyChangeForm.resx">
+      <DependentUpon>OperatorzyChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyForm.resx">
       <DependentUpon>OperatorzyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Konfiguracja\Ustawienia\PracownicyForm.resx">
@@ -159,6 +168,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\usun.png" />
+    <None Include="Resources\zmien.png" />
+    <None Include="Resources\odswiez.png" />
+    <None Include="Resources\koniec.png" />
+    <None Include="Resources\dodaj.png" />
     <None Include="Images\greyGradient.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
