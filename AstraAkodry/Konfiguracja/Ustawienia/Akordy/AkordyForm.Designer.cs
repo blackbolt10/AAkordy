@@ -1,6 +1,6 @@
-﻿namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
+﻿namespace AstraAkodry.Konfiguracja.Ustawienia.Akordy
 {
-    partial class OperatorzyForm
+    partial class AkordyForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,61 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.operatorzyDGV = new System.Windows.Forms.DataGridView();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.archiwalniCHB = new System.Windows.Forms.CheckBox();
-            this.unlockButton = new System.Windows.Forms.Button();
+            this.archiwalneCHB = new System.Windows.Forms.CheckBox();
+            this.akordyDGV = new System.Windows.Forms.DataGridView();
             this.addButton = new System.Windows.Forms.Button();
             this.changeButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
             this.zamknijButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.operatorzyDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.akordyDGV)).BeginInit();
             this.SuspendLayout();
             // 
-            // operatorzyDGV
+            // archiwalneCHB
             // 
-            this.operatorzyDGV.AllowUserToAddRows = false;
-            this.operatorzyDGV.AllowUserToDeleteRows = false;
-            this.operatorzyDGV.AllowUserToResizeRows = false;
-            this.operatorzyDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.archiwalneCHB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.archiwalneCHB.AutoSize = true;
+            this.archiwalneCHB.Location = new System.Drawing.Point(12, 365);
+            this.archiwalneCHB.Name = "archiwalneCHB";
+            this.archiwalneCHB.Size = new System.Drawing.Size(121, 17);
+            this.archiwalneCHB.TabIndex = 2;
+            this.archiwalneCHB.Text = "Pokaż archiwalnych";
+            this.archiwalneCHB.UseVisualStyleBackColor = true;
+            this.archiwalneCHB.CheckedChanged += new System.EventHandler(this.archiwalneCHB_CheckedChanged);
+            // 
+            // akordyDGV
+            // 
+            this.akordyDGV.AllowUserToAddRows = false;
+            this.akordyDGV.AllowUserToDeleteRows = false;
+            this.akordyDGV.AllowUserToResizeRows = false;
+            this.akordyDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.operatorzyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.operatorzyDGV.Location = new System.Drawing.Point(12, 12);
-            this.operatorzyDGV.MultiSelect = false;
-            this.operatorzyDGV.Name = "operatorzyDGV";
-            this.operatorzyDGV.RowHeadersVisible = false;
-            this.operatorzyDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.operatorzyDGV.Size = new System.Drawing.Size(576, 338);
-            this.operatorzyDGV.TabIndex = 1;
-            // 
-            // archiwalniCHB
-            // 
-            this.archiwalniCHB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.archiwalniCHB.AutoSize = true;
-            this.archiwalniCHB.Location = new System.Drawing.Point(12, 365);
-            this.archiwalniCHB.Name = "archiwalniCHB";
-            this.archiwalniCHB.Size = new System.Drawing.Size(121, 17);
-            this.archiwalniCHB.TabIndex = 2;
-            this.archiwalniCHB.Text = "Pokaż archiwalnych";
-            this.toolTip1.SetToolTip(this.archiwalniCHB, "Wyświetla operatorów archiwalnych");
-            this.archiwalniCHB.UseVisualStyleBackColor = true;
-            this.archiwalniCHB.CheckedChanged += new System.EventHandler(this.archiwalniCHB_CheckedChanged);
-            // 
-            // unlockButton
-            // 
-            this.unlockButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.unlockButton.BackgroundImage = global::AstraAkodry.Properties.Resources.unlock;
-            this.unlockButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.unlockButton.Enabled = false;
-            this.unlockButton.Location = new System.Drawing.Point(139, 356);
-            this.unlockButton.Name = "unlockButton";
-            this.unlockButton.Size = new System.Drawing.Size(32, 32);
-            this.unlockButton.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.unlockButton, "Usuwa hasło znaznaczonego operatora");
-            this.unlockButton.UseVisualStyleBackColor = true;
-            this.unlockButton.Click += new System.EventHandler(this.unlockButton_Click);
+            this.akordyDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.akordyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.akordyDGV.Location = new System.Drawing.Point(12, 12);
+            this.akordyDGV.MultiSelect = false;
+            this.akordyDGV.Name = "akordyDGV";
+            this.akordyDGV.RowHeadersVisible = false;
+            this.akordyDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.akordyDGV.Size = new System.Drawing.Size(576, 338);
+            this.akordyDGV.TabIndex = 1;
             // 
             // addButton
             // 
@@ -93,7 +76,6 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(32, 32);
             this.addButton.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.addButton, "Dodaj nowego operatora");
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -106,7 +88,6 @@
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(32, 32);
             this.changeButton.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.changeButton, "Zmień zaznaczonego operatora");
             this.changeButton.UseVisualStyleBackColor = true;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
             // 
@@ -119,7 +100,6 @@
             this.delButton.Name = "delButton";
             this.delButton.Size = new System.Drawing.Size(32, 32);
             this.delButton.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.delButton, "Usuń zaznacznonego operatora");
             this.delButton.UseVisualStyleBackColor = true;
             this.delButton.Click += new System.EventHandler(this.delButton_Click);
             // 
@@ -132,27 +112,25 @@
             this.zamknijButton.Name = "zamknijButton";
             this.zamknijButton.Size = new System.Drawing.Size(32, 32);
             this.zamknijButton.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.zamknijButton, "Zamknij okno");
             this.zamknijButton.UseVisualStyleBackColor = true;
             this.zamknijButton.Click += new System.EventHandler(this.zamknijButton_Click);
             // 
-            // OperatorzyForm
+            // AkordyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 400);
-            this.Controls.Add(this.unlockButton);
-            this.Controls.Add(this.archiwalniCHB);
+            this.Controls.Add(this.archiwalneCHB);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.zamknijButton);
-            this.Controls.Add(this.operatorzyDGV);
+            this.Controls.Add(this.akordyDGV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "OperatorzyForm";
-            this.Text = "Operatorzy - ustawienia";
-            this.Shown += new System.EventHandler(this.OperatorzyForm_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.operatorzyDGV)).EndInit();
+            this.Name = "AkordyForm";
+            this.Text = "Akordy - ustawienia";
+            this.Shown += new System.EventHandler(this.AkordyForm_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.akordyDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,13 +138,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView operatorzyDGV;
-        private System.Windows.Forms.Button zamknijButton;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button delButton;
-        private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.CheckBox archiwalneCHB;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.CheckBox archiwalniCHB;
-        private System.Windows.Forms.Button unlockButton;
+        private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.Button delButton;
+        private System.Windows.Forms.Button zamknijButton;
+        private System.Windows.Forms.DataGridView akordyDGV;
     }
 }

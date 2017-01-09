@@ -62,10 +62,16 @@
     <Compile Include="Konfiguracja\HasloForm.Designer.cs">
       <DependentUpon>HasloForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Konfiguracja\Ustawienia\AkordyForm.cs">
+    <Compile Include="Konfiguracja\Ustawienia\Akordy\AkordyChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Konfiguracja\Ustawienia\AkordyForm.Designer.cs">
+    <Compile Include="Konfiguracja\Ustawienia\Akordy\AkordyChangeForm.Designer.cs">
+      <DependentUpon>AkordyChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Konfiguracja\Ustawienia\Akordy\AkordyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konfiguracja\Ustawienia\Akordy\AkordyForm.Designer.cs">
       <DependentUpon>AkordyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyChangeForm.cs">
@@ -116,7 +122,10 @@
     <EmbeddedResource Include="Konfiguracja\HasloForm.resx">
       <DependentUpon>HasloForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Konfiguracja\Ustawienia\AkordyForm.resx">
+    <EmbeddedResource Include="Konfiguracja\Ustawienia\Akordy\AkordyChangeForm.resx">
+      <DependentUpon>AkordyChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Konfiguracja\Ustawienia\Akordy\AkordyForm.resx">
       <DependentUpon>AkordyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyChangeForm.resx">
@@ -168,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\unlock.png" />
     <None Include="Resources\usun.png" />
     <None Include="Resources\zmien.png" />
     <None Include="Resources\odswiez.png" />

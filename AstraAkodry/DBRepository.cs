@@ -58,6 +58,27 @@ namespace AstraAkodry
             return connectionResult;
         }
 
+        public bool AkordyForm_ZaladujAkordyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
+        {
+            String zapytanie = "SELECT * FROM GAL_Akordy";
+            if(!@checked)
+            {
+                zapytanie += " where AKR_Archiwalny <> 1";
+            }
+
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("AkordyForm_ZaladujAkordyDGV()", result);
+                return false;
+            }
+        }
+
         public bool OperatorzyForm_ZaladujOperatorzyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
         {
             String zapytanie = "SELECT * FROM GAL_Operatorzy where OPR_OprId <> 1";
@@ -79,6 +100,69 @@ namespace AstraAkodry
             }
         }
 
+        public bool AkordyChangeForm_AddAkord(string nazwa, string norma, string archiwalny, ref string result)
+        {
+            String AKR_AkrId = "";
+            String error = "";
+
+            if(AkordyChangeForm_GetMaxAkrID(ref AKR_AkrId, ref error))
+            {
+                String zapytanieString = "insert into GAL_Akordy values(" + AKR_AkrId + ", '" + nazwa + "', " + norma + ", '" + DateTime.Now.ToString() + "'," + archiwalny + ")";
+                try
+                {
+                    query(zapytanieString);
+                    return true;
+                }
+                catch(Exception exc)
+                {
+                    result = exc.Message;
+                    ErrorReport("AkordyChangeForm_AddNewAkord()", exc.Message);
+                    return false;
+                }
+            }
+            else
+            {
+                result = error;
+                return false;
+            }
+            
+        }
+
+        private bool AkordyChangeForm_GetMaxAkrID(ref String AKR_AkrId, ref String error)
+        {
+            String zapytanieString = "select max(AKR_AkrID)+1 from GAL_Akordy";
+            try
+            {
+                DataTable pomDataTable =  query(zapytanieString);
+
+                AKR_AkrId = pomDataTable.Rows[0][0].ToString();
+
+                return true;
+            }
+            catch(Exception exc)
+            {
+                error = exc.Message;
+                ErrorReport("AkordyChangeForm_AddNewAkord()", error);
+                return false;
+            }
+        }
+
+        public bool AkordyChangeForm_ChangeAkord(String AKR_AkrId, String nazwa, String norma, String archiwalny, ref String result)
+        {
+            String zapytanieString = "insert into GAL_Akordy values(" + AKR_AkrId + ", '" + nazwa + "', '" + norma + "', '" + DateTime.Now.ToString() + "'," + archiwalny + ")";
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("AkordyChangeForm_AddNewAkord()", exc.Message);
+                return false;
+            }
+        }
+
         public bool HasloForm_ZmienHaslo(String noweHaslo, ref string result)
         {
             String zapytanie = "update GAL_Operatorzy set OPR_Haslo = '" + noweHaslo + "' where OPR_OprId = " + MainForm.IDOperatora;
@@ -92,6 +176,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("HasloForm_ZmienHaslo()", result);
+                return false;
+            }
+        }
+
+        public bool AkordyForm_UsunAkord(string IDAkordu, ref string result)
+        {
+            String zapytanieString = "UPDATE GAL_Akordy SET AKR_Archiwalny = 1 WHERE AKR_Id =" + IDAkordu;
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("AkordyForm_UsunAkord()", exc.Message);
                 return false;
             }
         }
@@ -161,9 +261,33 @@ namespace AstraAkodry
             }
         }
 
-        private void ErrorReport(string v, string message)
+        public bool OperatorzyForm_UsunHasloOperatora(string opr_OprId, ref string result)
         {
-            throw new NotImplementedException();
+            String zapytanie = "UPDATE GAL_Operatorzy SET OPR_Haslo = '' WHERE OPR_OprId = " + opr_OprId;
+            try
+            {
+                query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("OperatorzyForm_UsunHasloOperatora()", result);
+                return false;
+            }
+        }
+
+        private void ErrorReport(string modul, string message)
+        {
+            String nazwaKompOper = Environment.MachineName + "\\" + Environment.UserName;
+            DateTime teraz = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+
+            String zapytanie = "insert into gal_ustawienia values('"+modul+" - "+ message + "', '"+ MainForm.nazwaOperatora + "', '"+ teraz.ToString()+"', '"+ nazwaKompOper+"')";
+            try
+            {
+                query(zapytanie);
+            }
+            catch(Exception exc){}
         }
 
         public Boolean GetServerTime(ref String data)

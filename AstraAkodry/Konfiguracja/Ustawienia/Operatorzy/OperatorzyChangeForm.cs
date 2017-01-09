@@ -12,7 +12,7 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
 {
     public partial class OperatorzyChangeForm : Form
     {
-        public Boolean czyZmodfikowano = false;
+        public Boolean czyZmodyfikowano = false;
         private String OPR_OprId;
 
         public OperatorzyChangeForm()
@@ -24,6 +24,8 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
         public OperatorzyChangeForm(String opr_OprId, String opr_Imie, String opr_Nazwisko, String opr_Uprawnienia, String opr_Archiwalny)
         {
             InitializeComponent();
+
+            this.Text = "Edytuj operatora";
 
             OPR_OprId = opr_OprId;
             imieTB.Text = opr_Imie;
@@ -87,7 +89,7 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
 
                 if(db.OperatorzyChangeForm_AddNewOperator(imieTB.Text,nazwiskoTB.Text,(uprawnieniaCB.SelectedIndex-1), archiwalny, ref result))
                 {
-                    czyZmodfikowano = true;
+                    czyZmodyfikowano = true;
                     MessageBox.Show("Nowy operator został dodany. Logowanie odbywa się bez podawania hasła.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -117,7 +119,7 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
 
                 if(db.OperatorzyChangeForm_ChangeOperator(OPR_OprId, imieTB.Text, nazwiskoTB.Text, (uprawnieniaCB.SelectedIndex - 1), archiwalny, ref result))
                 {
-                    czyZmodfikowano = true;
+                    czyZmodyfikowano = true;
                     MessageBox.Show("Operator został zmodyfikowany.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }

@@ -240,7 +240,7 @@ namespace AstraAkodry
 
                     this.Hide();
 
-                    MainForm main = new MainForm();
+                    MainForm main = new MainForm(wersjaTSSL.Text);
                     main.ShowDialog();
 
                     if(!main.czyWylogowano)

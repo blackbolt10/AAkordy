@@ -50,6 +50,7 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
 
             changeButton.Enabled = false;
             delButton.Enabled = false;
+            unlockButton.Enabled = false;
 
             DBRepository db = new DBRepository();
             String result = "";
@@ -63,11 +64,11 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
 
                     operatorzyDGV.Columns["OPR_OprId"].Visible = false;
                     operatorzyDGV.Columns["OPR_Haslo"].Visible = false;
+                    operatorzyDGV.CurrentCell = operatorzyDGV.Rows[0].Cells["OPR_Imie"];
 
                     changeButton.Enabled = true;
                     delButton.Enabled = true;
-
-                    operatorzyDGV.CurrentCell = operatorzyDGV.Rows[0].Cells["OPR_Imie"];
+                    unlockButton.Enabled = true;
                 }
             }
             else
@@ -105,7 +106,7 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
             OperatorzyChangeForm oprChangeForm = new OperatorzyChangeForm();
             oprChangeForm.ShowDialog();
 
-            if(oprChangeForm.czyZmodfikowano)
+            if(oprChangeForm.czyZmodyfikowano)
             {
                 ZaladujOperatorzyDGV();
             }
@@ -124,9 +125,28 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
                 OperatorzyChangeForm oprChangeForm = new OperatorzyChangeForm(Opr_OprId, Opr_Imie, Opr_Nazwisko, Opr_Uprawnienia, Opr_Archiwalny);
                 oprChangeForm.ShowDialog();
 
-                if(oprChangeForm.czyZmodfikowano)
+                if(oprChangeForm.czyZmodyfikowano)
                 {
                     ZaladujOperatorzyDGV();
+                }
+            }
+        }
+
+        private void unlockButton_Click(object sender, EventArgs e)
+        {
+            if(operatorzyDGV.CurrentCell != null)
+            {
+                String Opr_OprId = operatorzyDGV.CurrentRow.Cells["Opr_OprId"].Value.ToString();
+                String result = "";
+                DBRepository db = new DBRepository();
+
+                if(db.OperatorzyForm_UsunHasloOperatora(Opr_OprId, ref result))
+                {
+                    ZaladujOperatorzyDGV();
+                }
+                else
+                {
+                    MessageBox.Show("Wystąpił błąd podzczas kasowania hasła operatora: \n" + result, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

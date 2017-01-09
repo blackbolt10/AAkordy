@@ -15,7 +15,7 @@ namespace AstraAkodry
         private List<Form> listaMdiChildForm = new List<Form>();
 
         private LoginForm loginForm;
-        private Konfiguracja.Ustawienia.AkordyForm akordyForm;
+        private Konfiguracja.Ustawienia.Akordy.AkordyForm akordyForm;
         private Konfiguracja.Ustawienia.Operatorzy.OperatorzyForm operatorzyForm;
         private Konfiguracja.Ustawienia.PracownicyForm pracownicyForm;
         private Konfiguracja.HasloForm hasloForm;
@@ -30,9 +30,10 @@ namespace AstraAkodry
         public static String hasloOperatora;
 
 
-        public MainForm()
+        public MainForm(String wersja)
         {
             InitializeComponent();
+            wersjaTSSL.Text = wersja;
         }
 
         private void closeRibbonOrbMenuItem_Click(object sender, EventArgs e)
@@ -196,7 +197,7 @@ namespace AstraAkodry
         {
             if(akordyForm == null || akordyForm.IsDisposed)
             {
-                akordyForm = new Konfiguracja.Ustawienia.AkordyForm();
+                akordyForm = new Konfiguracja.Ustawienia.Akordy.AkordyForm();
                 akordyForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
                 akordyForm.Shown += new System.EventHandler(mdiChild_Activate);
                 akordyForm.MdiParent = this;
