@@ -30,11 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon1 = new System.Windows.Forms.Ribbon();
+            this.logoutRibbonOrbMenuItem = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.closeRibbonOrbMenuItem = new System.Windows.Forms.RibbonOrbMenuItem();
             this.recepcjaRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
             this.wprowadzanieribbonButton = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
             this.raportyRecepcjaribbonButton = new System.Windows.Forms.RibbonButton();
+            this.rapLeniRibbonButton = new System.Windows.Forms.RibbonButton();
             this.konfiguracjaRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.pracownicyRibbonButton = new System.Windows.Forms.RibbonButton();
@@ -47,7 +50,7 @@
             this.oknaCB = new System.Windows.Forms.ComboBox();
             this.zmienOknoLabel = new System.Windows.Forms.Label();
             this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.closeRibbonOrbMenuItem = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,9 +68,11 @@
             // 
             this.ribbon1.OrbDropDown.BorderRoundness = 8;
             this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.OrbDropDown.MenuItems.Add(this.logoutRibbonOrbMenuItem);
+            this.ribbon1.OrbDropDown.MenuItems.Add(this.ribbonSeparator1);
             this.ribbon1.OrbDropDown.MenuItems.Add(this.closeRibbonOrbMenuItem);
             this.ribbon1.OrbDropDown.Name = "";
-            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 116);
+            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 163);
             this.ribbon1.OrbDropDown.TabIndex = 0;
             this.ribbon1.OrbImage = null;
             this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
@@ -80,6 +85,22 @@
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 2, 20, 0);
             this.ribbon1.Text = "ribbon1";
             this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
+            // 
+            // logoutRibbonOrbMenuItem
+            // 
+            this.logoutRibbonOrbMenuItem.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.logoutRibbonOrbMenuItem.Image = global::AstraAkodry.Properties.Resources.password_32x32;
+            this.logoutRibbonOrbMenuItem.SmallImage = global::AstraAkodry.Properties.Resources.password_32x32;
+            this.logoutRibbonOrbMenuItem.Text = "Wyloguj";
+            this.logoutRibbonOrbMenuItem.Click += new System.EventHandler(this.logoutRibbonOrbMenuItem_Click);
+            // 
+            // closeRibbonOrbMenuItem
+            // 
+            this.closeRibbonOrbMenuItem.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.closeRibbonOrbMenuItem.Image = global::AstraAkodry.Properties.Resources.koniec_32x32;
+            this.closeRibbonOrbMenuItem.SmallImage = global::AstraAkodry.Properties.Resources.koniec_32x32;
+            this.closeRibbonOrbMenuItem.Text = "Zamknij";
+            this.closeRibbonOrbMenuItem.Click += new System.EventHandler(this.closeRibbonOrbMenuItem_Click);
             // 
             // recepcjaRibbonTab
             // 
@@ -94,7 +115,7 @@
             // 
             // wprowadzanieribbonButton
             // 
-            this.wprowadzanieribbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.wprowadzanieribbonButton.Image = global::AstraAkodry.Properties.Resources.lista_dodawanie_32x32;
             this.wprowadzanieribbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieribbonButton.SmallImage")));
             this.wprowadzanieribbonButton.Text = "Wprowadzanie akordów";
             this.wprowadzanieribbonButton.Click += new System.EventHandler(this.wprowadzanieribbonButton_Click);
@@ -102,6 +123,7 @@
             // ribbonPanel2
             // 
             this.ribbonPanel2.Items.Add(this.raportyRecepcjaribbonButton);
+            this.ribbonPanel2.Items.Add(this.rapLeniRibbonButton);
             this.ribbonPanel2.Text = "Raporty";
             // 
             // raportyRecepcjaribbonButton
@@ -110,6 +132,13 @@
             this.raportyRecepcjaribbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportyRecepcjaribbonButton.SmallImage")));
             this.raportyRecepcjaribbonButton.Text = "Raport recepcja";
             this.raportyRecepcjaribbonButton.Click += new System.EventHandler(this.raportyRecepcjaribbonButton_Click);
+            // 
+            // rapLeniRibbonButton
+            // 
+            this.rapLeniRibbonButton.Image = global::AstraAkodry.Properties.Resources.len_32x32;
+            this.rapLeniRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("rapLeniRibbonButton.SmallImage")));
+            this.rapLeniRibbonButton.Text = "Raport \"leni\"";
+            this.rapLeniRibbonButton.Click += new System.EventHandler(this.rapLeniRibbonButton_Click);
             // 
             // konfiguracjaRibbonTab
             // 
@@ -126,21 +155,21 @@
             // 
             // pracownicyRibbonButton
             // 
-            this.pracownicyRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.pracownicyRibbonButton.Image = global::AstraAkodry.Properties.Resources.Klienci_ustawienia_32x32;
             this.pracownicyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("pracownicyRibbonButton.SmallImage")));
             this.pracownicyRibbonButton.Text = "Pracownicy";
             this.pracownicyRibbonButton.Click += new System.EventHandler(this.pracownicyRibbonButton_Click);
             // 
             // akordyRibbonButton
             // 
-            this.akordyRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.akordyRibbonButton.Image = global::AstraAkodry.Properties.Resources.harmonogram_ustawienia_32x32;
             this.akordyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("akordyRibbonButton.SmallImage")));
             this.akordyRibbonButton.Text = "Akordy";
             this.akordyRibbonButton.Click += new System.EventHandler(this.akordyRibbonButton_Click);
             // 
             // operatorzyRibbonButton
             // 
-            this.operatorzyRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.operatorzyRibbonButton.Image = global::AstraAkodry.Properties.Resources.Operatorzy_ustawienia_32x32;
             this.operatorzyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("operatorzyRibbonButton.SmallImage")));
             this.operatorzyRibbonButton.Text = "Operatorzy";
             this.operatorzyRibbonButton.Click += new System.EventHandler(this.operatorzyRibbonButton_Click);
@@ -152,7 +181,7 @@
             // 
             // hasloRibbonButton
             // 
-            this.hasloRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.hasloRibbonButton.Image = global::AstraAkodry.Properties.Resources.password_32x32;
             this.hasloRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("hasloRibbonButton.SmallImage")));
             this.hasloRibbonButton.Text = "Hasło";
             this.hasloRibbonButton.Click += new System.EventHandler(this.hasloRibbonButton_Click);
@@ -202,14 +231,6 @@
             this.ribbonOrbMenuItem1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem1.SmallImage")));
             this.ribbonOrbMenuItem1.Text = "ribbonOrbMenuItem1";
             // 
-            // closeRibbonOrbMenuItem
-            // 
-            this.closeRibbonOrbMenuItem.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.closeRibbonOrbMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("closeRibbonOrbMenuItem.Image")));
-            this.closeRibbonOrbMenuItem.SmallImage = ((System.Drawing.Image)(resources.GetObject("closeRibbonOrbMenuItem.SmallImage")));
-            this.closeRibbonOrbMenuItem.Text = "Zamknij";
-            this.closeRibbonOrbMenuItem.Click += new System.EventHandler(this.closeRibbonOrbMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +274,9 @@
         private System.Windows.Forms.Label zmienOknoLabel;
         private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbMenuItem1;
         private System.Windows.Forms.RibbonOrbMenuItem closeRibbonOrbMenuItem;
+        private System.Windows.Forms.RibbonButton rapLeniRibbonButton;
+        private System.Windows.Forms.RibbonOrbMenuItem logoutRibbonOrbMenuItem;
+        private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
     }
 }
 

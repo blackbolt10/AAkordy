@@ -13,13 +13,13 @@ namespace AstraAkodry
     public partial class MainForm : Form
     {
         private List<Form> listaMdiChildForm = new List<Form>();
-
-        private LoginForm loginForm;
+        
         private Konfiguracja.Ustawienia.Akordy.AkordyForm akordyForm;
         private Konfiguracja.Ustawienia.Operatorzy.OperatorzyForm operatorzyForm;
         private Konfiguracja.Ustawienia.Pracownicy.PracownicyForm pracownicyForm;
         private Konfiguracja.HasloForm hasloForm;
-        private Recepcja.RaportRecepcjaForm raportRecepcjaForm;
+        private Recepcja.Raporty.RaportRecepcjaForm raportRecepcjaForm;
+        private Recepcja.Raporty.RaportLeniRecepcjaForm raportLeniRecepcjaForm;
         private Recepcja.WprowadzanieAkordowForm wprowadzanieAkordowForm;
 
         private String sciezkaRejestru = "Software\\Galsoft\\AstraAkordy\\MainForm";
@@ -53,9 +53,40 @@ namespace AstraAkodry
             key.Close();
         }
 
+        private void MainForm_Deactivate(object sender, EventArgs e)
+        {
+            Microsoft.Win32.RegistryKey key;
+            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(sciezkaRejestru);
+
+            if(WindowState != FormWindowState.Minimized)
+            {
+                key.SetValue("Location.X", Location.X.ToString());
+                key.SetValue("Location.Y", Location.Y.ToString());
+
+                // this.Size.Height .Width
+                key.SetValue("Size.Width", Size.Width.ToString());
+                key.SetValue("Size.Height", Size.Height.ToString());
+            }
+            key.Close();
+        }
+
         private void zamknijRibbonOrbMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Czy na pewno chcesz zamknąć program?", "Zapytanie", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void logoutRibbonOrbMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Czy na pewno chcesz się wylogować?", "Zapytanie", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                czyWylogowano = true;
+                this.Close();
+            }
         }
 
         private void mdiChild_Activate(object sender, EventArgs e)
@@ -129,7 +160,7 @@ namespace AstraAkodry
         {
             if(raportRecepcjaForm == null || raportRecepcjaForm.IsDisposed)
             {
-                raportRecepcjaForm = new Recepcja.RaportRecepcjaForm();
+                raportRecepcjaForm = new Recepcja.Raporty.RaportRecepcjaForm();
                 raportRecepcjaForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
                 raportRecepcjaForm.Shown += new System.EventHandler(mdiChild_Activate);
                 raportRecepcjaForm.MdiParent = this;
@@ -210,21 +241,21 @@ namespace AstraAkodry
             }
         }
 
-        private void MainForm_Deactivate(object sender, EventArgs e)
+        private void rapLeniRibbonButton_Click(object sender, EventArgs e)
         {
-            Microsoft.Win32.RegistryKey key;
-            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(sciezkaRejestru);
-
-            if(WindowState != FormWindowState.Minimized)
+            if(raportLeniRecepcjaForm == null || raportLeniRecepcjaForm.IsDisposed)
             {
-                key.SetValue("Location.X", Location.X.ToString());
-                key.SetValue("Location.Y", Location.Y.ToString());
-
-                // this.Size.Height .Width
-                key.SetValue("Size.Width", Size.Width.ToString());
-                key.SetValue("Size.Height", Size.Height.ToString());
+                raportLeniRecepcjaForm = new Recepcja.Raporty.RaportLeniRecepcjaForm();
+                raportLeniRecepcjaForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportLeniRecepcjaForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportLeniRecepcjaForm.MdiParent = this;
+                raportLeniRecepcjaForm.Dock = DockStyle.Fill;
+                raportLeniRecepcjaForm.Show();
             }
-            key.Close();
+            else
+            {
+                raportLeniRecepcjaForm.Activate();
+            }
         }
     }
 }

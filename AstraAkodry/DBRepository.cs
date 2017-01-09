@@ -79,6 +79,23 @@ namespace AstraAkodry
             }
         }
 
+        public bool RaportLeniRecepcjaForm_ZaladujRaportDGV(String dataPoczatkowa, String dataKoncowa, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "SELECT (select pra_nazwisko+' '+pra_imie from dbo.gal_Pracownicy where E.WAK_PracId=pra_pracid) Pracownik , E.WAK_datawykonania Data FROM  (select A.WAK_PracId, a.WAK_datawykonania, B.WAK_Wartosc from  (select WAK_PracId, WAK_AkrId, WAK_datawykonania, MAX(WAK_DataModyfikacji) Modyfikacja from gal_wartakordu group by WAK_PracId, WAK_AkrId, WAK_datawykonania) as A left outer join GAL_WartAkordu as B on A.WAK_PracId=B.WAK_PracId and A.WAK_datawykonania=B.WAK_datawykonania and a.WAK_AkrId=B.WAK_AkrId and A.Modyfikacja=B.WAK_DataModyfikacji where b.WAK_AkrId=0 and wak_wartosc <>0 ) AS E LEFT OUTER JOIN (select C.WAK_PracId, C.WAK_datawykonania, D.WAK_Wartosc from  (select WAK_PracId, WAK_AkrId, WAK_datawykonania, MAX(WAK_DataModyfikacji) Modyfikacja from gal_wartakordu group by WAK_PracId, WAK_AkrId, WAK_datawykonania) as C left outer join GAL_WartAkordu as D on C.WAK_PracId=D.WAK_PracId and C.WAK_datawykonania=D.WAK_datawykonania and C.WAK_AkrId=D.WAK_AkrId and C.Modyfikacja=D.WAK_DataModyfikacji where D.WAK_AkrId<>0  and D.WAK_Wartosc <>0 ) AS F ON E.WAK_PracId=F.WAK_PRACID AND E.WAK_datawykonania=F.WAK_datawykonania WHERE F.WAK_PracId IS NULL and E.WAK_datawykonania>='" + dataPoczatkowa + "' and E.WAK_datawykonania<='" + dataKoncowa + "' ORDER BY 1";
+
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("PracownicyForm_ZaladujPracownicyDGV()", result);
+                return false;
+            }
+        }
+
         public bool PracownicyChangeForm_AddNewPracownik(string imie, string nazwisko, string archiwalny, ref string result)
         {
             DateTime teraz = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);

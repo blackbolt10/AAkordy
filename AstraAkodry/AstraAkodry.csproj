@@ -113,10 +113,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recepcja\RaportRecepcjaForm.cs">
+    <Compile Include="Recepcja\Raporty\RaportLeniRecepcjaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recepcja\RaportRecepcjaForm.Designer.cs">
+    <Compile Include="Recepcja\Raporty\RaportLeniRecepcjaForm.Designer.cs">
+      <DependentUpon>RaportLeniRecepcjaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcja\Raporty\RaportRecepcjaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcja\Raporty\RaportRecepcjaForm.Designer.cs">
       <DependentUpon>RaportRecepcjaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Recepcja\WprowadzanieAkordowForm.cs">
@@ -162,7 +168,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Recepcja\RaportRecepcjaForm.resx">
+    <EmbeddedResource Include="Recepcja\Raporty\RaportLeniRecepcjaForm.resx">
+      <DependentUpon>RaportLeniRecepcjaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcja\Raporty\RaportRecepcjaForm.resx">
       <DependentUpon>RaportRecepcjaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcja\WprowadzanieAkordowForm.resx">
@@ -186,6 +195,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\odswiez_32x32.png" />
+    <None Include="Resources\koniec_32x32.png" />
+    <None Include="Resources\len_32x32.png" />
+    <None Include="Resources\lista_dodawanie_32x32.png" />
+    <None Include="Resources\harmonogram_ustawienia_32x32.png" />
+    <None Include="Resources\Klienci_ustawienia_32x32.png" />
+    <None Include="Resources\Klienci_ustawienia.png" />
+    <None Include="Resources\Operatorzy_ustawienia_32x32.png" />
     <None Include="Resources\unlock.png" />
     <None Include="Resources\usun.png" />
     <None Include="Resources\zmien.png" />

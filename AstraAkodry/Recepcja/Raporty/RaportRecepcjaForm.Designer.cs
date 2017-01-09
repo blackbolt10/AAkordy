@@ -1,4 +1,4 @@
-﻿namespace AstraAkodry.Recepcja
+﻿namespace AstraAkodry.Recepcja.Raporty
 {
     partial class RaportRecepcjaForm
     {

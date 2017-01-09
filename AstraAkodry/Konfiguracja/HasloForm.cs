@@ -27,6 +27,11 @@ namespace AstraAkodry.Konfiguracja
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        private void zamknijButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void zmienButton_Click(object sender, EventArgs e)
         {
             if(obecneHasloTB.Text == MainForm.hasloOperatora)

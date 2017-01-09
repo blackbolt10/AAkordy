@@ -35,6 +35,7 @@
             this.noweHasloTB = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.zmienButton = new System.Windows.Forms.Button();
+            this.zamknijButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +92,7 @@
             // zmienButton
             // 
             this.zmienButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.zmienButton.Location = new System.Drawing.Point(179, 90);
+            this.zmienButton.Location = new System.Drawing.Point(98, 90);
             this.zmienButton.Name = "zmienButton";
             this.zmienButton.Size = new System.Drawing.Size(75, 23);
             this.zmienButton.TabIndex = 6;
@@ -99,11 +100,23 @@
             this.zmienButton.UseVisualStyleBackColor = true;
             this.zmienButton.Click += new System.EventHandler(this.zmienButton_Click);
             // 
+            // zamknijButton
+            // 
+            this.zamknijButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.zamknijButton.Location = new System.Drawing.Point(179, 90);
+            this.zamknijButton.Name = "zamknijButton";
+            this.zamknijButton.Size = new System.Drawing.Size(75, 23);
+            this.zamknijButton.TabIndex = 7;
+            this.zamknijButton.Text = "Anuluj";
+            this.zamknijButton.UseVisualStyleBackColor = true;
+            this.zamknijButton.Click += new System.EventHandler(this.zamknijButton_Click);
+            // 
             // HasloForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 400);
+            this.Controls.Add(this.zamknijButton);
             this.Controls.Add(this.zmienButton);
             this.Controls.Add(this.noweHasloTB);
             this.Controls.Add(this.label3);
@@ -128,5 +141,6 @@
         private System.Windows.Forms.TextBox noweHasloTB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button zmienButton;
+        private System.Windows.Forms.Button zamknijButton;
     }
 }

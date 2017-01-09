@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AstraAkodry.Recepcja
+namespace AstraAkodry.Recepcja.Raporty
 {
     public partial class RaportRecepcjaForm : Form
     {
