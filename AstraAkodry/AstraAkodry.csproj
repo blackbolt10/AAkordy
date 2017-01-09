@@ -86,10 +86,16 @@
     <Compile Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyForm.Designer.cs">
       <DependentUpon>OperatorzyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Konfiguracja\Ustawienia\PracownicyForm.cs">
+    <Compile Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Konfiguracja\Ustawienia\PracownicyForm.Designer.cs">
+    <Compile Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyChangeForm.Designer.cs">
+      <DependentUpon>PracownicyChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyForm.Designer.cs">
       <DependentUpon>PracownicyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -134,7 +140,10 @@
     <EmbeddedResource Include="Konfiguracja\Ustawienia\Operatorzy\OperatorzyForm.resx">
       <DependentUpon>OperatorzyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Konfiguracja\Ustawienia\PracownicyForm.resx">
+    <EmbeddedResource Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyChangeForm.resx">
+      <DependentUpon>PracownicyChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyForm.resx">
       <DependentUpon>PracownicyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">

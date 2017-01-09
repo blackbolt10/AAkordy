@@ -58,6 +58,45 @@ namespace AstraAkodry
             return connectionResult;
         }
 
+        public bool PracownicyForm_ZaladujPracownicyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
+        {
+            String zapytanie = "SELECT * FROM GAL_Pracownicy";
+            if(!@checked)
+            {
+                zapytanie += " where PRA_Archiwalny <> 1";
+            }
+
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("PracownicyForm_ZaladujPracownicyDGV()", result);
+                return false;
+            }
+        }
+
+        public bool PracownicyChangeForm_AddNewPracownik(string imie, string nazwisko, string archiwalny, ref string result)
+        {
+            DateTime teraz = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+            String zapytanieString = "insert into GAL_Pracownicy values('" + imie + "', '" + nazwisko + "', '" + teraz.ToString() + "'," + archiwalny + ")";
+
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("PracownicyChangeForm_AddNewPracownik()", exc.Message);
+                return false;
+            }
+        }
+
         public bool AkordyForm_ZaladujAkordyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
         {
             String zapytanie = "SELECT * FROM GAL_Akordy";
@@ -75,6 +114,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("AkordyForm_ZaladujAkordyDGV()", result);
+                return false;
+            }
+        }
+
+        public bool PracownicyChangeForm_ChangePracownik(string pRA_PracID, string imie, string nazwisko, string archiwalny, ref string result)
+        {
+            String zapytanieString = "update GAL_Pracownicy set PRA_Imie = '" + imie + "', PRA_Nazwisko = '" + nazwisko + "', PRA_Archiwalny = " + archiwalny + " where PRA_PracId = " + pRA_PracID;
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("PracownicyChangeForm_ChangePracownik()", exc.Message);
                 return false;
             }
         }
@@ -126,6 +181,22 @@ namespace AstraAkodry
                 return false;
             }
             
+        }
+
+        public bool PracownicyForm_UsunPracownika(string idPracownika, ref string result)
+        {
+            String zapytanieString = "UPDATE GAL_Pracownicy SET PRA_Archiwalny = 1 WHERE PRA_PracId =" + idPracownika;
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("PracownicyForm_UsunPracownika()", exc.Message);
+                return false;
+            }
         }
 
         private bool AkordyChangeForm_GetMaxAkrID(ref String AKR_AkrId, ref String error)
@@ -287,7 +358,7 @@ namespace AstraAkodry
             {
                 query(zapytanie);
             }
-            catch(Exception exc){}
+            catch(Exception){}
         }
 
         public Boolean GetServerTime(ref String data)
