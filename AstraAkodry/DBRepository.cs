@@ -58,6 +58,38 @@ namespace AstraAkodry
             return connectionResult;
         }
 
+        public bool RaportRecepcjaForm_ZaladujListeAkordow(ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select a.akr_akrid, b.akr_nazwa, b.akr_norma, b.akr_archiwalny from (select akr_akrid,  max(akr_datadodania) akr_datadodania from GAL_Akordy where AKR_Archiwalny <> 1 group by akr_akrid) as A left outer join dbo.GAL_Akordy as B on a.AKR_AkrId=b.akr_akrid and a.akr_datadodania=b.akr_datadodania";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportRecepcjaForm_ZaladujListeAkordow()", result);
+                return false;
+            }
+        }
+
+        public bool RaportRecepcjaForm_ZaladujListePracownikow(ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "SELECT * FROM GAL_Pracownicy where PRA_Archiwalny <> 1 order by PRA_Nazwisko";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportRecepcjaForm_ZaladujListePracownikow()", result);
+                return false;
+            }
+        }
+
         public bool PracownicyForm_ZaladujPracownicyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
         {
             String zapytanie = "SELECT * FROM GAL_Pracownicy";
@@ -92,6 +124,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("PracownicyForm_ZaladujPracownicyDGV()", result);
+                return false;
+            }
+        }
+
+        public bool RaportRecepcjaForm_ZaladujRaportDGV(String idPracownika, String idAkordu, String dataPoczatkowa, String dataKoncowa, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select a.WAK_datawykonania [Data wykonania], b.WAK_Wartosc [Wartość Akordu] from (select WAK_PracId, WAK_AkrId, WAK_datawykonania, MAX(WAK_DataModyfikacji) WAK_datamodyfikacji from dbo.GAL_WartAkordu group by WAK_PracId, WAK_AkrId, WAK_datawykonania) as A left outer join dbo.gal_wartakordu as B on a.wak_pracid=b.wak_pracid and a.wak_akrid=b.wak_akrid and a.wak_datawykonania=b.wak_datawykonania and a.WAK_datamodyfikacji=b.WAK_DataModyfikacji where a.WAK_AkrId=" + idAkordu + " and a.WAK_PracId = " + idPracownika + " and a.wak_datawykonania >= '" + dataPoczatkowa + "' and a.wak_datawykonania <= '" + dataKoncowa + "' order by 1";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportRecepcjaForm_ZaladujRaportDGV()", result);
                 return false;
             }
         }
