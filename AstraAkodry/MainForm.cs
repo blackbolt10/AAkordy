@@ -21,6 +21,8 @@ namespace AstraAkodry
         private Recepcja.Raporty.RaportRecepcjaForm raportRecepcjaForm;
         private Recepcja.Raporty.RaportLeniRecepcjaForm raportLeniRecepcjaForm;
         private Recepcja.WprowadzanieAkordowForm wprowadzanieAkordowForm;
+        private Produkcja.Raporty.RaportyGlobalneProdukcjaForm raportGlobalneProdukcjaForm;
+        private Produkcja.Raporty.RaportyPracownikaProdukcjaForm raportPracownikaProdukcjaForm;
 
         private String sciezkaRejestru = "Software\\Galsoft\\AstraAkordy\\MainForm";
         public Boolean czyWylogowano = false;
@@ -255,6 +257,40 @@ namespace AstraAkodry
             else
             {
                 raportLeniRecepcjaForm.Activate();
+            }
+        }
+
+        private void globalneRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(raportGlobalneProdukcjaForm == null || raportGlobalneProdukcjaForm.IsDisposed)
+            {
+                raportGlobalneProdukcjaForm = new Produkcja.Raporty.RaportyGlobalneProdukcjaForm();
+                raportGlobalneProdukcjaForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportGlobalneProdukcjaForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportGlobalneProdukcjaForm.MdiParent = this;
+                raportGlobalneProdukcjaForm.Dock = DockStyle.Fill;
+                raportGlobalneProdukcjaForm.Show();
+            }
+            else
+            {
+                raportGlobalneProdukcjaForm.Activate();
+            }
+        }
+
+        private void pracownikaRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(raportPracownikaProdukcjaForm == null || raportPracownikaProdukcjaForm.IsDisposed)
+            {
+                raportPracownikaProdukcjaForm = new Produkcja.Raporty.RaportyPracownikaProdukcjaForm();
+                raportPracownikaProdukcjaForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportPracownikaProdukcjaForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportPracownikaProdukcjaForm.MdiParent = this;
+                raportPracownikaProdukcjaForm.Dock = DockStyle.Fill;
+                raportPracownikaProdukcjaForm.Show();
+            }
+            else
+            {
+                raportPracownikaProdukcjaForm.Activate();
             }
         }
     }

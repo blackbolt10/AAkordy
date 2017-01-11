@@ -74,6 +74,54 @@ namespace AstraAkodry
             }
         }
 
+        public bool RaportyGlobalneProdukcjaForm_ZaladujRaportPonizejNormy(String dataPocz, String dataKon, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select PRA_PracId, PRA_Nazwisko Nazwisko, PRA_Imie [Imię], h.wykonanie [Wykonanie w %] from dbo.GAL_Pracownicy as G inner join (select c.wak_pracid , round(sum(case when f.czas = 0 then 0 else c.Praca/f.czas*100 end),2) as Wykonanie	from (select a.wak_pracid, a.wak_datawykonania, sum(b.wak_wartosc/b.WAK_WartoscNormy*8) Praca from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPocz + "' and wak_datawykonania <= '" + dataKon + "' and WAK_AkrId<>0 group by wak_pracid, wak_akrid, wak_datawykonania) as A left outer join dbo.GAL_WartAkordu as B on a.wak_pracid=b.wak_pracid and a.wak_akrid=b.wak_akrid and  a.wak_datawykonania=b.wak_datawykonania and a.wak_datamodyfikacji=b.WAK_DataModyfikacji group by a.wak_pracid, a.wak_datawykonania) as C left outer join (select d.wak_pracid,  sum(e.wak_wartosc) as czas from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPocz + "' and wak_datawykonania <= '" + dataKon + "' and WAK_AkrId=0 group by wak_pracid, wak_akrid, wak_datawykonania)  as d left outer join dbo.GAL_WartAkordu as E on d.wak_pracid=e.wak_pracid and d.wak_akrid=e.wak_akrid and  d.wak_datawykonania=e.wak_datawykonania and d.wak_datamodyfikacji=e.WAK_DataModyfikacji group by d.WAK_PracId)  as F on c.WAK_PracId=F.WAK_PracId group by c.WAK_PracId) as H on g.PRA_PracId=h.WAK_PracId where h.wykonanie <100 order by Nazwisko, [Imię]";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyGlobalneProdukcjaForm_ZaladujRaportPonizejNormy()", result);
+                return false;
+            }
+        }
+
+        public bool RaportyGlobalneProdukcjaForm_ZaladujRaportGlobalny(string dataPoczatkowa, string dataKoncowa, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select PRA_PracId, PRA_Nazwisko Nazwisko, PRA_Imie [Imię], h.wykonanie [Wykonanie w %] from dbo.GAL_Pracownicy as G inner join (select c.wak_pracid , round(sum(case when f.czas = 0 then 0 else c.Praca/f.czas*100 end),2) as Wykonanie	from (select a.wak_pracid, a.wak_datawykonania, sum(b.wak_wartosc/b.WAK_WartoscNormy*8) Praca from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPoczatkowa + "' and wak_datawykonania <= '" + dataKoncowa + "' and WAK_AkrId<>0 group by wak_pracid, wak_akrid, wak_datawykonania) as A left outer join dbo.GAL_WartAkordu as B on a.wak_pracid=b.wak_pracid and a.wak_akrid=b.wak_akrid and  a.wak_datawykonania=b.wak_datawykonania and a.wak_datamodyfikacji=b.WAK_DataModyfikacji group by a.wak_pracid, a.wak_datawykonania) as C left outer join (select d.wak_pracid,  sum(e.wak_wartosc) as czas from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPoczatkowa + "' and wak_datawykonania <= '" + dataKoncowa + "' and WAK_AkrId=0 group by wak_pracid, wak_akrid, wak_datawykonania)  as d left outer join dbo.GAL_WartAkordu as E on d.wak_pracid=e.wak_pracid and d.wak_akrid=e.wak_akrid and  d.wak_datawykonania=e.wak_datawykonania and d.wak_datamodyfikacji=e.WAK_DataModyfikacji group by d.WAK_PracId)  as F on c.WAK_PracId=F.WAK_PracId group by c.WAK_PracId) as H on g.PRA_PracId=h.WAK_PracId order by Nazwisko, [Imię]";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyGlobalneProdukcjaForm_ZaladujRaportLeni()", result);
+                return false;
+            }
+        }
+
+        public bool RaportyGlobalneProdukcjaForm_ZaladujRaportLeni(string dataPoczatkowa, string dataKoncowa, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "SELECT (select pra_nazwisko+' '+pra_imie from dbo.gal_Pracownicy where E.WAK_PracId=pra_pracid) Pracownik , E.WAK_datawykonania Data FROM  (select A.WAK_PracId, a.WAK_datawykonania, B.WAK_Wartosc from  (select WAK_PracId, WAK_AkrId, WAK_datawykonania, MAX(WAK_DataModyfikacji) Modyfikacja from gal_wartakordu group by WAK_PracId, WAK_AkrId, WAK_datawykonania) as A left outer join GAL_WartAkordu as B on A.WAK_PracId=B.WAK_PracId and A.WAK_datawykonania=B.WAK_datawykonania and a.WAK_AkrId=B.WAK_AkrId and A.Modyfikacja=B.WAK_DataModyfikacji where b.WAK_AkrId=0 and wak_wartosc <>0 ) AS E LEFT OUTER JOIN (select C.WAK_PracId, C.WAK_datawykonania, D.WAK_Wartosc from  (select WAK_PracId, WAK_AkrId, WAK_datawykonania, MAX(WAK_DataModyfikacji) Modyfikacja from gal_wartakordu group by WAK_PracId, WAK_AkrId, WAK_datawykonania) as C left outer join GAL_WartAkordu as D on C.WAK_PracId=D.WAK_PracId and C.WAK_datawykonania=D.WAK_datawykonania and C.WAK_AkrId=D.WAK_AkrId and C.Modyfikacja=D.WAK_DataModyfikacji where D.WAK_AkrId<>0  and D.WAK_Wartosc <>0 ) AS F ON E.WAK_PracId=F.WAK_PRACID AND E.WAK_datawykonania=F.WAK_datawykonania WHERE F.WAK_PracId IS NULL and E.WAK_datawykonania>='" + dataPoczatkowa + "' and E.WAK_datawykonania<='" + dataKoncowa + "' ORDER BY 1";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyGlobalneProdukcjaForm_ZaladujRaportLeni()", result);
+                return false;
+            }
+        }
+
         public bool RaportRecepcjaForm_ZaladujListePracownikow(ref DataTable pomDataTable, ref string result)
         {
             String zapytanie = "SELECT * FROM GAL_Pracownicy where PRA_Archiwalny <> 1 order by PRA_Nazwisko";
