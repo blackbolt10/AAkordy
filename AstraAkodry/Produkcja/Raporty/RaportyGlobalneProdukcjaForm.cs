@@ -25,6 +25,16 @@ namespace AstraAkodry.Produkcja.Raporty
             raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, raportDGV.Size.Height);
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
+        {
+            if(keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void zamknijButton_Click(object sender, EventArgs e)
         {
             this.Close();
