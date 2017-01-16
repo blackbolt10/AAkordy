@@ -23,6 +23,9 @@ namespace AstraAkodry
         private Recepcja.WprowadzanieAkordowForm wprowadzanieAkordowForm;
         private Produkcja.Raporty.RaportyGlobalneProdukcjaForm raportGlobalneProdukcjaForm;
         private Produkcja.Raporty.RaportyPracownikaProdukcjaForm raportPracownikaProdukcjaForm;
+        private Ksiegowosc.Raporty.RaportyPracownikaKsiegowoscForm raportPracownikaKsiegowoscForm;
+        private Ksiegowosc.Raporty.RaportyGlobalneKsiegowoscForm raportGlobalneKsiegowoscForm;
+
 
         private String sciezkaRejestru = "Software\\Galsoft\\AstraAkordy\\MainForm";
         public Boolean czyWylogowano = false;
@@ -291,6 +294,40 @@ namespace AstraAkodry
             else
             {
                 raportPracownikaProdukcjaForm.Activate();
+            }
+        }
+
+        private void ksiegGlobalneRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(raportGlobalneKsiegowoscForm == null || raportGlobalneKsiegowoscForm.IsDisposed)
+            {
+                raportGlobalneKsiegowoscForm = new Ksiegowosc.Raporty.RaportyGlobalneKsiegowoscForm();
+                raportGlobalneKsiegowoscForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportGlobalneKsiegowoscForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportGlobalneKsiegowoscForm.MdiParent = this;
+                raportGlobalneKsiegowoscForm.Dock = DockStyle.Fill;
+                raportGlobalneKsiegowoscForm.Show();
+            }
+            else
+            {
+                raportGlobalneKsiegowoscForm.Activate();
+            }
+        }
+
+        private void ksiegPracownikaRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(raportPracownikaKsiegowoscForm == null || raportPracownikaKsiegowoscForm.IsDisposed)
+            {
+                raportPracownikaKsiegowoscForm = new Ksiegowosc.Raporty.RaportyPracownikaKsiegowoscForm();
+                raportPracownikaKsiegowoscForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportPracownikaKsiegowoscForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportPracownikaKsiegowoscForm.MdiParent = this;
+                raportPracownikaKsiegowoscForm.Dock = DockStyle.Fill;
+                raportPracownikaKsiegowoscForm.Show();
+            }
+            else
+            {
+                raportPracownikaKsiegowoscForm.Activate();
             }
         }
     }

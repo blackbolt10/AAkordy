@@ -74,6 +74,25 @@ namespace AstraAkodry
             }
         }
 
+        public bool RaportyGlobalneksiegowoscForm_ZaladujRaportGlobalny(DateTime kalendarzSelectedDate, ref DataTable pomDataTable, ref string result)
+        {
+            DateTime dataPoczatkowa = new DateTime(kalendarzSelectedDate.Year, kalendarzSelectedDate.Month, 01, 00, 00, 00);
+            DateTime dataKoncowa = new DateTime(kalendarzSelectedDate.Year, kalendarzSelectedDate.Month, DateTime.DaysInMonth(kalendarzSelectedDate.Year, kalendarzSelectedDate.Month), 23, 59, 59);
+
+            String zapytanie = "select PRA_PracId, PRA_Nazwisko Nazwisko, PRA_Imie [Imię], round(h.wykonanie,2) [Wykonanie w %], round(wypłata_zlecenie,2) [Wypłata-Zlecenie] from dbo.GAL_Pracownicy as G inner join (select c.wak_pracid, sum(case when f.czas = 0 then 0 else c.Praca/f.czas*100 end) as Wykonanie from (select a.wak_pracid , a.wak_datawykonania, sum(b.wak_wartosc/b.WAK_WartoscNormy*8) Praca from ( select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPoczatkowa + "' and wak_datawykonania <= '" + dataKoncowa + "' and WAK_AkrId<>0 group by wak_pracid, wak_akrid, wak_datawykonania ) as A left outer join dbo.GAL_WartAkordu as B on a.wak_pracid=b.wak_pracid and a.wak_akrid=b.wak_akrid and  a.wak_datawykonania=b.wak_datawykonania and a.wak_datamodyfikacji=b.WAK_DataModyfikacji group by a.wak_pracid, a.wak_datawykonania ) as C left outer join (select d.wak_pracid,  sum(e.wak_wartosc) as czas from ( select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPoczatkowa + "' and wak_datawykonania <= '" + dataKoncowa + "' and WAK_AkrId=0 group by wak_pracid, wak_akrid, wak_datawykonania )  as d left outer join dbo.GAL_WartAkordu as E on d.wak_pracid=e.wak_pracid and d.wak_akrid=e.wak_akrid and  d.wak_datawykonania=e.wak_datawykonania and d.wak_datamodyfikacji=e.WAK_DataModyfikacji group by d.WAK_PracId)  as F on c.WAK_PracId=F.WAK_PracId group by c.WAK_PracId) as H on g.PRA_PracId=h.WAK_PracId join (select c.WAK_PracId, sum(zlecenie) Wypłata_zlecenie from (select a.WAK_PracId, (select AKC_Cena from GAL_AkordyCena where a.WAK_AkrId=AKC_AkrId) * b.WAK_Wartosc Zlecenie from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPoczatkowa + "' and wak_datawykonania <= '" + dataKoncowa + "' and WAK_AkrId<>0 group by wak_pracid, wak_akrid, wak_datawykonania) as A left outer join dbo.GAL_WartAkordu as B on a.wak_pracid=b.wak_pracid and a.wak_akrid=b.wak_akrid and  a.wak_datawykonania=b.wak_datawykonania and a.wak_datamodyfikacji=b.WAK_DataModyfikacji ) as C group by c.WAK_PracId) as J on h.wak_pracid=j.wak_pracid order by Nazwisko";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyGlobalneksiegowoscForm_ZaladujRaportGlobalny()", result);
+                return false;
+            }
+        }
+
         public bool RaportyGlobalneProdukcjaForm_ZaladujRaportPonizejNormy(String dataPocz, String dataKon, ref DataTable pomDataTable, ref string result)
         {
             String zapytanie = "select PRA_PracId, PRA_Nazwisko Nazwisko, PRA_Imie [Imię], h.wykonanie [Wykonanie w %] from dbo.GAL_Pracownicy as G inner join (select c.wak_pracid , round(sum(case when f.czas = 0 then 0 else c.Praca/f.czas*100 end),2) as Wykonanie	from (select a.wak_pracid, a.wak_datawykonania, sum(b.wak_wartosc/b.WAK_WartoscNormy*8) Praca from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPocz + "' and wak_datawykonania <= '" + dataKon + "' and WAK_AkrId<>0 group by wak_pracid, wak_akrid, wak_datawykonania) as A left outer join dbo.GAL_WartAkordu as B on a.wak_pracid=b.wak_pracid and a.wak_akrid=b.wak_akrid and  a.wak_datawykonania=b.wak_datawykonania and a.wak_datamodyfikacji=b.WAK_DataModyfikacji group by a.wak_pracid, a.wak_datawykonania) as C left outer join (select d.wak_pracid,  sum(e.wak_wartosc) as czas from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) wak_datamodyfikacji from dbo.GAL_WartAkordu where wak_datawykonania >= '" + dataPocz + "' and wak_datawykonania <= '" + dataKon + "' and WAK_AkrId=0 group by wak_pracid, wak_akrid, wak_datawykonania)  as d left outer join dbo.GAL_WartAkordu as E on d.wak_pracid=e.wak_pracid and d.wak_akrid=e.wak_akrid and  d.wak_datawykonania=e.wak_datawykonania and d.wak_datamodyfikacji=e.WAK_DataModyfikacji group by d.WAK_PracId)  as F on c.WAK_PracId=F.WAK_PracId group by c.WAK_PracId) as H on g.PRA_PracId=h.WAK_PracId where h.wykonanie <100 order by Nazwisko, [Imię]";
@@ -535,14 +554,14 @@ namespace AstraAkodry
             }
         }
 
-        private void ErrorReport(string modul, string message)
+        public void ErrorReport(string modul, string message)
         {
-            String nazwaKompOper = Environment.MachineName + "\\" + Environment.UserName;
-            DateTime teraz = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-
-            String zapytanie = "insert into gal_ustawienia values('"+modul+" - "+ message + "', '"+ MainForm.nazwaOperatora + "', '"+ teraz.ToString()+"', '"+ nazwaKompOper+"')";
             try
             {
+                DateTime teraz = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+                String nazwaKompOper = Environment.MachineName + "\\" + Environment.UserName;
+                String zapytanie = "insert into gal_ustawienia values('"+modul+" - "+ message + "', '"+ MainForm.nazwaOperatora + "', '"+ teraz.ToString()+"', '"+ nazwaKompOper+"')";
+            
                 query(zapytanie);
             }
             catch(Exception){}

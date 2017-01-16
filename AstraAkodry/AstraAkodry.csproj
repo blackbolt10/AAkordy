@@ -38,6 +38,12 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelPackage">
+      <HintPath>..\..\..\z_Biblioteki\ExcelPackage.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -97,6 +103,18 @@
     </Compile>
     <Compile Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyForm.Designer.cs">
       <DependentUpon>PracownicyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ksiegowosc\Raporty\RaportyGlobalneKsiegowoscForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ksiegowosc\Raporty\RaportyGlobalneKsiegowoscForm.Designer.cs">
+      <DependentUpon>RaportyGlobalneKsiegowoscForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ksiegowosc\Raporty\RaportyPracownikaKsiegowoscForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ksiegowosc\Raporty\RaportyPracownikaKsiegowoscForm.Designer.cs">
+      <DependentUpon>RaportyPracownikaKsiegowoscForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -164,6 +182,9 @@
     <EmbeddedResource Include="Konfiguracja\Ustawienia\Pracownicy\PracownicyForm.resx">
       <DependentUpon>PracownicyForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ksiegowosc\Raporty\RaportyGlobalneKsiegowoscForm.resx">
+      <DependentUpon>RaportyGlobalneKsiegowoscForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\zapisz_32x32.png" />
     <None Include="Resources\odswiez_32x32.png" />
     <None Include="Resources\koniec_32x32.png" />
     <None Include="Resources\len_32x32.png" />
@@ -229,6 +251,7 @@
     <None Include="Resources\dodaj.png" />
     <None Include="Images\greyGradient.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
