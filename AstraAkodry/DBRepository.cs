@@ -109,6 +109,54 @@ namespace AstraAkodry
             }
         }
 
+        public bool RaportyPracownikaKsiegowoscForm_RaportPoprawek(string idPracownika, string dataPoczatkowa, string dataKoncowa, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select (select pra_nazwisko+' '+pra_imie from dbo.gal_Pracownicy where a.WAK_PracId=pra_pracid) Pracownik, (select top(1) akr_nazwa from dbo.GAL_Akordy where AKR_AkrId=a.WAK_AkrId and AKR_DataDodania<=a.WAK_datawykonania order by AKR_Id desc) [Nazwa Akordu] , a.WAK_datawykonania Data	, b.WAK_DataModyfikacji [Data zapisu]	, b.wak_wartosc [Wartość akordu]	, (select opr_nazwisko+' '+opr_imie from dbo.GAL_Operatorzy where b.WAK_OprId=opr_oprid) [Wprowadził(a)] from (select WAK_pracid, wak_akrid, WAK_datawykonania, count(1)-1 IlośćModyfikacji from dbo.GAL_WartAkordu as A group by WAK_pracid, wak_akrid, WAK_datawykonania having count(1) >1  ) as A inner join dbo.gal_wartakordu as B on a.wak_pracid=b.wak_pracid and a.wak_akrid=b.wak_akrid and a.wak_datawykonania=b.wak_datawykonania where a.WAK_datawykonania >= '" + dataPoczatkowa + "' and a.WAK_datawykonania <= '" + dataKoncowa + "' order by 1, 2, 3 asc, 4 desc";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyPracownikaKsiegowoscForm_RaportPoprawek()", result);
+                return false;
+            }
+        }
+
+        public bool RaportyPracownikaKsiegowoscForm_RaportSzczegolowy(string idPracownika, string dataPoczatkowa, string dataKoncowa, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select (select opr_nazwisko+' '+opr_imie from dbo.GAL_Operatorzy where a.WAK_OprId=opr_oprid) [Wprowadził(a)], a.wak_datawykonania Data, (select top(1) akr_nazwa from dbo.GAL_Akordy where AKR_AkrId=a.WAK_AkrId and AKR_DataDodania<=a.WAK_datawykonania order by AKR_Id desc) [Nazwa Akordu] ,a.WAK_Wartosc [Wartość akordu] from dbo.GAL_WartAkordu as A where WAK_PracId=" + idPracownika + " and wak_datawykonania >= '" + dataPoczatkowa + "' and wak_datawykonania <= '" + dataKoncowa + "'";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyPracownikaKsiegowoscForm_RaportSzczegolowy()", result);
+                return false;
+            }
+        }
+
+        public bool RaportyPracownikaKsiegowoscForm_RaportLeni(string dataPoczatkowa, string dataKoncowa, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "SELECT (select pra_nazwisko+' '+pra_imie from dbo.gal_Pracownicy where E.WAK_PracId=pra_pracid) Pracownik , E.WAK_datawykonania Data FROM  (select A.WAK_PracId, a.WAK_datawykonania, B.WAK_Wartosc from  (select WAK_PracId, WAK_AkrId, WAK_datawykonania, MAX(WAK_DataModyfikacji) Modyfikacja from gal_wartakordu group by WAK_PracId, WAK_AkrId, WAK_datawykonania) as A left outer join GAL_WartAkordu as B on A.WAK_PracId=B.WAK_PracId and A.WAK_datawykonania=B.WAK_datawykonania and a.WAK_AkrId=B.WAK_AkrId and A.Modyfikacja=B.WAK_DataModyfikacji where b.WAK_AkrId=0 and wak_wartosc <>0 ) AS E LEFT OUTER JOIN (select C.WAK_PracId, C.WAK_datawykonania, D.WAK_Wartosc from  (select WAK_PracId, WAK_AkrId, WAK_datawykonania, MAX(WAK_DataModyfikacji) Modyfikacja from gal_wartakordu group by WAK_PracId, WAK_AkrId, WAK_datawykonania) as C left outer join GAL_WartAkordu as D on C.WAK_PracId=D.WAK_PracId and C.WAK_datawykonania=D.WAK_datawykonania and C.WAK_AkrId=D.WAK_AkrId and C.Modyfikacja=D.WAK_DataModyfikacji where D.WAK_AkrId<>0  and D.WAK_Wartosc <>0 ) AS F ON E.WAK_PracId=F.WAK_PRACID AND E.WAK_datawykonania=F.WAK_datawykonania WHERE F.WAK_PracId IS NULL and E.WAK_datawykonania>='" + dataPoczatkowa + "' and E.WAK_datawykonania<='" + dataKoncowa + "' ORDER BY 1";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyPracownikaKsiegowoscForm_RaportLeni()", result);
+                return false;
+            }
+        }
+
         public bool RaportyPracownikaProdukcjaForm_ZaladujListePracownikow(ref DataTable pomDataTable, ref string result)
         {
             String zapytanie = "SELECT * FROM GAL_Pracownicy where PRA_Archiwalny <> 1 order by PRA_Nazwisko";
@@ -121,6 +169,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("RaportRecepcjaForm_ZaladujListePracownikow()", result);
+                return false;
+            }
+        }
+
+        public bool RaportyPracownikaKsiegowoscForm_ZaladujListePracownikow(ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "SELECT * FROM GAL_Pracownicy where PRA_Archiwalny <> 1 order by PRA_Nazwisko";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyPracownikaKsiegowoscForm_ZaladujListePracownikow()", result);
                 return false;
             }
         }

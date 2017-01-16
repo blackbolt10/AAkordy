@@ -185,6 +185,9 @@
     <EmbeddedResource Include="Ksiegowosc\Raporty\RaportyGlobalneKsiegowoscForm.resx">
       <DependentUpon>RaportyGlobalneKsiegowoscForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ksiegowosc\Raporty\RaportyPracownikaKsiegowoscForm.resx">
+      <DependentUpon>RaportyPracownikaKsiegowoscForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

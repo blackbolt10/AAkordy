@@ -15,6 +15,7 @@ namespace AstraAkodry.Produkcja.Raporty
         private DataTable pracownicyDT;
         private Int32 idRaportu;
 
+
         public RaportyPracownikaProdukcjaForm()
         {
             InitializeComponent();
