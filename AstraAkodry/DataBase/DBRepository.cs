@@ -58,6 +58,42 @@ namespace AstraAkodry
             return connectionResult;
         }
 
+        public bool MainForm_ZaladujCzcionke(ref string nazwa, ref string rozmiar)
+        {
+            String zapytanie = "SELECT TOP 1 * from GAL_Parametry where PAR_PracID = "+MainForm.IDOperatora+" and PAR_Nazwa = 'CzcionkaNazwa' order by PAR_DataDodania desc";
+            try
+            {
+                DataTable pomDataTable = query(zapytanie);
+                if(pomDataTable.Rows.Count > 0)
+                {
+                    nazwa = pomDataTable.Rows[0]["PAR_Wartosc"].ToString();
+                }
+                else
+                {
+                    nazwa = "Microsoft Sans Serif";
+                }
+
+                zapytanie = "SELECT TOP 1 * from GAL_Parametry where PAR_PracID = " + MainForm.IDOperatora + " and PAR_Nazwa = 'CzcionkaRozmiar' order by PAR_DataDodania desc";
+                pomDataTable = query(zapytanie);
+                if(pomDataTable.Rows.Count > 0)
+                {
+                    rozmiar = pomDataTable.Rows[0]["PAR_Wartosc"].ToString();
+                }
+                else
+                {
+                    rozmiar = "8";
+                }
+
+                return true;
+            }
+            catch(Exception exc)
+            {
+                nazwa = exc.Message;
+                ErrorReport("MainForm_ZaladujCzcionke()", nazwa);
+                return false;
+            }
+        }
+
         public bool RaportRecepcjaForm_ZaladujListeAkordow(ref DataTable pomDataTable, ref string result)
         {
             String zapytanie = "select a.akr_akrid, b.akr_nazwa, b.akr_norma, b.akr_archiwalny from (select akr_akrid,  max(akr_datadodania) akr_datadodania from GAL_Akordy where AKR_Archiwalny <> 1 group by akr_akrid) as A left outer join dbo.GAL_Akordy as B on a.AKR_AkrId=b.akr_akrid and a.akr_datadodania=b.akr_datadodania";
@@ -89,6 +125,26 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("RaportyGlobalneksiegowoscForm_ZaladujRaportGlobalny()", result);
+                return false;
+            }
+        }
+
+        public bool UstawieniaForm_ZapiszCzcionke(string name, float size, ref string result)
+        {
+            try
+            {
+                String zapytanie = "INSERT INTO GAL_Parametry VALUES ("+MainForm.IDOperatora+", 'CzcionkaNazwa', '"+name+"', getdate())";
+                query(zapytanie);
+
+                zapytanie = "INSERT INTO GAL_Parametry VALUES (" + MainForm.IDOperatora + ", 'CzcionkaRozmiar', '" + size.ToString() + "', getdate())";
+                query(zapytanie);
+
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportyGlobalneProdukcjaForm_ZaladujRaportPonizejNormy()", result);
                 return false;
             }
         }

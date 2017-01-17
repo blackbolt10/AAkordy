@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\DBRepository.cs" />
+    <Compile Include="Konfiguracja\Aplikacja\UstawieniaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konfiguracja\Aplikacja\UstawieniaForm.Designer.cs">
+      <DependentUpon>UstawieniaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Konfiguracja\HasloForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     <Compile Include="Recepcja\WprowadzanieAkordowForm.Designer.cs">
       <DependentUpon>WprowadzanieAkordowForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Konfiguracja\Aplikacja\UstawieniaForm.resx">
+      <DependentUpon>UstawieniaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Konfiguracja\HasloForm.resx">
       <DependentUpon>HasloForm.cs</DependentUpon>
     </EmbeddedResource>

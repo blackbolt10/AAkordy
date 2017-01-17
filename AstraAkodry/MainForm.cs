@@ -18,6 +18,7 @@ namespace AstraAkodry
         private Konfiguracja.Ustawienia.Operatorzy.OperatorzyForm operatorzyForm;
         private Konfiguracja.Ustawienia.Pracownicy.PracownicyForm pracownicyForm;
         private Konfiguracja.HasloForm hasloForm;
+        private Konfiguracja.Aplikacja.UstawieniaForm ustawieniaForm;
         private Recepcja.Raporty.RaportRecepcjaForm raportRecepcjaForm;
         private Recepcja.Raporty.RaportLeniRecepcjaForm raportLeniRecepcjaForm;
         private Recepcja.WprowadzanieAkordowForm wprowadzanieAkordowForm;
@@ -33,12 +34,15 @@ namespace AstraAkodry
         public static String IDOperatora;
         public static String nazwaOperatora;
         public static String hasloOperatora;
+        public static Font czcionka;
 
 
         public MainForm(String wersja)
         {
             InitializeComponent();
             wersjaTSSL.Text = wersja;
+
+            ZaladujAktualnaCzcionke();
         }
 
         private void closeRibbonOrbMenuItem_Click(object sender, EventArgs e)
@@ -73,6 +77,23 @@ namespace AstraAkodry
                 key.SetValue("Size.Height", Size.Height.ToString());
             }
             key.Close();
+        }
+
+        private void ZaladujAktualnaCzcionke()
+        {
+            DBRepository db = new DBRepository();
+            String nazwa = "";
+            String rozmiar = "";
+
+            if(db.MainForm_ZaladujCzcionke(ref nazwa, ref rozmiar))
+            {
+                FontFamily fontFamily = new FontFamily(nazwa);
+                czcionka = new Font(fontFamily, float.Parse(rozmiar), FontStyle.Regular, GraphicsUnit.Pixel);
+            }
+            else
+            {
+                MessageBox.Show("Wystąpił błąd podczas odczytywania czcionki:\n" + nazwa, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void zamknijRibbonOrbMenuItem_Click(object sender, EventArgs e)
@@ -336,6 +357,23 @@ namespace AstraAkodry
             else
             {
                 raportPracownikaKsiegowoscForm.Activate();
+            }
+        }
+
+        private void ustawieniaRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(ustawieniaForm == null || ustawieniaForm.IsDisposed)
+            {
+                ustawieniaForm = new Konfiguracja.Aplikacja.UstawieniaForm();
+                ustawieniaForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                ustawieniaForm.Shown += new System.EventHandler(mdiChild_Activate);
+                ustawieniaForm.MdiParent = this;
+                ustawieniaForm.Dock = DockStyle.Fill;
+                ustawieniaForm.Show();
+            }
+            else
+            {
+                ustawieniaForm.Activate();
             }
         }
     }
