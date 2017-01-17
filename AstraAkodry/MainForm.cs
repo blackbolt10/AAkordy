@@ -144,6 +144,14 @@ namespace AstraAkodry
             }
         }
 
+        private void oknaCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(oknaCB.Items.Count > 0)
+            {
+                listaMdiChildForm[oknaCB.SelectedIndex].Focus();
+            }
+        }
+
         private void wprowadzanieribbonButton_Click(object sender, EventArgs e)
         {
             if(wprowadzanieAkordowForm == null || wprowadzanieAkordowForm.IsDisposed)

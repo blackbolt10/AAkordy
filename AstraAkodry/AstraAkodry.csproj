@@ -61,7 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBRepository.cs" />
+    <Compile Include="DataBase\DBRepository.cs" />
     <Compile Include="Konfiguracja\HasloForm.cs">
       <SubType>Form</SubType>
     </Compile>

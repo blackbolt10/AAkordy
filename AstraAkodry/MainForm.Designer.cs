@@ -45,6 +45,8 @@
             this.prodPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ksiegowoscRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
+            this.ksiegGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ksiegPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.konfiguracjaRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.pracownicyRibbonButton = new System.Windows.Forms.RibbonButton();
@@ -52,14 +54,13 @@
             this.operatorzyRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.hasloRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.wersjaTSSL = new System.Windows.Forms.ToolStripStatusLabel();
             this.oknaCB = new System.Windows.Forms.ComboBox();
             this.zmienOknoLabel = new System.Windows.Forms.Label();
             this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ksiegGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.ksiegPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel7 = new System.Windows.Forms.RibbonPanel();
+            this.systemRibbonButton = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,13 +88,12 @@
             this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
             this.ribbon1.OrbText = "Astra";
             this.ribbon1.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.ribbon1.Size = new System.Drawing.Size(584, 122);
+            this.ribbon1.Size = new System.Drawing.Size(684, 125);
             this.ribbon1.TabIndex = 0;
             this.ribbon1.Tabs.Add(this.recepcjaRibbonTab);
             this.ribbon1.Tabs.Add(this.produkcjaRibbonTab);
             this.ribbon1.Tabs.Add(this.ksiegowoscRibbonTab);
             this.ribbon1.Tabs.Add(this.konfiguracjaRibbonTab);
-            this.ribbon1.Tabs.Add(this.ribbonTab1);
             this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 2, 20, 0);
             this.ribbon1.Text = "ribbon1";
             this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
@@ -188,10 +188,25 @@
             this.ribbonPanel6.Items.Add(this.ksiegPracownikaRibbonButton);
             this.ribbonPanel6.Text = "Raporty";
             // 
+            // ksiegGlobalneRibbonButton
+            // 
+            this.ksiegGlobalneRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.ksiegGlobalneRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegGlobalneRibbonButton.SmallImage")));
+            this.ksiegGlobalneRibbonButton.Text = "Globalne";
+            this.ksiegGlobalneRibbonButton.Click += new System.EventHandler(this.ksiegGlobalneRibbonButton_Click);
+            // 
+            // ksiegPracownikaRibbonButton
+            // 
+            this.ksiegPracownikaRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.ksiegPracownikaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegPracownikaRibbonButton.SmallImage")));
+            this.ksiegPracownikaRibbonButton.Text = "Pracownika";
+            this.ksiegPracownikaRibbonButton.Click += new System.EventHandler(this.ksiegPracownikaRibbonButton_Click);
+            // 
             // konfiguracjaRibbonTab
             // 
             this.konfiguracjaRibbonTab.Panels.Add(this.ribbonPanel3);
             this.konfiguracjaRibbonTab.Panels.Add(this.ribbonPanel4);
+            this.konfiguracjaRibbonTab.Panels.Add(this.ribbonPanel7);
             this.konfiguracjaRibbonTab.Text = "Konfiguracja";
             // 
             // ribbonPanel3
@@ -234,17 +249,13 @@
             this.hasloRibbonButton.Text = "Hasło";
             this.hasloRibbonButton.Click += new System.EventHandler(this.hasloRibbonButton_Click);
             // 
-            // ribbonTab1
-            // 
-            this.ribbonTab1.Text = "ribbonTab1";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wersjaTSSL});
             this.statusStrip1.Location = new System.Drawing.Point(0, 339);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(584, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(684, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -259,17 +270,18 @@
             this.oknaCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.oknaCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.oknaCB.FormattingEnabled = true;
-            this.oknaCB.Location = new System.Drawing.Point(404, 3);
+            this.oknaCB.Location = new System.Drawing.Point(504, 3);
             this.oknaCB.Name = "oknaCB";
             this.oknaCB.Size = new System.Drawing.Size(180, 21);
             this.oknaCB.TabIndex = 4;
             this.oknaCB.Visible = false;
+            this.oknaCB.SelectedIndexChanged += new System.EventHandler(this.oknaCB_SelectedIndexChanged);
             // 
             // zmienOknoLabel
             // 
             this.zmienOknoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.zmienOknoLabel.AutoSize = true;
-            this.zmienOknoLabel.Location = new System.Drawing.Point(335, 6);
+            this.zmienOknoLabel.Location = new System.Drawing.Point(435, 6);
             this.zmienOknoLabel.Name = "zmienOknoLabel";
             this.zmienOknoLabel.Size = new System.Drawing.Size(63, 13);
             this.zmienOknoLabel.TabIndex = 5;
@@ -283,25 +295,22 @@
             this.ribbonOrbMenuItem1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem1.SmallImage")));
             this.ribbonOrbMenuItem1.Text = "ribbonOrbMenuItem1";
             // 
-            // ksiegGlobalneRibbonButton
+            // ribbonPanel7
             // 
-            this.ksiegGlobalneRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
-            this.ksiegGlobalneRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegGlobalneRibbonButton.SmallImage")));
-            this.ksiegGlobalneRibbonButton.Text = "Globalne";
-            this.ksiegGlobalneRibbonButton.Click += new System.EventHandler(this.ksiegGlobalneRibbonButton_Click);
+            this.ribbonPanel7.Items.Add(this.systemRibbonButton);
+            this.ribbonPanel7.Text = "System";
             // 
-            // ksiegPracownikaRibbonButton
+            // systemRibbonButton
             // 
-            this.ksiegPracownikaRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
-            this.ksiegPracownikaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegPracownikaRibbonButton.SmallImage")));
-            this.ksiegPracownikaRibbonButton.Text = "Pracownika";
-            this.ksiegPracownikaRibbonButton.Click += new System.EventHandler(this.ksiegPracownikaRibbonButton_Click);
+            this.systemRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.systemRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("systemRibbonButton.SmallImage")));
+            this.systemRibbonButton.Text = "ustawienia";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(684, 361);
             this.Controls.Add(this.zmienOknoLabel);
             this.Controls.Add(this.oknaCB);
             this.Controls.Add(this.statusStrip1);
@@ -345,13 +354,14 @@
         private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
         private System.Windows.Forms.RibbonTab produkcjaRibbonTab;
         private System.Windows.Forms.RibbonTab ksiegowoscRibbonTab;
-        private System.Windows.Forms.RibbonTab ribbonTab1;
         private System.Windows.Forms.RibbonPanel ribbonPanel5;
         private System.Windows.Forms.RibbonButton prodGlobalneRibbonButton;
         private System.Windows.Forms.RibbonPanel ribbonPanel6;
         private System.Windows.Forms.RibbonButton prodPracownikaRibbonButton;
         private System.Windows.Forms.RibbonButton ksiegGlobalneRibbonButton;
         private System.Windows.Forms.RibbonButton ksiegPracownikaRibbonButton;
+        private System.Windows.Forms.RibbonPanel ribbonPanel7;
+        private System.Windows.Forms.RibbonButton systemRibbonButton;
     }
 }
 
