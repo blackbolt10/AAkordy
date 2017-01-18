@@ -19,10 +19,26 @@ namespace AstraAkodry.Produkcja.Raporty
 
         private void RaportyGlobalneProdukcjaForm_Shown(object sender, EventArgs e)
         {
-            raportLabel1.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, raportLabel1.Location.Y);
-            raportDGV.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, raportDGV.Location.Y);
+            dataPoczLabel.Font = MainForm.czcionka;
+            dataKonLabel.Font = MainForm.czcionka;
+            raportLabel1.Font = MainForm.czcionka;
+            raportDGV.Font = MainForm.czcionka;
+            
+            kalendarzPoczMC.Location = new Point(dataPoczLabel.Location.X, dataPoczLabel.Location.Y + dataPoczLabel.Size.Height + 10);
+            dataKonLabel.Location = new Point(dataPoczLabel.Location.X, kalendarzPoczMC.Location.Y + kalendarzPoczMC.Size.Height + 10);
+            kalendarzKonMC.Location = new Point(dataPoczLabel.Location.X, dataKonLabel.Location.Y + dataKonLabel.Size.Height + 10);
 
-            raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, raportDGV.Size.Height);
+            if(kalendarzPoczMC.Size.Width > dataPoczLabel.Size.Width)
+            {
+                raportLabel1.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, raportLabel1.Location.Y);
+            }
+            else
+            {
+                raportLabel1.Location = new Point(dataPoczLabel.Location.X + dataPoczLabel.Size.Width + 10, raportLabel1.Location.Y);
+            }
+
+            raportDGV.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, raportLabel1.Location.Y + raportLabel1.Size.Height + 10);
+            raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, zamknijButton.Location.Y - raportDGV.Location.Y-15);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
@@ -91,7 +107,7 @@ namespace AstraAkodry.Produkcja.Raporty
                 raportLabel1.Text = "Raport poniżej 100% normy:";
 
                 raportDGV.Columns["PRA_PracId"].Visible = false;
-                raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 raportDGV.Columns["Imię"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else

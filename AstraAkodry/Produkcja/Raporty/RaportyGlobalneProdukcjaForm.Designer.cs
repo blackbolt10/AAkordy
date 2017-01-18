@@ -31,9 +31,9 @@
             this.zamknijButton = new System.Windows.Forms.Button();
             this.raportDGV = new System.Windows.Forms.DataGridView();
             this.kalendarzKonMC = new System.Windows.Forms.MonthCalendar();
-            this.label18 = new System.Windows.Forms.Label();
+            this.dataPoczLabel = new System.Windows.Forms.Label();
             this.kalendarzPoczMC = new System.Windows.Forms.MonthCalendar();
-            this.label19 = new System.Windows.Forms.Label();
+            this.dataKonLabel = new System.Windows.Forms.Label();
             this.ponizejNormyButton = new System.Windows.Forms.Button();
             this.globalnyButton = new System.Windows.Forms.Button();
             this.lenieButton = new System.Windows.Forms.Button();
@@ -57,9 +57,12 @@
             // 
             this.raportDGV.AllowUserToAddRows = false;
             this.raportDGV.AllowUserToDeleteRows = false;
+            this.raportDGV.AllowUserToResizeRows = false;
             this.raportDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.raportDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.raportDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.raportDGV.BackgroundColor = System.Drawing.SystemColors.Window;
             this.raportDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.raportDGV.Location = new System.Drawing.Point(302, 33);
@@ -84,15 +87,15 @@
             this.kalendarzKonMC.TabIndex = 93;
             this.kalendarzKonMC.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.kalendarzKonMC_DateChanged);
             // 
-            // label18
+            // dataPoczLabel
             // 
-            this.label18.AutoSize = true;
-            this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(12, 11);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(94, 13);
-            this.label18.TabIndex = 91;
-            this.label18.Text = "Data początkowa:";
+            this.dataPoczLabel.AutoSize = true;
+            this.dataPoczLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dataPoczLabel.Location = new System.Drawing.Point(12, 11);
+            this.dataPoczLabel.Name = "dataPoczLabel";
+            this.dataPoczLabel.Size = new System.Drawing.Size(94, 13);
+            this.dataPoczLabel.TabIndex = 91;
+            this.dataPoczLabel.Text = "Data początkowa:";
             // 
             // kalendarzPoczMC
             // 
@@ -107,15 +110,15 @@
             this.kalendarzPoczMC.TabIndex = 90;
             this.kalendarzPoczMC.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.kalendarzPoczMC_DateChanged);
             // 
-            // label19
+            // dataKonLabel
             // 
-            this.label19.AutoSize = true;
-            this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(15, 204);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(80, 13);
-            this.label19.TabIndex = 92;
-            this.label19.Text = "Data końcowa:";
+            this.dataKonLabel.AutoSize = true;
+            this.dataKonLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dataKonLabel.Location = new System.Drawing.Point(15, 204);
+            this.dataKonLabel.Name = "dataKonLabel";
+            this.dataKonLabel.Size = new System.Drawing.Size(80, 13);
+            this.dataKonLabel.TabIndex = 92;
+            this.dataKonLabel.Text = "Data końcowa:";
             // 
             // ponizejNormyButton
             // 
@@ -171,9 +174,9 @@
             this.Controls.Add(this.zamknijButton);
             this.Controls.Add(this.raportDGV);
             this.Controls.Add(this.kalendarzKonMC);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.dataPoczLabel);
             this.Controls.Add(this.kalendarzPoczMC);
-            this.Controls.Add(this.label19);
+            this.Controls.Add(this.dataKonLabel);
             this.Controls.Add(this.ponizejNormyButton);
             this.Controls.Add(this.globalnyButton);
             this.Controls.Add(this.lenieButton);
@@ -192,9 +195,9 @@
         private System.Windows.Forms.Button zamknijButton;
         private System.Windows.Forms.DataGridView raportDGV;
         private System.Windows.Forms.MonthCalendar kalendarzKonMC;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label dataPoczLabel;
         private System.Windows.Forms.MonthCalendar kalendarzPoczMC;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label dataKonLabel;
         private System.Windows.Forms.Button ponizejNormyButton;
         private System.Windows.Forms.Button globalnyButton;
         private System.Windows.Forms.Button lenieButton;

@@ -22,6 +22,9 @@ namespace AstraAkodry.Konfiguracja.Aplikacja
         private void UstawieniaForm_Shown(object sender, EventArgs e)
         {
             AktualizujOkno();
+
+            nazwaLabel.Text = MainForm.czcionka.Name;
+            rozmiarLabel.Text = MainForm.czcionka.Size.ToString();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna

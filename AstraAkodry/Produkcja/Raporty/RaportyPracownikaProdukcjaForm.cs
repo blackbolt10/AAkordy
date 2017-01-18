@@ -14,6 +14,7 @@ namespace AstraAkodry.Produkcja.Raporty
     {
         private DataTable pracownicyDT;
         private Int32 idRaportu;
+        private Int32 rozmiarTekstu;
 
 
         public RaportyPracownikaProdukcjaForm()
@@ -27,13 +28,36 @@ namespace AstraAkodry.Produkcja.Raporty
 
         private void RaportyPracownikaProdukcjaForm_Shown(object sender, EventArgs e)
         {
-            pracownicyLabel.Location = new Point(kalendarzPoczMC.Location.X+kalendarzPoczMC.Size.Width+10, pracownicyLabel.Location.Y);
-            pracownicyCB.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, pracownicyCB.Location.Y);
-            pracownicyLB.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, pracownicyLB.Location.Y);
+            dataPoczLabel.Font = MainForm.czcionka;
+            dataKonLabel.Font = MainForm.czcionka;
+            pracownicyLabel.Font = MainForm.czcionka;
+            pracownicyCB.Font = MainForm.czcionka;
+            pracownicyLB.Font = MainForm.czcionka;
+            raportLabel.Font = MainForm.czcionka;
+            raportDGV.Font = MainForm.czcionka;
+
+            kalendarzPoczMC.Location = new Point(dataPoczLabel.Location.X, dataPoczLabel.Location.Y + dataPoczLabel.Size.Height + 10);
+            dataKonLabel.Location = new Point(dataPoczLabel.Location.X, kalendarzPoczMC.Location.Y + kalendarzPoczMC.Size.Height + 10);
+            kalendarzKonMC.Location = new Point(dataPoczLabel.Location.X, dataKonLabel.Location.Y + dataKonLabel.Size.Height + 10);
+
+            if(kalendarzPoczMC.Size.Width > dataPoczLabel.Size.Width)
+            {
+                pracownicyLabel.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, pracownicyLabel.Location.Y);
+            }
+            else
+            {
+                pracownicyLabel.Location = new Point(dataPoczLabel.Location.X + dataPoczLabel.Size.Width + 10, pracownicyLabel.Location.Y);
+            }
+
+            pracownicyCB.Location = new Point(pracownicyLabel.Location.X, pracownicyLabel.Location.Y+ pracownicyLabel.Size.Height+10);
+            pracownicyCB.DropDownHeight = this.Height - pracownicyCB.Location.Y;
+            pracownicyLB.Location = new Point(pracownicyLabel.Location.X, pracownicyCB.Location.Y + pracownicyCB.Size.Height + 10);
+            pracownicyCB.Size = new Size((Int32)(rozmiarTekstu * MainForm.czcionka.Size * 0.75), pracownicyLabel.Size.Height + 10);
+            pracownicyLB.Size = new Size((Int32)(rozmiarTekstu * MainForm.czcionka.Size * 0.75), zamknijButton.Location.Y - pracownicyLB.Location.Y - 15);
 
             raportLabel.Location = new Point(pracownicyCB.Location.X + pracownicyCB.Size.Width + 10, raportLabel.Location.Y);
-            raportDGV.Location = new Point(raportLabel.Location.X, raportDGV.Location.Y);
-            raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, raportDGV.Size.Height);
+            raportDGV.Location = new Point(raportLabel.Location.X, raportLabel.Location.Y+ raportLabel.Size.Height+10);
+            raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, zamknijButton.Location.Y - raportDGV.Location.Y - 15);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
@@ -111,6 +135,11 @@ namespace AstraAkodry.Produkcja.Raporty
                         {
                             pracownicyCB.Items.Add(pracownicyDT.Rows[i]["PRA_Nazwisko"] + " " + pracownicyDT.Rows[i]["PRA_Imie"]);
                             pracownicyLB.Items.Add(pracownicyDT.Rows[i]["PRA_Nazwisko"] + " " + pracownicyDT.Rows[i]["PRA_Imie"]);
+
+                            if(pracownicyCB.Items[i].ToString().Length>rozmiarTekstu)
+                            {
+                                rozmiarTekstu = pracownicyCB.Items[i].ToString().Length;
+                            }
                         }
                     }
                     pracownicyLB.SelectedIndex = 0;
@@ -201,8 +230,8 @@ namespace AstraAkodry.Produkcja.Raporty
                 raportLabel.Text = "Raport szczegółowy:";
 
                 raportDGV.Columns["PRA_PracId"].Visible = false;
-                raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                raportDGV.Columns["Imię"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                raportDGV.Columns["Imię"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             else
             {
