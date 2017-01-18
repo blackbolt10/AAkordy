@@ -33,13 +33,14 @@
             this.akceptujButton = new System.Windows.Forms.Button();
             this.archiwalnyCB = new System.Windows.Forms.CheckBox();
             this.normaTB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.normaLabel = new System.Windows.Forms.Label();
             this.nazwaTB = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.nazwaLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // zamknijButton
             // 
+            this.zamknijButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.zamknijButton.Location = new System.Drawing.Point(197, 87);
             this.zamknijButton.Name = "zamknijButton";
             this.zamknijButton.Size = new System.Drawing.Size(75, 23);
@@ -50,6 +51,7 @@
             // 
             // akceptujButton
             // 
+            this.akceptujButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.akceptujButton.Location = new System.Drawing.Point(116, 87);
             this.akceptujButton.Name = "akceptujButton";
             this.akceptujButton.Size = new System.Drawing.Size(75, 23);
@@ -77,14 +79,14 @@
             this.normaTB.Text = "0.0";
             this.normaTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nazwiskoTB_KeyPress);
             // 
-            // label2
+            // normaLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Norma:";
+            this.normaLabel.AutoSize = true;
+            this.normaLabel.Location = new System.Drawing.Point(12, 41);
+            this.normaLabel.Name = "normaLabel";
+            this.normaLabel.Size = new System.Drawing.Size(41, 13);
+            this.normaLabel.TabIndex = 10;
+            this.normaLabel.Text = "Norma:";
             // 
             // nazwaTB
             // 
@@ -93,32 +95,34 @@
             this.nazwaTB.Size = new System.Drawing.Size(185, 20);
             this.nazwaTB.TabIndex = 8;
             // 
-            // label1
+            // nazwaLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Nazwa:";
+            this.nazwaLabel.AutoSize = true;
+            this.nazwaLabel.Location = new System.Drawing.Point(12, 15);
+            this.nazwaLabel.Name = "nazwaLabel";
+            this.nazwaLabel.Size = new System.Drawing.Size(43, 13);
+            this.nazwaLabel.TabIndex = 7;
+            this.nazwaLabel.Text = "Nazwa:";
             // 
             // AkordyChangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(284, 123);
             this.Controls.Add(this.zamknijButton);
             this.Controls.Add(this.akceptujButton);
             this.Controls.Add(this.archiwalnyCB);
             this.Controls.Add(this.normaTB);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.normaLabel);
             this.Controls.Add(this.nazwaTB);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.nazwaLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AkordyChangeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nowy akord";
+            this.Shown += new System.EventHandler(this.AkordyChangeForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,8 +134,8 @@
         private System.Windows.Forms.Button akceptujButton;
         private System.Windows.Forms.CheckBox archiwalnyCB;
         private System.Windows.Forms.TextBox normaTB;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label normaLabel;
         private System.Windows.Forms.TextBox nazwaTB;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label nazwaLabel;
     }
 }

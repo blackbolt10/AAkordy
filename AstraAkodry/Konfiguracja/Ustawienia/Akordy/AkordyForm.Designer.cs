@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.archiwalneCHB = new System.Windows.Forms.CheckBox();
-            this.akordyDGV = new System.Windows.Forms.DataGridView();
             this.addButton = new System.Windows.Forms.Button();
             this.changeButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
             this.zamknijButton = new System.Windows.Forms.Button();
+            this.akordyDGV = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.akordyDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,24 +48,6 @@
             this.archiwalneCHB.Text = "Pokaż archiwalne";
             this.archiwalneCHB.UseVisualStyleBackColor = true;
             this.archiwalneCHB.CheckedChanged += new System.EventHandler(this.archiwalneCHB_CheckedChanged);
-            // 
-            // akordyDGV
-            // 
-            this.akordyDGV.AllowUserToAddRows = false;
-            this.akordyDGV.AllowUserToDeleteRows = false;
-            this.akordyDGV.AllowUserToResizeRows = false;
-            this.akordyDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.akordyDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.akordyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.akordyDGV.Location = new System.Drawing.Point(12, 12);
-            this.akordyDGV.MultiSelect = false;
-            this.akordyDGV.Name = "akordyDGV";
-            this.akordyDGV.RowHeadersVisible = false;
-            this.akordyDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.akordyDGV.Size = new System.Drawing.Size(576, 338);
-            this.akordyDGV.TabIndex = 1;
             // 
             // addButton
             // 
@@ -115,17 +97,38 @@
             this.zamknijButton.UseVisualStyleBackColor = true;
             this.zamknijButton.Click += new System.EventHandler(this.zamknijButton_Click);
             // 
+            // akordyDGV
+            // 
+            this.akordyDGV.AllowUserToAddRows = false;
+            this.akordyDGV.AllowUserToDeleteRows = false;
+            this.akordyDGV.AllowUserToResizeRows = false;
+            this.akordyDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.akordyDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.akordyDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.akordyDGV.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.akordyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.akordyDGV.Location = new System.Drawing.Point(12, 12);
+            this.akordyDGV.MultiSelect = false;
+            this.akordyDGV.Name = "akordyDGV";
+            this.akordyDGV.ReadOnly = true;
+            this.akordyDGV.RowHeadersVisible = false;
+            this.akordyDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.akordyDGV.Size = new System.Drawing.Size(576, 338);
+            this.akordyDGV.TabIndex = 96;
+            // 
             // AkordyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 400);
+            this.Controls.Add(this.akordyDGV);
             this.Controls.Add(this.archiwalneCHB);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.zamknijButton);
-            this.Controls.Add(this.akordyDGV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AkordyForm";
             this.Text = "Akordy - ustawienia";

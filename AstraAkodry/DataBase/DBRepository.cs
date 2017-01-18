@@ -560,7 +560,7 @@ namespace AstraAkodry
             }
         }
 
-        public bool HasloForm_ZmienHaslo(String noweHaslo, ref string result)
+        public bool UstawieniaForm_ZmienHaslo(String noweHaslo, ref string result)
         {
             String zapytanie = "update GAL_Operatorzy set OPR_Haslo = '" + noweHaslo + "' where OPR_OprId = " + MainForm.IDOperatora;
 
@@ -572,7 +572,7 @@ namespace AstraAkodry
             catch(Exception exc)
             {
                 result = exc.Message;
-                ErrorReport("HasloForm_ZmienHaslo()", result);
+                ErrorReport("UstawieniaForm_ZmienHaslo()", result);
                 return false;
             }
         }

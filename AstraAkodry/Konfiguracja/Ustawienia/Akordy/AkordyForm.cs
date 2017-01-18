@@ -15,11 +15,17 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Akordy
         public AkordyForm()
         {
             InitializeComponent();
+
+            ZaladujAkordyDGV();
         }
 
         private void AkordyForm_Shown(object sender, EventArgs e)
         {
-            ZaladujAkordyDGV();
+            archiwalneCHB.Font = MainForm.czcionka;
+            akordyDGV.Font = MainForm.czcionka;
+
+            archiwalneCHB.Location = new Point(archiwalneCHB.Location.X, zamknijButton.Location.Y+zamknijButton.Size.Height- archiwalneCHB.Size.Height);
+            akordyDGV.Size = new Size(akordyDGV.Size.Width, archiwalneCHB.Location.Y - 10);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna

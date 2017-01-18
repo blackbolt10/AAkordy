@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.operatorzyDGV = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.archiwalniCHB = new System.Windows.Forms.CheckBox();
             this.unlockButton = new System.Windows.Forms.Button();
@@ -37,25 +36,9 @@
             this.changeButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
             this.zamknijButton = new System.Windows.Forms.Button();
+            this.operatorzyDGV = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.operatorzyDGV)).BeginInit();
             this.SuspendLayout();
-            // 
-            // operatorzyDGV
-            // 
-            this.operatorzyDGV.AllowUserToAddRows = false;
-            this.operatorzyDGV.AllowUserToDeleteRows = false;
-            this.operatorzyDGV.AllowUserToResizeRows = false;
-            this.operatorzyDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.operatorzyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.operatorzyDGV.Location = new System.Drawing.Point(12, 12);
-            this.operatorzyDGV.MultiSelect = false;
-            this.operatorzyDGV.Name = "operatorzyDGV";
-            this.operatorzyDGV.RowHeadersVisible = false;
-            this.operatorzyDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.operatorzyDGV.Size = new System.Drawing.Size(576, 338);
-            this.operatorzyDGV.TabIndex = 1;
             // 
             // archiwalniCHB
             // 
@@ -136,18 +119,39 @@
             this.zamknijButton.UseVisualStyleBackColor = true;
             this.zamknijButton.Click += new System.EventHandler(this.zamknijButton_Click);
             // 
+            // operatorzyDGV
+            // 
+            this.operatorzyDGV.AllowUserToAddRows = false;
+            this.operatorzyDGV.AllowUserToDeleteRows = false;
+            this.operatorzyDGV.AllowUserToResizeRows = false;
+            this.operatorzyDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.operatorzyDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.operatorzyDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.operatorzyDGV.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.operatorzyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.operatorzyDGV.Location = new System.Drawing.Point(12, 12);
+            this.operatorzyDGV.MultiSelect = false;
+            this.operatorzyDGV.Name = "operatorzyDGV";
+            this.operatorzyDGV.ReadOnly = true;
+            this.operatorzyDGV.RowHeadersVisible = false;
+            this.operatorzyDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.operatorzyDGV.Size = new System.Drawing.Size(576, 338);
+            this.operatorzyDGV.TabIndex = 97;
+            // 
             // OperatorzyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 400);
+            this.Controls.Add(this.operatorzyDGV);
             this.Controls.Add(this.unlockButton);
             this.Controls.Add(this.archiwalniCHB);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.zamknijButton);
-            this.Controls.Add(this.operatorzyDGV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OperatorzyForm";
             this.Text = "Operatorzy - ustawienia";
@@ -159,8 +163,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView operatorzyDGV;
         private System.Windows.Forms.Button zamknijButton;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button delButton;
@@ -168,5 +170,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.CheckBox archiwalniCHB;
         private System.Windows.Forms.Button unlockButton;
+        private System.Windows.Forms.DataGridView operatorzyDGV;
     }
 }

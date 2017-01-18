@@ -105,27 +105,30 @@
             this.pracownicyDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pracownicyDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.pracownicyDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.pracownicyDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.pracownicyDGV.BackgroundColor = System.Drawing.SystemColors.Window;
             this.pracownicyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pracownicyDGV.Location = new System.Drawing.Point(12, 12);
             this.pracownicyDGV.MultiSelect = false;
             this.pracownicyDGV.Name = "pracownicyDGV";
+            this.pracownicyDGV.ReadOnly = true;
             this.pracownicyDGV.RowHeadersVisible = false;
             this.pracownicyDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.pracownicyDGV.Size = new System.Drawing.Size(576, 338);
-            this.pracownicyDGV.TabIndex = 7;
+            this.pracownicyDGV.TabIndex = 97;
             // 
             // PracownicyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 400);
+            this.Controls.Add(this.pracownicyDGV);
             this.Controls.Add(this.archiwalneCHB);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.zamknijButton);
-            this.Controls.Add(this.pracownicyDGV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PracownicyForm";
             this.Text = "Pracownicy - ustawienia";

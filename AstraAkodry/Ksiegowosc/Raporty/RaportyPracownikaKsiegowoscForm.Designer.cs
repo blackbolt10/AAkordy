@@ -119,9 +119,9 @@
             this.pracownicyLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pracownicyLabel.Location = new System.Drawing.Point(294, 11);
             this.pracownicyLabel.Name = "pracownicyLabel";
-            this.pracownicyLabel.Size = new System.Drawing.Size(57, 13);
+            this.pracownicyLabel.Size = new System.Drawing.Size(60, 13);
             this.pracownicyLabel.TabIndex = 76;
-            this.pracownicyLabel.Text = "Pracownik";
+            this.pracownicyLabel.Text = "Pracownik:";
             // 
             // pracownicyLB
             // 
@@ -166,9 +166,9 @@
             this.dataPoczLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataPoczLabel.Location = new System.Drawing.Point(12, 11);
             this.dataPoczLabel.Name = "dataPoczLabel";
-            this.dataPoczLabel.Size = new System.Drawing.Size(91, 13);
+            this.dataPoczLabel.Size = new System.Drawing.Size(94, 13);
             this.dataPoczLabel.TabIndex = 71;
-            this.dataPoczLabel.Text = "Data początkowa";
+            this.dataPoczLabel.Text = "Data początkowa:";
             // 
             // kalendarzPoczMC
             // 
@@ -189,9 +189,9 @@
             this.dataKonLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataKonLabel.Location = new System.Drawing.Point(12, 204);
             this.dataKonLabel.Name = "dataKonLabel";
-            this.dataKonLabel.Size = new System.Drawing.Size(77, 13);
+            this.dataKonLabel.Size = new System.Drawing.Size(80, 13);
             this.dataKonLabel.TabIndex = 72;
-            this.dataKonLabel.Text = "Data końcowa";
+            this.dataKonLabel.Text = "Data końcowa:";
             // 
             // zamknijButton
             // 

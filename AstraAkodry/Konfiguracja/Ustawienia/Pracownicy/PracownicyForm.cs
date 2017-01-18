@@ -15,11 +15,17 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Pracownicy
         public PracownicyForm()
         {
             InitializeComponent();
+
+            ZaladujPracownicyDGV();
         }
 
         private void PracownicyForm_Shown(object sender, EventArgs e)
         {
-            ZaladujPracownicyDGV();
+            archiwalneCHB.Font = MainForm.czcionka;
+            pracownicyDGV.Font = MainForm.czcionka;
+
+            archiwalneCHB.Location = new Point(archiwalneCHB.Location.X, zamknijButton.Location.Y + zamknijButton.Size.Height - archiwalneCHB.Size.Height);
+            pracownicyDGV.Size = new Size(pracownicyDGV.Size.Width, archiwalneCHB.Location.Y - 10);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna

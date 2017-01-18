@@ -15,11 +15,18 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
         public OperatorzyForm()
         {
             InitializeComponent();
+
+            ZaladujOperatorzyDGV();
         }
 
         private void OperatorzyForm_Shown(object sender, EventArgs e)
         {
-            ZaladujOperatorzyDGV();
+            archiwalniCHB.Font = MainForm.czcionka;
+            operatorzyDGV.Font = MainForm.czcionka;
+
+            archiwalniCHB.Location = new Point(archiwalniCHB.Location.X, zamknijButton.Location.Y + zamknijButton.Size.Height - archiwalniCHB.Size.Height);
+            operatorzyDGV.Size = new Size(operatorzyDGV.Size.Width, archiwalniCHB.Location.Y - 10);
+            unlockButton.Location = new Point(archiwalniCHB.Location.X + archiwalniCHB.Size.Width + 10, zamknijButton.Location.Y);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna

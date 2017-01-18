@@ -17,7 +17,6 @@ namespace AstraAkodry
         private Konfiguracja.Ustawienia.Akordy.AkordyForm akordyForm;
         private Konfiguracja.Ustawienia.Operatorzy.OperatorzyForm operatorzyForm;
         private Konfiguracja.Ustawienia.Pracownicy.PracownicyForm pracownicyForm;
-        private Konfiguracja.HasloForm hasloForm;
         private Konfiguracja.Aplikacja.UstawieniaForm ustawieniaForm;
         private Recepcja.Raporty.RaportRecepcjaForm raportRecepcjaForm;
         private Recepcja.Raporty.RaportLeniRecepcjaForm raportLeniRecepcjaForm;
@@ -238,23 +237,6 @@ namespace AstraAkodry
             else
             {
                 operatorzyForm.Activate();
-            }
-        }
-
-        private void hasloRibbonButton_Click(object sender, EventArgs e)
-        {
-            if(hasloForm == null || hasloForm.IsDisposed)
-            {
-                hasloForm = new Konfiguracja.HasloForm();
-                hasloForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
-                hasloForm.Shown += new System.EventHandler(mdiChild_Activate);
-                hasloForm.MdiParent = this;
-                hasloForm.Dock = DockStyle.Fill;
-                hasloForm.Show();
-            }
-            else
-            {
-                hasloForm.Activate();
             }
         }
 

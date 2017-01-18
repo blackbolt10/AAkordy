@@ -68,12 +68,6 @@
     <Compile Include="Konfiguracja\Aplikacja\UstawieniaForm.Designer.cs">
       <DependentUpon>UstawieniaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Konfiguracja\HasloForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Konfiguracja\HasloForm.Designer.cs">
-      <DependentUpon>HasloForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Konfiguracja\Ustawienia\Akordy\AkordyChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,9 +163,6 @@
     </Compile>
     <EmbeddedResource Include="Konfiguracja\Aplikacja\UstawieniaForm.resx">
       <DependentUpon>UstawieniaForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Konfiguracja\HasloForm.resx">
-      <DependentUpon>HasloForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Konfiguracja\Ustawienia\Akordy\AkordyChangeForm.resx">
       <DependentUpon>AkordyChangeForm.cs</DependentUpon>

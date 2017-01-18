@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperatorzyChangeForm));
-            this.label1 = new System.Windows.Forms.Label();
+            this.imieLabel = new System.Windows.Forms.Label();
             this.imieTB = new System.Windows.Forms.TextBox();
             this.nazwiskoTB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.nazwiskoLabel = new System.Windows.Forms.Label();
+            this.uprawnieniaLabel = new System.Windows.Forms.Label();
             this.archiwalnyCB = new System.Windows.Forms.CheckBox();
             this.uprawnieniaCB = new System.Windows.Forms.ComboBox();
             this.akceptujButton = new System.Windows.Forms.Button();
             this.zamknijButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // imieLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Imię:";
+            this.imieLabel.AutoSize = true;
+            this.imieLabel.Location = new System.Drawing.Point(12, 15);
+            this.imieLabel.Name = "imieLabel";
+            this.imieLabel.Size = new System.Drawing.Size(29, 13);
+            this.imieLabel.TabIndex = 0;
+            this.imieLabel.Text = "Imię:";
             // 
             // imieTB
             // 
@@ -63,23 +63,23 @@
             this.nazwiskoTB.Size = new System.Drawing.Size(185, 20);
             this.nazwiskoTB.TabIndex = 2;
             // 
-            // label2
+            // nazwiskoLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nazwisko:";
+            this.nazwiskoLabel.AutoSize = true;
+            this.nazwiskoLabel.Location = new System.Drawing.Point(12, 41);
+            this.nazwiskoLabel.Name = "nazwiskoLabel";
+            this.nazwiskoLabel.Size = new System.Drawing.Size(56, 13);
+            this.nazwiskoLabel.TabIndex = 2;
+            this.nazwiskoLabel.Text = "Nazwisko:";
             // 
-            // label3
+            // uprawnieniaLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Uprawnienia:";
+            this.uprawnieniaLabel.AutoSize = true;
+            this.uprawnieniaLabel.Location = new System.Drawing.Point(12, 67);
+            this.uprawnieniaLabel.Name = "uprawnieniaLabel";
+            this.uprawnieniaLabel.Size = new System.Drawing.Size(69, 13);
+            this.uprawnieniaLabel.TabIndex = 4;
+            this.uprawnieniaLabel.Text = "Uprawnienia:";
             // 
             // archiwalnyCB
             // 
@@ -107,6 +107,7 @@
             // 
             // akceptujButton
             // 
+            this.akceptujButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.akceptujButton.Location = new System.Drawing.Point(116, 114);
             this.akceptujButton.Name = "akceptujButton";
             this.akceptujButton.Size = new System.Drawing.Size(75, 23);
@@ -117,6 +118,7 @@
             // 
             // zamknijButton
             // 
+            this.zamknijButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.zamknijButton.Location = new System.Drawing.Point(197, 114);
             this.zamknijButton.Name = "zamknijButton";
             this.zamknijButton.Size = new System.Drawing.Size(75, 23);
@@ -129,16 +131,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(284, 145);
             this.Controls.Add(this.zamknijButton);
             this.Controls.Add(this.akceptujButton);
             this.Controls.Add(this.uprawnieniaCB);
             this.Controls.Add(this.archiwalnyCB);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.uprawnieniaLabel);
             this.Controls.Add(this.nazwiskoTB);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.nazwiskoLabel);
             this.Controls.Add(this.imieTB);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.imieLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -146,6 +149,7 @@
             this.Name = "OperatorzyChangeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nowy operator";
+            this.Shown += new System.EventHandler(this.OperatorzyChangeForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,11 +157,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label imieLabel;
         private System.Windows.Forms.TextBox imieTB;
         private System.Windows.Forms.TextBox nazwiskoTB;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label nazwiskoLabel;
+        private System.Windows.Forms.Label uprawnieniaLabel;
         private System.Windows.Forms.CheckBox archiwalnyCB;
         private System.Windows.Forms.ComboBox uprawnieniaCB;
         private System.Windows.Forms.Button akceptujButton;

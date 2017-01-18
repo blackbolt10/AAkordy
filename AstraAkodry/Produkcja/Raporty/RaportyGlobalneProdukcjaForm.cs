@@ -37,7 +37,7 @@ namespace AstraAkodry.Produkcja.Raporty
                 raportLabel1.Location = new Point(dataPoczLabel.Location.X + dataPoczLabel.Size.Width + 10, raportLabel1.Location.Y);
             }
 
-            raportDGV.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, raportLabel1.Location.Y + raportLabel1.Size.Height + 10);
+            raportDGV.Location = new Point(raportLabel1.Location.X, raportLabel1.Location.Y + raportLabel1.Size.Height + 10);
             raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, zamknijButton.Location.Y - raportDGV.Location.Y-15);
         }
 

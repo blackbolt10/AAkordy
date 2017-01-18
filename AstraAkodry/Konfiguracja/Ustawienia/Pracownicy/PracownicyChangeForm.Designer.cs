@@ -33,13 +33,14 @@
             this.akceptujButton = new System.Windows.Forms.Button();
             this.archiwalnyCB = new System.Windows.Forms.CheckBox();
             this.nazwiskoTB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.nazwiskoLabel = new System.Windows.Forms.Label();
             this.imieTB = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.imieLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // zamknijButton
             // 
+            this.zamknijButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.zamknijButton.Location = new System.Drawing.Point(197, 87);
             this.zamknijButton.Name = "zamknijButton";
             this.zamknijButton.Size = new System.Drawing.Size(75, 23);
@@ -50,6 +51,7 @@
             // 
             // akceptujButton
             // 
+            this.akceptujButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.akceptujButton.Location = new System.Drawing.Point(116, 87);
             this.akceptujButton.Name = "akceptujButton";
             this.akceptujButton.Size = new System.Drawing.Size(75, 23);
@@ -75,14 +77,14 @@
             this.nazwiskoTB.Size = new System.Drawing.Size(185, 20);
             this.nazwiskoTB.TabIndex = 9;
             // 
-            // label2
+            // nazwiskoLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Nazwisko:";
+            this.nazwiskoLabel.AutoSize = true;
+            this.nazwiskoLabel.Location = new System.Drawing.Point(12, 41);
+            this.nazwiskoLabel.Name = "nazwiskoLabel";
+            this.nazwiskoLabel.Size = new System.Drawing.Size(56, 13);
+            this.nazwiskoLabel.TabIndex = 10;
+            this.nazwiskoLabel.Text = "Nazwisko:";
             // 
             // imieTB
             // 
@@ -91,33 +93,36 @@
             this.imieTB.Size = new System.Drawing.Size(185, 20);
             this.imieTB.TabIndex = 8;
             // 
-            // label1
+            // imieLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Imię:";
+            this.imieLabel.AutoSize = true;
+            this.imieLabel.Location = new System.Drawing.Point(12, 15);
+            this.imieLabel.Name = "imieLabel";
+            this.imieLabel.Size = new System.Drawing.Size(29, 13);
+            this.imieLabel.TabIndex = 7;
+            this.imieLabel.Text = "Imię:";
             // 
             // PracownicyChangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(284, 121);
             this.Controls.Add(this.zamknijButton);
             this.Controls.Add(this.akceptujButton);
             this.Controls.Add(this.archiwalnyCB);
             this.Controls.Add(this.nazwiskoTB);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.nazwiskoLabel);
             this.Controls.Add(this.imieTB);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.imieLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PracownicyChangeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nowy pracownik";
+            this.Shown += new System.EventHandler(this.PracownicyChangeForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,8 +134,8 @@
         private System.Windows.Forms.Button akceptujButton;
         private System.Windows.Forms.CheckBox archiwalnyCB;
         private System.Windows.Forms.TextBox nazwiskoTB;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label nazwiskoLabel;
         private System.Windows.Forms.TextBox imieTB;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label imieLabel;
     }
 }

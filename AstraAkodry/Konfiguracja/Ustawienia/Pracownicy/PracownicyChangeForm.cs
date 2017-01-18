@@ -39,6 +39,23 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Pracownicy
             akceptujButton.Click += zmienButton_Click;
         }
 
+        private void PracownicyChangeForm_Shown(object sender, EventArgs e)
+        {
+            imieLabel.Font = MainForm.czcionka;
+            imieTB.Font = MainForm.czcionka;
+            nazwiskoLabel.Font = MainForm.czcionka;
+            nazwiskoTB.Font = MainForm.czcionka;
+            archiwalnyCB.Font = MainForm.czcionka;
+
+            imieTB.Location = new Point(nazwiskoLabel.Location.X + nazwiskoLabel.Size.Width + 10, imieTB.Location.Y);
+            nazwiskoTB.Location = new Point(nazwiskoLabel.Location.X + nazwiskoLabel.Size.Width + 10, imieTB.Location.Y + imieTB.Size.Height + 10);
+
+            nazwiskoLabel.Location = new Point(nazwiskoLabel.Location.X, nazwiskoTB.Location.Y);
+            archiwalnyCB.Location = new Point(archiwalnyCB.Location.X, nazwiskoLabel.Location.Y + nazwiskoLabel.Size.Height + 10);
+
+            this.Size = new Size(this.Width + 10, this.Height + zamknijButton.Size.Height + 10);
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
         {
             if(keyData == Keys.Escape)

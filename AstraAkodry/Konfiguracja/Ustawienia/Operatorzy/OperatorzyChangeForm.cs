@@ -43,6 +43,29 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Operatorzy
             akceptujButton.Click += zmienButton_Click;
         }
 
+        private void OperatorzyChangeForm_Shown(object sender, EventArgs e)
+        {
+            imieLabel.Font = MainForm.czcionka;
+            imieTB.Font = MainForm.czcionka;
+            nazwiskoLabel.Font = MainForm.czcionka;
+            nazwiskoTB.Font = MainForm.czcionka;
+            uprawnieniaLabel.Font = MainForm.czcionka;
+            uprawnieniaCB.Font = MainForm.czcionka;
+            archiwalnyCB.Font = MainForm.czcionka;
+
+            imieTB.Location = new Point(uprawnieniaLabel.Location.X + uprawnieniaLabel.Size.Width + 10, imieTB.Location.Y);
+            nazwiskoTB.Location = new Point(uprawnieniaLabel.Location.X + uprawnieniaLabel.Size.Width + 10, imieTB.Location.Y+ imieTB.Size.Height+10);
+            uprawnieniaCB.Location = new Point(uprawnieniaLabel.Location.X + uprawnieniaLabel.Size.Width + 10, nazwiskoTB.Location.Y + nazwiskoTB.Size.Height + 10);
+
+            nazwiskoLabel.Location = new Point(nazwiskoLabel.Location.X, nazwiskoTB.Location.Y);
+            uprawnieniaLabel.Location = new Point(uprawnieniaLabel.Location.X, uprawnieniaCB.Location.Y);
+
+            archiwalnyCB.Location = new Point(archiwalnyCB.Location.X, uprawnieniaCB.Location.Y + uprawnieniaCB.Size.Height + 10);
+
+            this.Size = new Size(this.Width + 10, this.Height + zamknijButton.Size.Height + 10);
+        }
+
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
         {
             if(keyData == Keys.Escape)

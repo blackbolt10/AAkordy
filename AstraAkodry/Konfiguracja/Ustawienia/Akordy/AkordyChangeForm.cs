@@ -39,6 +39,42 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Akordy
             akceptujButton.Click += zmienButton_Click;
         }
 
+        private void AkordyChangeForm_Shown(object sender, EventArgs e)
+        {
+            nazwaLabel.Font = MainForm.czcionka;
+            nazwaTB.Font = MainForm.czcionka;
+            normaLabel.Font = MainForm.czcionka;
+            normaTB.Font = MainForm.czcionka;
+            archiwalnyCB.Font = MainForm.czcionka;
+
+            if(nazwaLabel.Text.Length>normaLabel.Text.Length)
+            {
+                nazwaTB.Location = new Point(nazwaLabel.Location.X + nazwaLabel.Size.Width + 10, nazwaTB.Location.Y);
+            }
+            else
+            {
+                nazwaTB.Location = new Point(normaLabel.Location.X + normaLabel.Size.Width + 10, nazwaTB.Location.Y);
+            }
+
+            normaLabel.Location = new Point(normaLabel.Location.X, nazwaTB.Location.Y + nazwaTB.Size.Height + 10);
+
+            if(nazwaLabel.Text.Length > normaLabel.Text.Length)
+            {
+                normaTB.Location = new Point(nazwaLabel.Location.X + nazwaLabel.Size.Width + 10, normaLabel.Location.Y);
+            }
+            else
+            {
+                normaTB.Location = new Point(normaLabel.Location.X + normaLabel.Size.Width + 10, normaLabel.Location.Y);
+            }
+
+            archiwalnyCB.Location = new Point(archiwalnyCB.Location.X, normaTB.Location.Y + normaTB.Size.Height + 10);
+
+            this.Size = new Size(this.Size.Width+10, this.Size.Height + zamknijButton.Size.Height + 10);
+
+            zamknijButton.Location = new Point(zamknijButton.Location.X, archiwalnyCB.Location.Y + archiwalnyCB.Size.Height + 5);
+            akceptujButton.Location = new Point(akceptujButton.Location.X, archiwalnyCB.Location.Y + archiwalnyCB.Size.Height + 5);
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
         {
             if(keyData == Keys.Escape)
