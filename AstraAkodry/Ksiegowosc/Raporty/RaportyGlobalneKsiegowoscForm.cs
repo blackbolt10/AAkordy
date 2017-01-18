@@ -24,10 +24,23 @@ namespace AstraAkodry.Ksiegowosc.Raporty
 
         private void RaportyGlobalneKsiegowoscForm_Shown(object sender, EventArgs e)
         {
-            raportLabel1.Location = new Point(kalendarzMC.Location.X + kalendarzMC.Size.Width + 10, raportLabel1.Location.Y);
-            raportDGV.Location = new Point(kalendarzMC.Location.X + kalendarzMC.Size.Width + 10, raportDGV.Location.Y);
+            miesiacLabel.Font = MainForm.czcionka;
+            raportLabel1.Font = MainForm.czcionka;
+            raportDGV.Font = MainForm.czcionka;
 
-            raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, raportDGV.Size.Height);
+            kalendarzMC.Location = new Point(miesiacLabel.Location.X, miesiacLabel.Location.Y + miesiacLabel.Size.Height + 10);
+
+            if(kalendarzMC.Size.Width > miesiacLabel.Size.Width)
+            {
+                raportLabel1.Location = new Point(kalendarzMC.Location.X + kalendarzMC.Size.Width + 10, raportLabel1.Location.Y);
+            }
+            else
+            {
+                raportLabel1.Location = new Point(miesiacLabel.Location.X + miesiacLabel.Size.Width + 10, raportLabel1.Location.Y);
+            }
+
+            raportDGV.Location = new Point(raportLabel1.Location.X, raportLabel1.Location.Y + raportLabel1.Size.Height + 10);
+            raportDGV.Size = new Size(zamknijButton.Location.X + zamknijButton.Size.Width - raportDGV.Location.X, zamknijButton.Location.Y - raportDGV.Location.Y - 15);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
@@ -71,10 +84,10 @@ namespace AstraAkodry.Ksiegowosc.Raporty
                 raportDGV.DataSource = pomDataTable;
 
                 raportDGV.Columns["PRA_PracId"].Visible = false;
-                raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 raportDGV.Columns["Imię"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                raportDGV.Columns["Wykonanie w %"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                raportDGV.Columns["Wypłata-Zlecenie"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                raportDGV.Columns["Wykonanie w %"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                raportDGV.Columns["Wypłata-Zlecenie"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
 
                 if(raportDGV.Rows.Count>0)
                 {

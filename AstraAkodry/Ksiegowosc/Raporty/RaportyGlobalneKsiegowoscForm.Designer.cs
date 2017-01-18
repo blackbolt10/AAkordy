@@ -30,7 +30,7 @@
         {
             this.raportLabel1 = new System.Windows.Forms.Label();
             this.raportDGV = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
+            this.miesiacLabel = new System.Windows.Forms.Label();
             this.kalendarzMC = new System.Windows.Forms.MonthCalendar();
             this.globalnyButton = new System.Windows.Forms.Button();
             this.zapiszButton = new System.Windows.Forms.Button();
@@ -54,6 +54,7 @@
             this.raportDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.raportDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.raportDGV.BackgroundColor = System.Drawing.SystemColors.Window;
             this.raportDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.raportDGV.Location = new System.Drawing.Point(302, 33);
@@ -65,15 +66,15 @@
             this.raportDGV.Size = new System.Drawing.Size(286, 319);
             this.raportDGV.TabIndex = 101;
             // 
-            // label18
+            // miesiacLabel
             // 
-            this.label18.AutoSize = true;
-            this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(12, 11);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(82, 13);
-            this.label18.TabIndex = 100;
-            this.label18.Text = "Miesiąc raportu:";
+            this.miesiacLabel.AutoSize = true;
+            this.miesiacLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.miesiacLabel.Location = new System.Drawing.Point(12, 11);
+            this.miesiacLabel.Name = "miesiacLabel";
+            this.miesiacLabel.Size = new System.Drawing.Size(82, 13);
+            this.miesiacLabel.TabIndex = 100;
+            this.miesiacLabel.Text = "Miesiąc raportu:";
             // 
             // kalendarzMC
             // 
@@ -134,7 +135,7 @@
             this.Controls.Add(this.raportLabel1);
             this.Controls.Add(this.zamknijButton);
             this.Controls.Add(this.raportDGV);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.miesiacLabel);
             this.Controls.Add(this.kalendarzMC);
             this.Controls.Add(this.globalnyButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -152,7 +153,7 @@
         private System.Windows.Forms.Label raportLabel1;
         private System.Windows.Forms.Button zamknijButton;
         private System.Windows.Forms.DataGridView raportDGV;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label miesiacLabel;
         private System.Windows.Forms.MonthCalendar kalendarzMC;
         private System.Windows.Forms.Button globalnyButton;
         private System.Windows.Forms.Button zapiszButton;

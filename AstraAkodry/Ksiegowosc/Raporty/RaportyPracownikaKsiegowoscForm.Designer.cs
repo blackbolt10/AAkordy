@@ -37,9 +37,9 @@
             this.pracownicyLB = new System.Windows.Forms.ListBox();
             this.pracownicyCB = new System.Windows.Forms.ComboBox();
             this.kalendarzKonMC = new System.Windows.Forms.MonthCalendar();
-            this.label18 = new System.Windows.Forms.Label();
+            this.dataPoczLabel = new System.Windows.Forms.Label();
             this.kalendarzPoczMC = new System.Windows.Forms.MonthCalendar();
-            this.label19 = new System.Windows.Forms.Label();
+            this.dataKonLabel = new System.Windows.Forms.Label();
             this.zamknijButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.raportDGV)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,8 @@
             this.raportDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.raportDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.raportDGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.raportDGV.BackgroundColor = System.Drawing.SystemColors.Window;
             this.raportDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.raportDGV.Location = new System.Drawing.Point(486, 33);
@@ -127,6 +129,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pracownicyLB.FormattingEnabled = true;
             this.pracownicyLB.Location = new System.Drawing.Point(297, 60);
+            this.pracownicyLB.MaximumSize = new System.Drawing.Size(450, 10000);
             this.pracownicyLB.Name = "pracownicyLB";
             this.pracownicyLB.Size = new System.Drawing.Size(180, 303);
             this.pracownicyLB.TabIndex = 74;
@@ -138,6 +141,7 @@
             this.pracownicyCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.pracownicyCB.FormattingEnabled = true;
             this.pracownicyCB.Location = new System.Drawing.Point(296, 33);
+            this.pracownicyCB.MaximumSize = new System.Drawing.Size(450, 0);
             this.pracownicyCB.Name = "pracownicyCB";
             this.pracownicyCB.Size = new System.Drawing.Size(181, 21);
             this.pracownicyCB.TabIndex = 75;
@@ -156,15 +160,15 @@
             this.kalendarzKonMC.TabIndex = 73;
             this.kalendarzKonMC.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.kalendarzKonMC_DateChanged);
             // 
-            // label18
+            // dataPoczLabel
             // 
-            this.label18.AutoSize = true;
-            this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(12, 11);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(91, 13);
-            this.label18.TabIndex = 71;
-            this.label18.Text = "Data początkowa";
+            this.dataPoczLabel.AutoSize = true;
+            this.dataPoczLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dataPoczLabel.Location = new System.Drawing.Point(12, 11);
+            this.dataPoczLabel.Name = "dataPoczLabel";
+            this.dataPoczLabel.Size = new System.Drawing.Size(91, 13);
+            this.dataPoczLabel.TabIndex = 71;
+            this.dataPoczLabel.Text = "Data początkowa";
             // 
             // kalendarzPoczMC
             // 
@@ -179,15 +183,15 @@
             this.kalendarzPoczMC.TabIndex = 70;
             this.kalendarzPoczMC.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.kalendarzPoczMC_DateChanged);
             // 
-            // label19
+            // dataKonLabel
             // 
-            this.label19.AutoSize = true;
-            this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(12, 204);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(77, 13);
-            this.label19.TabIndex = 72;
-            this.label19.Text = "Data końcowa";
+            this.dataKonLabel.AutoSize = true;
+            this.dataKonLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dataKonLabel.Location = new System.Drawing.Point(12, 204);
+            this.dataKonLabel.Name = "dataKonLabel";
+            this.dataKonLabel.Size = new System.Drawing.Size(77, 13);
+            this.dataKonLabel.TabIndex = 72;
+            this.dataKonLabel.Text = "Data końcowa";
             // 
             // zamknijButton
             // 
@@ -216,9 +220,9 @@
             this.Controls.Add(this.pracownicyLB);
             this.Controls.Add(this.pracownicyCB);
             this.Controls.Add(this.kalendarzKonMC);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.dataPoczLabel);
             this.Controls.Add(this.kalendarzPoczMC);
-            this.Controls.Add(this.label19);
+            this.Controls.Add(this.dataKonLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RaportyPracownikaKsiegowoscForm";
             this.Text = "Raporty pracownika księgowość";
@@ -241,8 +245,8 @@
         private System.Windows.Forms.ListBox pracownicyLB;
         private System.Windows.Forms.ComboBox pracownicyCB;
         private System.Windows.Forms.MonthCalendar kalendarzKonMC;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label dataPoczLabel;
         private System.Windows.Forms.MonthCalendar kalendarzPoczMC;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label dataKonLabel;
     }
 }
