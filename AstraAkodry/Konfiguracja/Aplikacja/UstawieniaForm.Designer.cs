@@ -116,7 +116,7 @@
             this.zamknijButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.zamknijButton.BackgroundImage = global::AstraAkodry.Properties.Resources.koniec_32x32;
             this.zamknijButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.zamknijButton.Location = new System.Drawing.Point(573, -258);
+            this.zamknijButton.Location = new System.Drawing.Point(556, 356);
             this.zamknijButton.Name = "zamknijButton";
             this.zamknijButton.Size = new System.Drawing.Size(32, 32);
             this.zamknijButton.TabIndex = 6;
@@ -128,7 +128,7 @@
             this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.acceptButton.AutoSize = true;
             this.acceptButton.Enabled = false;
-            this.acceptButton.Location = new System.Drawing.Point(492, -253);
+            this.acceptButton.Location = new System.Drawing.Point(475, 365);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(75, 23);
             this.acceptButton.TabIndex = 7;

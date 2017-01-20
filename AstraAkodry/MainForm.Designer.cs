@@ -48,7 +48,7 @@
             this.ksiegGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ksiegPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.konfiguracjaRibbonTab = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
+            this.ustawieniaRibbonPanel = new System.Windows.Forms.RibbonPanel();
             this.pracownicyRibbonButton = new System.Windows.Forms.RibbonButton();
             this.akordyRibbonButton = new System.Windows.Forms.RibbonButton();
             this.operatorzyRibbonButton = new System.Windows.Forms.RibbonButton();
@@ -159,7 +159,7 @@
             // 
             this.ribbonPanel5.Items.Add(this.prodGlobalneRibbonButton);
             this.ribbonPanel5.Items.Add(this.prodPracownikaRibbonButton);
-            this.ribbonPanel5.Text = "Raporty";
+            this.ribbonPanel5.Text = "Raporty produkcja";
             // 
             // prodGlobalneRibbonButton
             // 
@@ -184,7 +184,7 @@
             // 
             this.ribbonPanel6.Items.Add(this.ksiegGlobalneRibbonButton);
             this.ribbonPanel6.Items.Add(this.ksiegPracownikaRibbonButton);
-            this.ribbonPanel6.Text = "Raporty";
+            this.ribbonPanel6.Text = "Raporty księgowość";
             // 
             // ksiegGlobalneRibbonButton
             // 
@@ -202,16 +202,16 @@
             // 
             // konfiguracjaRibbonTab
             // 
-            this.konfiguracjaRibbonTab.Panels.Add(this.ribbonPanel3);
+            this.konfiguracjaRibbonTab.Panels.Add(this.ustawieniaRibbonPanel);
             this.konfiguracjaRibbonTab.Panels.Add(this.ribbonPanel7);
             this.konfiguracjaRibbonTab.Text = "Konfiguracja";
             // 
-            // ribbonPanel3
+            // ustawieniaRibbonPanel
             // 
-            this.ribbonPanel3.Items.Add(this.pracownicyRibbonButton);
-            this.ribbonPanel3.Items.Add(this.akordyRibbonButton);
-            this.ribbonPanel3.Items.Add(this.operatorzyRibbonButton);
-            this.ribbonPanel3.Text = "Ustawienia";
+            this.ustawieniaRibbonPanel.Items.Add(this.pracownicyRibbonButton);
+            this.ustawieniaRibbonPanel.Items.Add(this.akordyRibbonButton);
+            this.ustawieniaRibbonPanel.Items.Add(this.operatorzyRibbonButton);
+            this.ustawieniaRibbonPanel.Text = "Ustawienia";
             // 
             // pracownicyRibbonButton
             // 
@@ -323,7 +323,7 @@
         private System.Windows.Forms.ToolStripStatusLabel wersjaTSSL;
         private System.Windows.Forms.RibbonPanel ribbonPanel2;
         private System.Windows.Forms.RibbonTab konfiguracjaRibbonTab;
-        private System.Windows.Forms.RibbonPanel ribbonPanel3;
+        private System.Windows.Forms.RibbonPanel ustawieniaRibbonPanel;
         private System.Windows.Forms.RibbonButton wprowadzanieRibbonButton;
         private System.Windows.Forms.RibbonButton raportyRecepcjaRibbonButton;
         private System.Windows.Forms.RibbonButton pracownicyRibbonButton;

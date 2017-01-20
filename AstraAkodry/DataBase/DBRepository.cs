@@ -81,7 +81,7 @@ namespace AstraAkodry
                 }
                 else
                 {
-                    rozmiar = "8";
+                    rozmiar = "10";
                 }
 
                 return true;
@@ -125,6 +125,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("RaportyGlobalneksiegowoscForm_ZaladujRaportGlobalny()", result);
+                return false;
+            }
+        }
+
+        public bool WprowadzanieAkordowForm_ZaladujListeAkordow(string idPracownika, DateTime dataKalendarz, DateTime dataKalendarzZero, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select D.akr_akrid, E.akr_nazwa, ab.WAK_Wartosc as Wartość from (select akr_akrid,  max(akr_datadodania) akr_datadodania from dbo.gal_Akordy where akr_datadodania < '" + dataKalendarz + "' group by akr_akrid ) as D  left outer join dbo.GAL_Akordy as E on D.AKR_AkrId=E.akr_akrid and D.akr_datadodania=E.akr_datadodania left outer join (select A.wak_pracid, a.wak_akrid, a.wak_datawykonania, b.Wak_wakid, b.wak_wartosc from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) Wak_datamodyfikacji from dbo.gal_wartakordu group by wak_pracid, wak_akrid, wak_datawykonania) as A left outer join dbo.GAL_WartAkordu as B on a.wak_pracid=b.WAK_PracId and a.WAK_AkrId=b.wak_akrid and a.wak_datawykonania=b.wak_datawykonania and a.wak_datamodyfikacji=b.WAK_DataModyfikacji where a.wak_pracid=" + idPracownika + " and a.WAK_datawykonania='" + dataKalendarzZero + "') as AB on d.AKR_AkrId=ab.WAK_AkrId where  AKR_Archiwalny <> 1 order by d.AKR_AkrId";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("WprowadzanieAkordowForm_ZaladujListeAkordow()", result);
                 return false;
             }
         }
@@ -177,6 +193,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("RaportyPracownikaKsiegowoscForm_RaportPoprawek()", result);
+                return false;
+            }
+        }
+
+        internal bool WprowadzanieAkordowForm_ZapiszNowyAkord(String IdPracownika, int IdAkordu, double wartoscAkr, DateTime dataKalendarz, ref string result)
+        {
+            String zapytanie = "insert into GAL_WartAkordu values(" + MainForm.IDOperatora + ", " + IdPracownika + ", " + IdAkordu + ", '" + dataKalendarz + "', getdate(), " + wartoscAkr + ", (select top 1 akr_norma from dbo.GAL_Akordy where akr_akrid=" + IdAkordu + " and not (AKR_DataDodania > '" + dataKalendarz + "' )))";
+            try
+            {
+                query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("WprowadzanieAkordowForm_ZapiszNowyAkord()", result);
                 return false;
             }
         }
@@ -331,6 +363,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("RaportyGlobalneProdukcjaForm_ZaladujRaportLeni()", result);
+                return false;
+            }
+        }
+
+        public bool WprowadzanieAkordowForm_ZaladujListePracownikow(ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "SELECT * FROM GAL_Pracownicy where PRA_Archiwalny <> 1 order by PRA_Nazwisko";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("WprowadzanieAkordowForm_ZaladujListePracownikow()", result);
                 return false;
             }
         }

@@ -22,21 +22,42 @@ namespace AstraAkodry.Recepcja.Raporty
 
         private void RaportRecepcjaForm_Shown(object sender, EventArgs e)
         {
+            miesiacLabel.Font = MainForm.czcionka;
+            pracownikLabel.Font = MainForm.czcionka;
+            akordyLabel.Font = MainForm.czcionka; 
+            raportLabel.Font = MainForm.czcionka;
+            raportDGV.Font = MainForm.czcionka;
+            akordyLB.Font = MainForm.czcionka;
+            pracownicyCB.Font = MainForm.czcionka;
+            pracownicyLB.Font = MainForm.czcionka;
+
+            kalendarzMC.Location = new Point(miesiacLabel.Location.X, miesiacLabel.Location.Y + miesiacLabel.Size.Height + 10);
+            pracownikLabel.Location = new Point(miesiacLabel.Location.X, kalendarzMC.Location.Y + kalendarzMC.Size.Height + 10);
+            pracownicyCB.Location = new Point(miesiacLabel.Location.X, pracownikLabel.Location.Y + pracownikLabel.Size.Height + 10);
+            pracownicyLB.Location = new Point(miesiacLabel.Location.X, pracownicyCB.Location.Y + pracownicyCB.Size.Height + 10);
+            
+            pracownicyCB.Size = new Size(kalendarzMC.Size.Width, pracownicyCB.Size.Height);
+            pracownicyLB.Size = new Size(kalendarzMC.Size.Width, this.Size.Height - pracownicyLB.Location.Y - 20);
+
+            akordyLB.Location = new Point(akordyLabel.Location.X, akordyLabel.Location.Y + akordyLabel.Size.Height + 10);
+            akordyLB.Size = new Size(pracownicyLB.Size.Width, this.Size.Height - akordyLB.Location.Y - 10);
+            
+
             DopasujDoKalendarza();
+
+
+
             reloadButton_Click(reloadButton, null);
         }
 
         private void DopasujDoKalendarza()
         {
-            pracownicyCB.Size = new Size(kalendarzMC.Size.Width, pracownicyCB.Size.Height);
-            pracownicyLB.Size = new Size(kalendarzMC.Size.Width, pracownicyLB.Size.Height);
-
             akordyLabel.Location = new Point(kalendarzMC.Location.X + kalendarzMC.Size.Width + 10, akordyLabel.Location.Y);
             akordyLB.Location = new Point(kalendarzMC.Location.X + kalendarzMC.Size.Width + 10, akordyLB.Location.Y);
 
             raportLabel.Location = new Point(akordyLB.Location.X +akordyLB.Size.Width + 10, akordyLabel.Location.Y);
             raportDGV.Location = new Point(raportLabel.Location.X, akordyLB.Location.Y);
-            raportDGV.Size = new Size(zamknijButton.Location.X+zamknijButton.Size.Width- raportDGV.Location.X, raportDGV.Size.Height);
+            raportDGV.Size = new Size(zamknijButton.Location.X+zamknijButton.Size.Width- raportDGV.Location.X, zamknijButton.Location.Y - raportDGV.Location.Y - 10);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna

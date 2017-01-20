@@ -31,6 +31,7 @@ namespace AstraAkodry
         public Boolean czyWylogowano = false;
 
         public static String IDOperatora;
+        public static Int32 UprawnieniaOperatora;
         public static String nazwaOperatora;
         public static String hasloOperatora;
         public static Font czcionka;
@@ -42,6 +43,31 @@ namespace AstraAkodry
             wersjaTSSL.Text = wersja;
 
             ZaladujAktualnaCzcionke();
+            ZablokujDostep();
+        }
+
+        private void ZablokujDostep()
+        {
+            switch(UprawnieniaOperatora)
+            {
+                case 0:
+                    ribbon1.ActiveTab = ksiegowoscRibbonTab;
+                break;
+
+                case 1:
+                    produkcjaRibbonTab.Visible = false;
+                    ksiegowoscRibbonTab.Visible = false;
+                    ustawieniaRibbonPanel.Visible = false;
+                    ribbon1.ActiveTab = recepcjaRibbonTab;
+                break;
+
+                case 2:
+                    recepcjaRibbonTab.Visible = false;
+                    ksiegowoscRibbonTab.Visible = false;
+                    ustawieniaRibbonPanel.Visible = false;
+                    ribbon1.ActiveTab = produkcjaRibbonTab;
+                break;
+            }
         }
 
         private void closeRibbonOrbMenuItem_Click(object sender, EventArgs e)

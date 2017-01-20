@@ -23,6 +23,18 @@ namespace AstraAkodry.Recepcja.Raporty
         private void RaportLeniRecepcjaForm_Shown(object sender, EventArgs e)
         {
             dataDTP_ValueChanged(dataDTP, null);
+
+            naglowekLabel.Font = MainForm.czcionka;
+            dataLabel.Font = MainForm.czcionka;
+            dataDTP.Font = MainForm.czcionka;
+            raportDGV.Font = MainForm.czcionka;
+
+            dataLabel.Location = new Point(dataLabel.Location.X, this.Height - dataLabel.Size.Height - 15);
+            dataDTP.Location = new Point(dataLabel.Location.X+dataLabel.Size.Width+10, dataLabel.Location.Y);
+            reloadButton.Location = new Point(dataDTP.Location.X + dataDTP.Size.Width + 10, dataLabel.Location.Y);
+
+            raportDGV.Location = new Point(naglowekLabel.Location.X, naglowekLabel.Location.Y + naglowekLabel.Size.Height + 10);
+            raportDGV.Size = new Size(raportDGV.Size.Width, dataDTP.Location.Y-raportDGV.Location.Y-10);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna
@@ -63,6 +75,7 @@ namespace AstraAkodry.Recepcja.Raporty
                 if(pomDataTable != null)
                 {
                     raportDGV.DataSource = pomDataTable;
+                    raportDGV.Columns["Pracownik"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             else

@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.akordyLabel = new System.Windows.Forms.Label();
             this.akordyLB = new System.Windows.Forms.ListBox();
-            this.label27 = new System.Windows.Forms.Label();
+            this.pracownikLabel = new System.Windows.Forms.Label();
             this.pracownicyLB = new System.Windows.Forms.ListBox();
             this.pracownicyCB = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
+            this.miesiacLabel = new System.Windows.Forms.Label();
             this.raportLabel = new System.Windows.Forms.Label();
             this.kalendarzMC = new System.Windows.Forms.MonthCalendar();
             this.raportDGV = new System.Windows.Forms.DataGridView();
@@ -50,9 +50,9 @@
             this.akordyLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.akordyLabel.Location = new System.Drawing.Point(181, 9);
             this.akordyLabel.Name = "akordyLabel";
-            this.akordyLabel.Size = new System.Drawing.Size(40, 13);
+            this.akordyLabel.Size = new System.Drawing.Size(43, 13);
             this.akordyLabel.TabIndex = 74;
-            this.akordyLabel.Text = "Akordy";
+            this.akordyLabel.Text = "Akordy:";
             // 
             // akordyLB
             // 
@@ -65,15 +65,15 @@
             this.akordyLB.TabIndex = 73;
             this.akordyLB.SelectedIndexChanged += new System.EventHandler(this.akordyLB_SelectedIndexChanged);
             // 
-            // label27
+            // pracownikLabel
             // 
-            this.label27.AutoSize = true;
-            this.label27.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label27.Location = new System.Drawing.Point(12, 196);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(57, 13);
-            this.label27.TabIndex = 72;
-            this.label27.Text = "Pracownik";
+            this.pracownikLabel.AutoSize = true;
+            this.pracownikLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pracownikLabel.Location = new System.Drawing.Point(12, 196);
+            this.pracownikLabel.Name = "pracownikLabel";
+            this.pracownikLabel.Size = new System.Drawing.Size(60, 13);
+            this.pracownikLabel.TabIndex = 72;
+            this.pracownikLabel.Text = "Pracownik:";
             // 
             // pracownicyLB
             // 
@@ -97,15 +97,15 @@
             this.pracownicyCB.TabIndex = 71;
             this.pracownicyCB.SelectedIndexChanged += new System.EventHandler(this.pracownicyCB_SelectedIndexChanged);
             // 
-            // label21
+            // miesiacLabel
             // 
-            this.label21.AutoSize = true;
-            this.label21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label21.Location = new System.Drawing.Point(12, 9);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 13);
-            this.label21.TabIndex = 69;
-            this.label21.Text = "Miesiąc raportu";
+            this.miesiacLabel.AutoSize = true;
+            this.miesiacLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.miesiacLabel.Location = new System.Drawing.Point(12, 9);
+            this.miesiacLabel.Name = "miesiacLabel";
+            this.miesiacLabel.Size = new System.Drawing.Size(82, 13);
+            this.miesiacLabel.TabIndex = 69;
+            this.miesiacLabel.Text = "Miesiąc raportu:";
             // 
             // raportLabel
             // 
@@ -113,9 +113,9 @@
             this.raportLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.raportLabel.Location = new System.Drawing.Point(346, 9);
             this.raportLabel.Name = "raportLabel";
-            this.raportLabel.Size = new System.Drawing.Size(159, 13);
+            this.raportLabel.Size = new System.Drawing.Size(162, 13);
             this.raportLabel.TabIndex = 68;
-            this.raportLabel.Text = "Raport wykonywanych akordów";
+            this.raportLabel.Text = "Raport wykonywanych akordów:";
             // 
             // kalendarzMC
             // 
@@ -184,10 +184,10 @@
             this.Controls.Add(this.zamknijButton);
             this.Controls.Add(this.akordyLabel);
             this.Controls.Add(this.akordyLB);
-            this.Controls.Add(this.label27);
+            this.Controls.Add(this.pracownikLabel);
             this.Controls.Add(this.pracownicyLB);
             this.Controls.Add(this.pracownicyCB);
-            this.Controls.Add(this.label21);
+            this.Controls.Add(this.miesiacLabel);
             this.Controls.Add(this.raportLabel);
             this.Controls.Add(this.kalendarzMC);
             this.Controls.Add(this.raportDGV);
@@ -206,10 +206,10 @@
 
         private System.Windows.Forms.Label akordyLabel;
         private System.Windows.Forms.ListBox akordyLB;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label pracownikLabel;
         private System.Windows.Forms.ListBox pracownicyLB;
         private System.Windows.Forms.ComboBox pracownicyCB;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label miesiacLabel;
         private System.Windows.Forms.Label raportLabel;
         private System.Windows.Forms.MonthCalendar kalendarzMC;
         private System.Windows.Forms.DataGridView raportDGV;

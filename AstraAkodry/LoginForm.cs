@@ -235,6 +235,7 @@ namespace AstraAkodry
                     ZapiszLoginID();
 
                     MainForm.IDOperatora = operatorzyDT.Rows[loginCB.SelectedIndex]["OPR_OprId"].ToString();
+                    MainForm.UprawnieniaOperatora = Convert.ToInt32(operatorzyDT.Rows[loginCB.SelectedIndex]["OPR_Uprwnienia"].ToString());
                     MainForm.nazwaOperatora = loginCB.Items[loginCB.SelectedIndex].ToString();
                     MainForm.hasloOperatora = passwordTB.Text;
 
