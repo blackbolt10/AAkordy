@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AstraAkodry</RootNamespace>
     <AssemblyName>AstraAkodry</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -62,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\DBRepository.cs" />
+    <Compile Include="EasterEgg\EasterEggForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EasterEgg\EasterEggForm.Designer.cs">
+      <DependentUpon>EasterEggForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Konfiguracja\Aplikacja\UstawieniaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +168,9 @@
     <Compile Include="Recepcja\WprowadzanieAkordowForm.Designer.cs">
       <DependentUpon>WprowadzanieAkordowForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EasterEgg\EasterEggForm.resx">
+      <DependentUpon>EasterEggForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Konfiguracja\Aplikacja\UstawieniaForm.resx">
       <DependentUpon>UstawieniaForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -25,7 +25,8 @@ namespace AstraAkodry
         {
             if(DBConnection == null)
             {
-                ConnectDataBase();
+                string result = "";
+                ConnectDataBase(ref result);
             }
         }
 
@@ -37,7 +38,7 @@ namespace AstraAkodry
             }
         }
 
-        public Boolean ConnectDataBase()
+        public Boolean ConnectDataBase(ref String result)
         {
             Boolean connectionResult = false;
             Passwords passwords = new Passwords();
@@ -53,7 +54,10 @@ namespace AstraAkodry
                 DBConnection.Open();
                 connectionResult = true;
             }
-            catch(Exception) { }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+            }
 
             return connectionResult;
         }

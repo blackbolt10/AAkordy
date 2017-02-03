@@ -16,7 +16,7 @@ namespace AstraAkodry
         private Panel loadPanel;
         private Label loadLabel;
 
-        String wersjaProgramu = "2.2";
+        String wersjaProgramu = "3.0";
         String numerWersji = "a";
 
         private DataTable operatorzyDT;
@@ -34,7 +34,9 @@ namespace AstraAkodry
             loadLabel.Text += "Sprawdzanie połączenia z bazą danych...\n";
 
             DBRepository db = new DBRepository();
-            Boolean DBConnectResult = db.ConnectDataBase();
+            String result = "";
+
+            Boolean DBConnectResult = db.ConnectDataBase(ref result);
 
             if(DBConnectResult)
             {
@@ -42,7 +44,7 @@ namespace AstraAkodry
                 String dateNowString = dataTeraz.ToShortDateString();
 
                 String errorString = "";
-                String result = "";
+                result = "";
 
                 loadLabel.Text += "Sprawdzanie wersji programu...\n";
 
@@ -83,6 +85,10 @@ namespace AstraAkodry
                 {
                     MessageBox.Show("Podczas pobierania wersji oprogramowania z bazy danych wystąpił błąd. Informacje o błędzie : " + errorString, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                MessageBox.Show(result);
             }
             DeleteLoginScreen();
             passwordTB.Focus();

@@ -13,7 +13,6 @@ namespace AstraAkodry.Recepcja
     public partial class WprowadzanieAkordowForm : Form
     {
         private DataTable pracownicyDT;
-        private string wartoscPoczatkowa;
 
         public WprowadzanieAkordowForm()
         {
@@ -166,6 +165,8 @@ namespace AstraAkodry.Recepcja
 
                 if(db.WprowadzanieAkordowForm_ZaladujListeAkordow(idPracownika, dataKalendarz, dataKalendarzZero, ref pomDataTable, ref result))
                 {
+                    pomDataTable = poprawKolejnoscAkordow(pomDataTable);
+
                     akordyDGV.DataSource = pomDataTable;
 
                     if(akordyDGV.Columns.Count > 0)
@@ -187,6 +188,34 @@ namespace AstraAkodry.Recepcja
                     MessageBox.Show("Wystąpił błąd podczas pobierania listy akordów:\n)" + result, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private DataTable poprawKolejnoscAkordow(DataTable lista)
+        {
+            DataTable dt1 = lista.Clone();
+            DataTable dt2 = lista.Clone();
+
+            for(int i = 0; i < lista.Rows.Count; i++)
+            {
+                int pomAkrID = Convert.ToInt32(lista.Rows[i][0].ToString());
+                if(pomAkrID < 100)
+                {
+                    dt1.Rows.Add(lista.Rows[i].ItemArray);
+                }
+                else
+                {
+                    dt2.Rows.Add(lista.Rows[i].ItemArray);
+                }
+            }
+
+            DataView dv = dt2.DefaultView;
+            dv.Sort = "akr_nazwa asc";
+            dt2 = dv.ToTable();
+
+            lista = new DataTable();
+            lista = dt1.Copy();
+            lista.Merge(dt2);
+
+            return lista;
         }
 
         private void KolorujAkordyDGV()
