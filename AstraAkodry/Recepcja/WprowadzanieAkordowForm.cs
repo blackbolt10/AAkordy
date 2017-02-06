@@ -179,8 +179,9 @@ namespace AstraAkodry.Recepcja
 
                     if(akordyDGV.Rows.Count > 0)
                     {
-                        akordyDGV.CurrentCell = akordyDGV.Rows[0].Cells["Wartość"];
                         KolorujAkordyDGV();
+                        akordyDGV.CurrentCell = akordyDGV.Rows[0].Cells["Wartość"];
+                        akordyDGV.BeginEdit(false);
                     }
                 }
                 else
@@ -189,6 +190,7 @@ namespace AstraAkodry.Recepcja
                 }
             }
         }
+
         private DataTable poprawKolejnoscAkordow(DataTable lista)
         {
             DataTable dt1 = lista.Clone();
@@ -299,7 +301,7 @@ namespace AstraAkodry.Recepcja
         {
             Int32 idAkordu = Convert.ToInt32(akordyDGV.CurrentRow.Cells["AKR_AkrId"].Value.ToString());
             String wartoscStringAkordu = akordyDGV.CurrentRow.Cells["Wartość"].Value.ToString();
-            double wartoscAkordu = Convert.ToDouble(wartoscStringAkordu.Replace(',','.'));
+            double wartoscAkordu = Convert.ToDouble(wartoscStringAkordu);
             
             if(idAkordu == 0)
             {

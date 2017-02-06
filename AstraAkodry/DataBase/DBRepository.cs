@@ -203,7 +203,7 @@ namespace AstraAkodry
 
         internal bool WprowadzanieAkordowForm_ZapiszNowyAkord(String IdPracownika, int IdAkordu, double wartoscAkr, DateTime dataKalendarz, ref string result)
         {
-            String zapytanie = "insert into GAL_WartAkordu values(" + MainForm.IDOperatora + ", " + IdPracownika + ", " + IdAkordu + ", '" + dataKalendarz + "', getdate(), " + wartoscAkr + ", (select top 1 akr_norma from dbo.GAL_Akordy where akr_akrid=" + IdAkordu + " and not (AKR_DataDodania > '" + dataKalendarz + "' )))";
+            String zapytanie = "insert into GAL_WartAkordu values(" + MainForm.IDOperatora + ", " + IdPracownika + ", " + IdAkordu + ", '" + dataKalendarz + "', getdate(), " + wartoscAkr.ToString().Replace(',','.') + ", (select top 1 akr_norma from dbo.GAL_Akordy where akr_akrid=" + IdAkordu + " and not (AKR_DataDodania > '" + dataKalendarz + "' )))";
             try
             {
                 query(zapytanie);
