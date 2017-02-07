@@ -62,7 +62,7 @@ namespace AstraAkodry
             return connectionResult;
         }
 
-        public bool MainForm_ZaladujCzcionke(ref string nazwa, ref string rozmiar)
+        public bool MainForm_ZaladujCzcionke(ref string nazwa, ref string rozmiar, ref string result)
         {
             String zapytanie = "SELECT TOP 1 * from GAL_Parametry where PAR_PracID = "+MainForm.IDOperatora+" and PAR_Nazwa = 'CzcionkaNazwa' order by PAR_DataDodania desc";
             try
@@ -92,8 +92,11 @@ namespace AstraAkodry
             }
             catch(Exception exc)
             {
-                nazwa = exc.Message;
-                ErrorReport("MainForm_ZaladujCzcionke()", nazwa);
+                nazwa = "Microsoft Sans Serif";
+                rozmiar = "10";
+
+                result = exc.Message;
+                ErrorReport("MainForm_ZaladujCzcionke()", result);
                 return false;
             }
         }

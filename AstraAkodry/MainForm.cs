@@ -109,15 +109,19 @@ namespace AstraAkodry
             DBRepository db = new DBRepository();
             String nazwa = "";
             String rozmiar = "";
+            String result = "";
 
-            if(db.MainForm_ZaladujCzcionke(ref nazwa, ref rozmiar))
+            if(db.MainForm_ZaladujCzcionke(ref nazwa, ref rozmiar, ref result))
             {
                 FontFamily fontFamily = new FontFamily(nazwa);
                 czcionka = new Font(fontFamily, float.Parse(rozmiar), FontStyle.Regular, GraphicsUnit.Pixel);
             }
             else
             {
-                MessageBox.Show("Wystąpił błąd podczas odczytywania czcionki:\n" + nazwa, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FontFamily fontFamily = new FontFamily(nazwa);
+                czcionka = new Font(fontFamily, float.Parse(rozmiar), FontStyle.Regular, GraphicsUnit.Pixel);
+
+                MessageBox.Show("Wystąpił błąd podczas odczytywania czcionki:\n" + result, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

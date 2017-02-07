@@ -132,18 +132,16 @@ namespace AstraAkodry
 
         public void HandleUnhandledException(Exception e)
         {
-            //raportBledu("Błąd Aplikacji", "Błąd aplikacji " + e.TargetSite + " {koniec target site} " + e.HelpLink + " {koniec helplink} " + e.Message + "{Koniec wiadomosci}");
+            DBRepository db;
 
-            MessageBox.Show("Ups...\nWystąpił błąd aplikacji. \nRaport został przechwycony i przekazany obsłudze technicznej. " + Environment.NewLine + e.Message + "\nKontynuować?",
-                "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            /*
-                if (MessageBox.Show("Ups...\nWystąpił błąd systemu. \nRaport został przechwycony i przekazany obsłudze technicznej. Kontynuować?",
-                    "Błąd", MessageBoxButtons.YesNo, MessageBoxIcon.Stop,
-                    MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    Application.Exit();
-                }
-            */
+            try
+            {
+                db = new DBRepository();
+                db.ErrorReport("Aplikacja", "Błąd aplikacji " + e.TargetSite + " { koniec target site}" + e.HelpLink + " { koniec helplink}" + e.Message + "{ Koniec wiadomosci}");
+            }
+            catch(Exception) { }
+
+            MessageBox.Show("Ups...\nWystąpił błąd aplikacji. \nRaport został przechwycony i przekazany obsłudze technicznej. " + Environment.NewLine + e.Message + "\nKontynuować?", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
 
         private void CreateLoginScreen()
