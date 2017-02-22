@@ -203,9 +203,39 @@ namespace AstraAkodry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Raport_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Raport_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Raport_Globalny_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Raport_Globalny_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap unlock {
             get {
                 object obj = ResourceManager.GetObject("unlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ustawienia_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Ustawienia_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

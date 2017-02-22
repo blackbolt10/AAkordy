@@ -25,7 +25,7 @@ namespace AstraAkodry.Konfiguracja.Ustawienia.Akordy
             akordyDGV.Font = MainForm.czcionka;
 
             archiwalneCHB.Location = new Point(archiwalneCHB.Location.X, zamknijButton.Location.Y+zamknijButton.Size.Height- archiwalneCHB.Size.Height);
-            akordyDGV.Size = new Size(akordyDGV.Size.Width, archiwalneCHB.Location.Y - 10);
+            akordyDGV.Size = new Size(akordyDGV.Size.Width, zamknijButton.Location.Y - 20);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //zamknięcie aktywnego okna

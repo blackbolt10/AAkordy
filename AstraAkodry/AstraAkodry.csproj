@@ -247,6 +247,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\Ustawienia_32x32.png" />
+    <None Include="Resources\Raport_32x32.png" />
+    <None Include="Resources\Raport_Globalny_32x32.png" />
     <None Include="Resources\zapisz_32x32.png" />
     <None Include="Resources\odswiez_32x32.png" />
     <None Include="Resources\koniec_32x32.png" />
