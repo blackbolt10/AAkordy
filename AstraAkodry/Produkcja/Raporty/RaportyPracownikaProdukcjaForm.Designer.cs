@@ -41,6 +41,7 @@
             this.zbiorczyButton = new System.Windows.Forms.Button();
             this.szczegolowyButton = new System.Windows.Forms.Button();
             this.procentNormyButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.raportDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,7 +130,7 @@
             this.zamknijButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.zamknijButton.BackgroundImage = global::AstraAkodry.Properties.Resources.koniec_32x32;
             this.zamknijButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.zamknijButton.Location = new System.Drawing.Point(556, 356);
+            this.zamknijButton.Location = new System.Drawing.Point(599, 356);
             this.zamknijButton.Name = "zamknijButton";
             this.zamknijButton.Size = new System.Drawing.Size(32, 32);
             this.zamknijButton.TabIndex = 64;
@@ -163,7 +164,7 @@
             this.raportDGV.ReadOnly = true;
             this.raportDGV.RowHeadersVisible = false;
             this.raportDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.raportDGV.Size = new System.Drawing.Size(102, 319);
+            this.raportDGV.Size = new System.Drawing.Size(145, 319);
             this.raportDGV.TabIndex = 66;
             // 
             // zbiorczyButton
@@ -171,7 +172,7 @@
             this.zbiorczyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.zbiorczyButton.Enabled = false;
             this.zbiorczyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.zbiorczyButton.Location = new System.Drawing.Point(486, 365);
+            this.zbiorczyButton.Location = new System.Drawing.Point(491, 363);
             this.zbiorczyButton.Name = "zbiorczyButton";
             this.zbiorczyButton.Size = new System.Drawing.Size(64, 23);
             this.zbiorczyButton.TabIndex = 69;
@@ -184,7 +185,7 @@
             this.szczegolowyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.szczegolowyButton.Enabled = false;
             this.szczegolowyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.szczegolowyButton.Location = new System.Drawing.Point(387, 365);
+            this.szczegolowyButton.Location = new System.Drawing.Point(392, 363);
             this.szczegolowyButton.Name = "szczegolowyButton";
             this.szczegolowyButton.Size = new System.Drawing.Size(90, 23);
             this.szczegolowyButton.TabIndex = 68;
@@ -197,7 +198,7 @@
             this.procentNormyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.procentNormyButton.Enabled = false;
             this.procentNormyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.procentNormyButton.Location = new System.Drawing.Point(291, 365);
+            this.procentNormyButton.Location = new System.Drawing.Point(296, 363);
             this.procentNormyButton.Name = "procentNormyButton";
             this.procentNormyButton.Size = new System.Drawing.Size(90, 23);
             this.procentNormyButton.TabIndex = 67;
@@ -205,11 +206,25 @@
             this.procentNormyButton.UseVisualStyleBackColor = true;
             this.procentNormyButton.Click += new System.EventHandler(this.procentNormyButton_Click);
             // 
+            // saveButton
+            // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.BackgroundImage = global::AstraAkodry.Properties.Resources.zapisz_32x32;
+            this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.saveButton.Enabled = false;
+            this.saveButton.Location = new System.Drawing.Point(561, 356);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(32, 32);
+            this.saveButton.TabIndex = 70;
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // RaportyPracownikaProdukcjaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 400);
+            this.ClientSize = new System.Drawing.Size(643, 400);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.zbiorczyButton);
             this.Controls.Add(this.szczegolowyButton);
             this.Controls.Add(this.procentNormyButton);
@@ -248,5 +263,6 @@
         private System.Windows.Forms.Button zbiorczyButton;
         private System.Windows.Forms.Button szczegolowyButton;
         private System.Windows.Forms.Button procentNormyButton;
+        private System.Windows.Forms.Button saveButton;
     }
 }

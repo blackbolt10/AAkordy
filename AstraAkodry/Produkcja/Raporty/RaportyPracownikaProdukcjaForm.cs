@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using OfficeOpenXml;
+using System.IO;
+
 namespace AstraAkodry.Produkcja.Raporty
 {
     public partial class RaportyPracownikaProdukcjaForm : Form
@@ -169,6 +172,8 @@ namespace AstraAkodry.Produkcja.Raporty
 
         private void ZaladujRaportDGV()
         {
+            saveButton.Enabled = false;
+
             if(pracownicyLB.SelectedIndex > -1)
             {
                 switch(idRaportu)
@@ -206,6 +211,11 @@ namespace AstraAkodry.Produkcja.Raporty
                 raportDGV.Rows[0].Cells[0].Value = result;
                 raportDGV.Columns["Procent"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
+
+                if(raportDGV.Rows.Count > 0)
+                {
+                    saveButton.Enabled = true;
+                }
             }
             else
             {
@@ -232,6 +242,11 @@ namespace AstraAkodry.Produkcja.Raporty
                 raportDGV.Columns["PRA_PracId"].Visible = false;
                 raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 raportDGV.Columns["Imię"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                if(raportDGV.Rows.Count > 0)
+                {
+                    saveButton.Enabled = true;
+                }
             }
             else
             {
@@ -256,6 +271,11 @@ namespace AstraAkodry.Produkcja.Raporty
                 raportLabel.Text = "Raport zbiorczy:";
 
                 raportDGV.Columns["Nazwa akordu"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                if(raportDGV.Rows.Count > 0)
+                {
+                    saveButton.Enabled = true;
+                }
             }
             else
             {
@@ -280,6 +300,75 @@ namespace AstraAkodry.Produkcja.Raporty
         {
             idRaportu = 2;
             GenerujRaportZbiorczy();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Plik Excel|.xlsx";
+            saveDialog.FileName = "Raport za okres od " + kalendarzPoczMC.SelectionStart.ToShortDateString() + " do " + kalendarzKonMC.SelectionStart.ToShortDateString();
+
+            DialogResult result = saveDialog.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                FileInfo newFile = new FileInfo(saveDialog.FileName);
+                try
+                {
+                    using(ExcelPackage xlPackage = new ExcelPackage(newFile))
+                    {
+                        ExcelWorksheet worksheet = xlPackage.Workbook.Worksheets.Add("NowyArkusz");
+
+                        switch(idRaportu)
+                        {
+                            case 0:
+                                worksheet.Cell(1, 1).Value = "Wylicz % normy dla pracownika " + pracownicyCB.Items[pracownicyCB.SelectedIndex].ToString();
+                                worksheet.Cell(2, 1).Value = "Za okres od " + kalendarzPoczMC.SelectionStart.ToShortDateString() + " do " + kalendarzKonMC.SelectionStart.ToShortDateString();
+                                worksheet.Cell(4, 1).Value = "Wartość";
+                                worksheet.Cell(5, 1).Value = raportDGV.Rows[0].Cells[0].Value.ToString();
+                            break;
+
+                            case 1:
+                                worksheet.Cell(1, 1).Value = "Raport szczegółowy ";
+                                worksheet.Cell(2, 1).Value = "Za okres od " + kalendarzPoczMC.SelectionStart.ToShortDateString() + " do " + kalendarzKonMC.SelectionStart.ToShortDateString();
+                                worksheet.Cell(4, 1).Value = "Nazwisko";
+                                worksheet.Cell(4, 2).Value = "Imię";
+                                worksheet.Cell(4, 3).Value = "Wykonanie w %";
+
+                                for(int i = 0; i < raportDGV.Rows.Count; i++)
+                                {
+                                    int x = i + 5;
+                                    worksheet.Cell(x, 1).Value = raportDGV.Rows[i].Cells[1].Value.ToString();
+                                    worksheet.Cell(x, 2).Value = raportDGV.Rows[i].Cells[2].Value.ToString();
+                                    worksheet.Cell(x, 3).Value = raportDGV.Rows[i].Cells[3].Value.ToString();
+                                }
+                            break;
+
+                            case 2:
+                                worksheet.Cell(1, 1).Value = "Raport zbiorczy ";
+                                worksheet.Cell(2, 1).Value = "Za okres od " + kalendarzPoczMC.SelectionStart.ToShortDateString() + " do " + kalendarzKonMC.SelectionStart.ToShortDateString();
+                                worksheet.Cell(4, 1).Value = "Nazwa akordu";
+                                worksheet.Cell(4, 2).Value = "Suma wartości";
+
+                                for(int i = 0; i < raportDGV.Rows.Count; i++)
+                                {
+                                    int x = i + 5;
+                                    worksheet.Cell(x, 1).Value = raportDGV.Rows[i].Cells[0].Value.ToString();
+                                    worksheet.Cell(x, 2).Value = raportDGV.Rows[i].Cells[1].Value.ToString();
+                                }
+                            break;
+                        }
+
+                        xlPackage.Save();
+                    }
+                }
+                catch(Exception exc)
+                {
+                    MessageBox.Show("Wystąpił błąd generowania pliku excel :" + Environment.NewLine + exc.Message);
+                    DBRepository db = new DBRepository();
+                    db.ErrorReport("RaportyPracownikaProdukcjaForm.saveButton_Click()", exc.Message);
+                }
+            }
         }
     }
 }

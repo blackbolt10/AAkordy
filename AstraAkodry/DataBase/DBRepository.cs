@@ -792,6 +792,8 @@ namespace AstraAkodry
                 zapytanieString += " where OPR_Archiwalny = 0";
             }
 
+            zapytanieString += " order by OPR_Nazwisko asc";
+
             try
             {
                 operatorzyDT = query(zapytanieString);
