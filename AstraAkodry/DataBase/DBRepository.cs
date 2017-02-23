@@ -62,6 +62,66 @@ namespace AstraAkodry
             return connectionResult;
         }
 
+        public bool ReindeksacjaForm_StartReindex(ref string result)
+        {
+            String zapytanie = "USE [master] exec dbo.proc_reindex Astra_Akordy, 5 USE [Astra_Akordy]";
+
+            try
+            {
+                DataTable dt = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("ReindeksacjaForm_StartReindex", result);
+                return false;
+            }
+        }
+
+        public bool NieaktywPracForm_ZaladujRaportDGV(ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select * from(SELECT distinct(WAK_PracId), pra_imie, pra_nazwisko, max(wak_datawykonania) as [Ostatnia data] FROM[dbo].GAL_WartAkordu left join[dbo].Gal_Pracownicy on wak_pracId = Pra_PracId where pra_archiwalny <> 1 group by wak_pracid, pra_imie, pra_nazwisko) as A";
+            
+            try
+            {
+                DateTime data = new DateTime();
+                if(!GetServerTime(ref data))
+                {
+                    return false;
+                }
+                data = data.AddMonths(-6);
+
+                zapytanie += " where [Ostatnia data] < '"+data.ToShortDateString()+"'";
+
+                pomDataTable = query(zapytanie);
+
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("NieaktywPracForm_ZaladujRaportDGV", result);
+                return false;
+            }
+        }
+
+        public bool NieaktywPracForm_UsunPracownika(String PracID, ref string result)
+        {
+            String zapytanie = "UPDATE [dbo].[GAL_Pracownicy] SET [PRA_Archiwalny] = 1 WHERE PRA_PracId =" + PracID;
+            try
+            {
+                query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("NieaktywPracForm_UsunPracownika", result);
+                return false;
+            }
+        }
+
         public bool MainForm_ZaladujCzcionke(ref string nazwa, ref string rozmiar, ref string result)
         {
             String zapytanie = "SELECT TOP 1 * from GAL_Parametry where PAR_PracID = "+MainForm.IDOperatora+" and PAR_Nazwa = 'CzcionkaNazwa' order by PAR_DataDodania desc";
@@ -751,6 +811,25 @@ namespace AstraAkodry
                 if(pomDataTable.Rows.Count == 1)
                 {
                     data = pomDataTable.Rows[0]["data"].ToString();
+                }
+                return true;
+            }
+            catch(Exception exc)
+            {
+                ErrorReport("GetServerTime()", exc.Message);
+            }
+            return false;
+        }
+
+        public Boolean GetServerTime(ref DateTime data)
+        {
+            try
+            {
+                DataTable pomDataTable = query("SELECT left(CONVERT(VARCHAR(10),GETDATE(),21),11)as data");
+
+                if(pomDataTable.Rows.Count == 1)
+                {
+                    data = DateTime.Parse(pomDataTable.Rows[0]["data"].ToString());
                 }
                 return true;
             }

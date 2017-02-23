@@ -75,6 +75,24 @@
     <Compile Include="Konfiguracja\Aplikacja\UstawieniaForm.Designer.cs">
       <DependentUpon>UstawieniaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Konfiguracja\Baza\NieaktywPracForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konfiguracja\Baza\NieaktywPracForm.Designer.cs">
+      <DependentUpon>NieaktywPracForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Konfiguracja\Baza\PotwierdzenieUsunieciaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konfiguracja\Baza\PotwierdzenieUsunieciaForm.Designer.cs">
+      <DependentUpon>PotwierdzenieUsunieciaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Konfiguracja\Baza\ReindeksacjaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Konfiguracja\Baza\ReindeksacjaForm.Designer.cs">
+      <DependentUpon>ReindeksacjaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Konfiguracja\Ustawienia\Akordy\AkordyChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +191,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Konfiguracja\Aplikacja\UstawieniaForm.resx">
       <DependentUpon>UstawieniaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Konfiguracja\Baza\NieaktywPracForm.resx">
+      <DependentUpon>NieaktywPracForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Konfiguracja\Baza\PotwierdzenieUsunieciaForm.resx">
+      <DependentUpon>PotwierdzenieUsunieciaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Konfiguracja\Baza\ReindeksacjaForm.resx">
+      <DependentUpon>ReindeksacjaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Konfiguracja\Ustawienia\Akordy\AkordyChangeForm.resx">
       <DependentUpon>AkordyChangeForm.cs</DependentUpon>

@@ -16,6 +16,8 @@ namespace AstraAkodry
         
         private Konfiguracja.Ustawienia.Akordy.AkordyForm akordyForm;
         private Konfiguracja.Ustawienia.Operatorzy.OperatorzyForm operatorzyForm;
+        private Konfiguracja.Baza.ReindeksacjaForm reindeksacjaForm;
+        private Konfiguracja.Baza.NieaktywPracForm nieaktywPracForm;
         private Konfiguracja.Ustawienia.Pracownicy.PracownicyForm pracownicyForm;
         private Konfiguracja.Aplikacja.UstawieniaForm ustawieniaForm;
         private Recepcja.Raporty.RaportRecepcjaForm raportRecepcjaForm;
@@ -58,6 +60,7 @@ namespace AstraAkodry
                     produkcjaRibbonTab.Visible = false;
                     ksiegowoscRibbonTab.Visible = false;
                     ustawieniaRibbonPanel.Visible = false;
+                    bazaRibbonPanel.Visible = false;
                     ribbon1.ActiveTab = recepcjaRibbonTab;
                 break;
 
@@ -65,6 +68,7 @@ namespace AstraAkodry
                     recepcjaRibbonTab.Visible = false;
                     ksiegowoscRibbonTab.Visible = false;
                     ustawieniaRibbonPanel.Visible = false;
+                    bazaRibbonPanel.Visible = false;
                     ribbon1.ActiveTab = produkcjaRibbonTab;
                 break;
             }
@@ -386,6 +390,40 @@ namespace AstraAkodry
             else
             {
                 ustawieniaForm.Activate();
+            }
+        }
+
+        private void niekatywPracRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(nieaktywPracForm == null || nieaktywPracForm.IsDisposed)
+            {
+                nieaktywPracForm = new Konfiguracja.Baza.NieaktywPracForm();
+                nieaktywPracForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                nieaktywPracForm.Shown += new System.EventHandler(mdiChild_Activate);
+                nieaktywPracForm.MdiParent = this;
+                nieaktywPracForm.Dock = DockStyle.Fill;
+                nieaktywPracForm.Show();
+            }
+            else
+            {
+                nieaktywPracForm.Activate();
+            }
+        }
+
+        private void reindeksacjaRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(reindeksacjaForm == null || reindeksacjaForm.IsDisposed)
+            {
+                reindeksacjaForm = new Konfiguracja.Baza.ReindeksacjaForm();
+                reindeksacjaForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                reindeksacjaForm.Shown += new System.EventHandler(mdiChild_Activate);
+                reindeksacjaForm.MdiParent = this;
+                reindeksacjaForm.Dock = DockStyle.Fill;
+                reindeksacjaForm.Show();
+            }
+            else
+            {
+                reindeksacjaForm.Activate();
             }
         }
     }
