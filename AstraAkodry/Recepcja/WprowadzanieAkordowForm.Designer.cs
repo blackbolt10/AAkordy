@@ -113,6 +113,7 @@
             this.akordyDGV.TabIndex = 68;
             this.akordyDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.akordyDGV_CellClick);
             this.akordyDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.akordyDGV_CellValueChanged);
+            this.akordyDGV.CurrentCellChanged += new System.EventHandler(this.akordyDGV_CurrentCellChanged);
             this.akordyDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.akordyDGV_EditingControlShowing);
             this.akordyDGV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.akordyDGV_KeyDown);
             // 

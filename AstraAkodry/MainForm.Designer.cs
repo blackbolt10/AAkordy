@@ -39,10 +39,15 @@
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
             this.raportyRecepcjaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.rapLeniRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
+            this.wprowadzanieTestowychRibbonButton = new System.Windows.Forms.RibbonButton();
             this.produkcjaRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
             this.prodGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
             this.prodPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.akordyTestoweRibbonPanel = new System.Windows.Forms.RibbonPanel();
+            this.raportAkorTestRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.zarzadzenieTestoweRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ksiegowoscRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
             this.ksiegGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
@@ -54,14 +59,15 @@
             this.operatorzyRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel7 = new System.Windows.Forms.RibbonPanel();
             this.ustawieniaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.bazaRibbonPanel = new System.Windows.Forms.RibbonPanel();
+            this.niekatywPracRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.reindeksacjaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.wersjaTSSL = new System.Windows.Forms.ToolStripStatusLabel();
             this.oknaCB = new System.Windows.Forms.ComboBox();
             this.zmienOknoLabel = new System.Windows.Forms.Label();
             this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.bazaRibbonPanel = new System.Windows.Forms.RibbonPanel();
-            this.niekatywPracRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.reindeksacjaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.wprowadzanieTestProdRibbonButton = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,6 +125,7 @@
             // 
             this.recepcjaRibbonTab.Panels.Add(this.ribbonPanel1);
             this.recepcjaRibbonTab.Panels.Add(this.ribbonPanel2);
+            this.recepcjaRibbonTab.Panels.Add(this.ribbonPanel3);
             this.recepcjaRibbonTab.Text = "Recepcja";
             // 
             // ribbonPanel1
@@ -153,9 +160,22 @@
             this.rapLeniRibbonButton.Text = "Raport \"leni\"";
             this.rapLeniRibbonButton.Click += new System.EventHandler(this.rapLeniRibbonButton_Click);
             // 
+            // ribbonPanel3
+            // 
+            this.ribbonPanel3.Items.Add(this.wprowadzanieTestowychRibbonButton);
+            this.ribbonPanel3.Text = "Testowe";
+            // 
+            // wprowadzanieTestowychRibbonButton
+            // 
+            this.wprowadzanieTestowychRibbonButton.Image = global::AstraAkodry.Properties.Resources.input_32x32;
+            this.wprowadzanieTestowychRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieTestowychRibbonButton.SmallImage")));
+            this.wprowadzanieTestowychRibbonButton.Text = "Wprowadzanie \"Testowych\"";
+            this.wprowadzanieTestowychRibbonButton.Click += new System.EventHandler(this.wprowadzanieTestowychRibbonButton_Click);
+            // 
             // produkcjaRibbonTab
             // 
             this.produkcjaRibbonTab.Panels.Add(this.ribbonPanel5);
+            this.produkcjaRibbonTab.Panels.Add(this.akordyTestoweRibbonPanel);
             this.produkcjaRibbonTab.Text = "Produkcja";
             // 
             // ribbonPanel5
@@ -177,6 +197,27 @@
             this.prodPracownikaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("prodPracownikaRibbonButton.SmallImage")));
             this.prodPracownikaRibbonButton.Text = "Pracownika";
             this.prodPracownikaRibbonButton.Click += new System.EventHandler(this.pracownikaRibbonButton_Click);
+            // 
+            // akordyTestoweRibbonPanel
+            // 
+            this.akordyTestoweRibbonPanel.Items.Add(this.wprowadzanieTestProdRibbonButton);
+            this.akordyTestoweRibbonPanel.Items.Add(this.raportAkorTestRibbonButton);
+            this.akordyTestoweRibbonPanel.Items.Add(this.zarzadzenieTestoweRibbonButton);
+            this.akordyTestoweRibbonPanel.Text = "Akordy testowe";
+            // 
+            // raportAkorTestRibbonButton
+            // 
+            this.raportAkorTestRibbonButton.Image = global::AstraAkodry.Properties.Resources.raport_testowy_32x32;
+            this.raportAkorTestRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportAkorTestRibbonButton.SmallImage")));
+            this.raportAkorTestRibbonButton.Text = "Raport \"Testowe\"";
+            this.raportAkorTestRibbonButton.Click += new System.EventHandler(this.raportAkorTestRibbonButton_Click);
+            // 
+            // zarzadzenieTestoweRibbonButton
+            // 
+            this.zarzadzenieTestoweRibbonButton.Image = global::AstraAkodry.Properties.Resources.dynamit_32x32;
+            this.zarzadzenieTestoweRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("zarzadzenieTestoweRibbonButton.SmallImage")));
+            this.zarzadzenieTestoweRibbonButton.Text = "Zarządzanie \"Testowe\"";
+            this.zarzadzenieTestoweRibbonButton.Click += new System.EventHandler(this.zarzadzenieTestoweRibbonButton_Click);
             // 
             // ksiegowoscRibbonTab
             // 
@@ -250,6 +291,26 @@
             this.ustawieniaRibbonButton.Text = "Ustawienia";
             this.ustawieniaRibbonButton.Click += new System.EventHandler(this.ustawieniaRibbonButton_Click);
             // 
+            // bazaRibbonPanel
+            // 
+            this.bazaRibbonPanel.Items.Add(this.niekatywPracRibbonButton);
+            this.bazaRibbonPanel.Items.Add(this.reindeksacjaRibbonButton);
+            this.bazaRibbonPanel.Text = "Baza danych";
+            // 
+            // niekatywPracRibbonButton
+            // 
+            this.niekatywPracRibbonButton.Image = global::AstraAkodry.Properties.Resources.nieaktywne_osoby_32x32;
+            this.niekatywPracRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("niekatywPracRibbonButton.SmallImage")));
+            this.niekatywPracRibbonButton.Text = "Niekatywni pracownicy";
+            this.niekatywPracRibbonButton.Click += new System.EventHandler(this.niekatywPracRibbonButton_Click);
+            // 
+            // reindeksacjaRibbonButton
+            // 
+            this.reindeksacjaRibbonButton.Image = global::AstraAkodry.Properties.Resources.baza_danych_32x32;
+            this.reindeksacjaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("reindeksacjaRibbonButton.SmallImage")));
+            this.reindeksacjaRibbonButton.Text = "Reindeksacja";
+            this.reindeksacjaRibbonButton.Click += new System.EventHandler(this.reindeksacjaRibbonButton_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -296,25 +357,12 @@
             this.ribbonOrbMenuItem1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem1.SmallImage")));
             this.ribbonOrbMenuItem1.Text = "ribbonOrbMenuItem1";
             // 
-            // bazaRibbonPanel
+            // wprowadzanieTestProdRibbonButton
             // 
-            this.bazaRibbonPanel.Items.Add(this.niekatywPracRibbonButton);
-            this.bazaRibbonPanel.Items.Add(this.reindeksacjaRibbonButton);
-            this.bazaRibbonPanel.Text = "Baza danych";
-            // 
-            // niekatywPracRibbonButton
-            // 
-            this.niekatywPracRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
-            this.niekatywPracRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("niekatywPracRibbonButton.SmallImage")));
-            this.niekatywPracRibbonButton.Text = "Niekatywni pracownicy";
-            this.niekatywPracRibbonButton.Click += new System.EventHandler(this.niekatywPracRibbonButton_Click);
-            // 
-            // reindeksacjaRibbonButton
-            // 
-            this.reindeksacjaRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
-            this.reindeksacjaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("reindeksacjaRibbonButton.SmallImage")));
-            this.reindeksacjaRibbonButton.Text = "Reindeksacja";
-            this.reindeksacjaRibbonButton.Click += new System.EventHandler(this.reindeksacjaRibbonButton_Click);
+            this.wprowadzanieTestProdRibbonButton.Image = global::AstraAkodry.Properties.Resources.input_32x32;
+            this.wprowadzanieTestProdRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieTestProdRibbonButton.SmallImage")));
+            this.wprowadzanieTestProdRibbonButton.Text = "Wprowadzanie \"Testowych\"";
+            this.wprowadzanieTestProdRibbonButton.Click += new System.EventHandler(this.wprowadzanieTestProdRibbonButton_Click);
             // 
             // MainForm
             // 
@@ -373,6 +421,12 @@
         private System.Windows.Forms.RibbonPanel bazaRibbonPanel;
         private System.Windows.Forms.RibbonButton niekatywPracRibbonButton;
         private System.Windows.Forms.RibbonButton reindeksacjaRibbonButton;
+        private System.Windows.Forms.RibbonPanel akordyTestoweRibbonPanel;
+        private System.Windows.Forms.RibbonButton raportAkorTestRibbonButton;
+        private System.Windows.Forms.RibbonButton zarzadzenieTestoweRibbonButton;
+        private System.Windows.Forms.RibbonPanel ribbonPanel3;
+        private System.Windows.Forms.RibbonButton wprowadzanieTestowychRibbonButton;
+        private System.Windows.Forms.RibbonButton wprowadzanieTestProdRibbonButton;
     }
 }
 

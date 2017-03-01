@@ -154,6 +154,24 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produkcja\Akordy testowe\RaportTestoweForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produkcja\Akordy testowe\RaportTestoweForm.Designer.cs">
+      <DependentUpon>RaportTestoweForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produkcja\Akordy testowe\Zarządzanie\AkordyTestoweChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produkcja\Akordy testowe\Zarządzanie\AkordyTestoweChangeForm.Designer.cs">
+      <DependentUpon>AkordyTestoweChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produkcja\Akordy testowe\Zarządzanie\ZarzadzanieTestowymiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produkcja\Akordy testowe\Zarządzanie\ZarzadzanieTestowymiForm.Designer.cs">
+      <DependentUpon>ZarzadzanieTestowymiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produkcja\Raporty\RaportyGlobalneProdukcjaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +186,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Recepcja\Raporty\RaportLeniRecepcjaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +208,12 @@
     </Compile>
     <Compile Include="Recepcja\WprowadzanieAkordowForm.Designer.cs">
       <DependentUpon>WprowadzanieAkordowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcja\WprowadzanieAkordowTesotwychForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcja\WprowadzanieAkordowTesotwychForm.Designer.cs">
+      <DependentUpon>WprowadzanieAkordowTesotwychForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EasterEgg\EasterEggForm.resx">
       <DependentUpon>EasterEggForm.cs</DependentUpon>
@@ -231,6 +260,15 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produkcja\Akordy testowe\RaportTestoweForm.resx">
+      <DependentUpon>RaportTestoweForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produkcja\Akordy testowe\Zarządzanie\AkordyTestoweChangeForm.resx">
+      <DependentUpon>AkordyTestoweChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produkcja\Akordy testowe\Zarządzanie\ZarzadzanieTestowymiForm.resx">
+      <DependentUpon>ZarzadzanieTestowymiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produkcja\Raporty\RaportyGlobalneProdukcjaForm.resx">
       <DependentUpon>RaportyGlobalneProdukcjaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,14 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Recepcja\Raporty\RaportLeniRecepcjaForm.resx">
       <DependentUpon>RaportLeniRecepcjaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcja\WprowadzanieAkordowForm.resx">
       <DependentUpon>WprowadzanieAkordowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcja\WprowadzanieAkordowTesotwychForm.resx">
+      <DependentUpon>WprowadzanieAkordowTesotwychForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -274,6 +310,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\input_32x32.png" />
+    <None Include="Resources\dynamit_32x32.png" />
+    <None Include="Resources\raport_testowy_32x32.png" />
+    <None Include="Resources\baza_danych_32x32.png" />
+    <None Include="Resources\nieaktywne osoby_32x32.png" />
     <None Include="Resources\Ustawienia_32x32.png" />
     <None Include="Resources\Raport_32x32.png" />
     <None Include="Resources\Raport_Globalny_32x32.png" />

@@ -16,7 +16,7 @@ namespace AstraAkodry
         private Panel loadPanel;
         private Label loadLabel;
 
-        String wersjaProgramu = "3.0";
+        String wersjaProgramu = "3.1";
         String numerWersji = "a";
 
         private DataTable operatorzyDT;

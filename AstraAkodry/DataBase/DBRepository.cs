@@ -62,6 +62,22 @@ namespace AstraAkodry
             return connectionResult;
         }
 
+        public bool AkordyTestoweChangeForm_AddAkord(string nazwa, string archiwalny, ref string result)
+        {
+            String zapytanieString = "insert into GAL_AkordyTestowe values((select isnull(max(AKT_AkrID),0)+1 from GAL_AkordyTestowe), '" + nazwa + "', '" + DateTime.Now.ToString() + "'," + archiwalny + ")";
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("AkordyTestoweChangeForm_AddAkord()", exc.Message);
+                return false;
+            }
+        }
+
         public bool ReindeksacjaForm_StartReindex(ref string result)
         {
             String zapytanie = "USE [master] exec dbo.proc_reindex Astra_Akordy, 5 USE [Astra_Akordy]";
@@ -75,6 +91,43 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("ReindeksacjaForm_StartReindex", result);
+                return false;
+            }
+        }
+
+        public bool ZarzadzanieTestowymiForm_ZaladujAkordyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
+        {
+            String zapytanie = "SELECT * FROM GAL_AkordyTestowe";
+            if(!@checked)
+            {
+                zapytanie += " where AKT_Archiwalny <> 1";
+            }
+
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("ZarzadzanieTestowymiForm_ZaladujAkordyDGV()", result);
+                return false;
+            }
+        }
+
+        public bool AkordyTestoweChangeForm_ChangeAkord(string AKR_AkrId, string nazwa, string archiwalny, ref string result)
+        {
+            String zapytanieString = "UPDATE [dbo].[GAL_AkordyTestowe] SET [AKT_Nazwa] = '" + nazwa + "',[AKT_Archiwalny] = " + archiwalny + " WHERE AKT_AkrId = " + AKR_AkrId;
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("AkordyTestoweChangeForm_ChangeAkord()", exc.Message);
                 return false;
             }
         }
@@ -102,6 +155,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("NieaktywPracForm_ZaladujRaportDGV", result);
+                return false;
+            }
+        }
+
+        public bool RaportTestoweForm_ZaladujRaportDGV(String dataPocz, String dataKon, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select WAT_AkrId, AKT_Nazwa, SUM(WAT_Wartosc) AS [WAT_Wartosc], SUM(WAT_Czas) as [WAT_Czas] from GAL_WartAkorduTestowego left join GAL_AkordyTestowe on WAT_AkrId = AKT_AkrId where WAT_datawykonania between '"+dataPocz+"' and '"+dataKon+ "' and AKT_Archiwalny <> 1 group by WAT_AkrId, AKT_Nazwa";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportTestoweForm_ZaladujRaportDGV", result);
                 return false;
             }
         }
@@ -196,6 +265,22 @@ namespace AstraAkodry
             }
         }
 
+        public bool WprowadzanieAkordowTestowychForm_ZaladujListeAkordow(string idPracownika, DateTime dataKalendarz, DateTime dataKalendarzZero, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select ab.WAT_WatId, D.AKT_AkrId, E.akt_nazwa, ab.wat_Wartosc as Wartość, ab.wat_czas as Czas from (select AKT_AkrId, max(AKT_DataDodania) akt_datadodania from dbo.GAL_AkordyTestowe where AKT_DataDodania < '" + dataKalendarz+"' group by AKT_AkrId) as D left outer join dbo.GAL_AkordyTestowe as E on D.AKT_AkrId = E.akt_akrid and D.akt_datadodania = E.akt_datadodania left outer join(select A.wat_pracid, a.wat_akrid, a.wat_datawykonania, b.wat_watid, b.wat_wartosc, b.wat_czas from (select wat_pracid, wat_akrid, wat_datawykonania, max(wat_datamodyfikacji) wat_datamodyfikacji from dbo.GAL_WartAkorduTestowego group by wat_pracid, wat_akrid, wat_datawykonania) as A left outer join dbo.GAL_WartAkorduTestowego as B on a.wat_pracid = b.wat_PracId and a.wat_AkrId = b.wat_akrid and a.wat_datawykonania = b.wat_datawykonania and a.wat_datamodyfikacji = b.wat_DataModyfikacji where a.wat_pracid = "+idPracownika+" and a.wat_datawykonania = '"+dataKalendarzZero+"') as AB on d.AKT_AkrId = ab.wat_AkrId where AKt_Archiwalny <> 1 order by d.AKT_AkrId";
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("WprowadzanieAkordowForm_ZaladujListeAkordow()", result);
+                return false;
+            }
+        }
+
         public bool WprowadzanieAkordowForm_ZaladujListeAkordow(string idPracownika, DateTime dataKalendarz, DateTime dataKalendarzZero, ref DataTable pomDataTable, ref string result)
         {
             String zapytanie = "select D.akr_akrid, E.akr_nazwa, ab.WAK_Wartosc as Wartość from (select akr_akrid,  max(akr_datadodania) akr_datadodania from dbo.gal_Akordy where akr_datadodania < '" + dataKalendarz + "' group by akr_akrid ) as D  left outer join dbo.GAL_Akordy as E on D.AKR_AkrId=E.akr_akrid and D.akr_datadodania=E.akr_datadodania left outer join (select A.wak_pracid, a.wak_akrid, a.wak_datawykonania, b.Wak_wakid, b.wak_wartosc from (select wak_pracid, wak_akrid, wak_datawykonania, max(wak_datamodyfikacji) Wak_datamodyfikacji from dbo.gal_wartakordu group by wak_pracid, wak_akrid, wak_datawykonania) as A left outer join dbo.GAL_WartAkordu as B on a.wak_pracid=b.WAK_PracId and a.WAK_AkrId=b.wak_akrid and a.wak_datawykonania=b.wak_datawykonania and a.wak_datamodyfikacji=b.WAK_DataModyfikacji where a.wak_pracid=" + idPracownika + " and a.WAK_datawykonania='" + dataKalendarzZero + "') as AB on d.AKR_AkrId=ab.WAK_AkrId where  AKR_Archiwalny <> 1 order by d.AKR_AkrId";
@@ -264,7 +349,7 @@ namespace AstraAkodry
             }
         }
 
-        internal bool WprowadzanieAkordowForm_ZapiszNowyAkord(String IdPracownika, int IdAkordu, double wartoscAkr, DateTime dataKalendarz, ref string result)
+        public bool WprowadzanieAkordowForm_ZapiszNowyAkord(String IdPracownika, int IdAkordu, double wartoscAkr, DateTime dataKalendarz, ref string result)
         {
             String zapytanie = "insert into GAL_WartAkordu values(" + MainForm.IDOperatora + ", " + IdPracownika + ", " + IdAkordu + ", '" + dataKalendarz + "', getdate(), " + wartoscAkr.ToString().Replace(',','.') + ", (select top 1 akr_norma from dbo.GAL_Akordy where akr_akrid=" + IdAkordu + " and not (AKR_DataDodania > '" + dataKalendarz + "' )))";
             try
@@ -276,6 +361,31 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("WprowadzanieAkordowForm_ZapiszNowyAkord()", result);
+                return false;
+            }
+        }
+
+        public bool WprowadzanieAkordowTestowychForm_ZapiszNowyAkord(string idWiersza, string idPracownika, int idAkordu, double wartoscAkr, double czasAkr, DateTime dataKalendarz, ref string result)
+        {
+            String zapytanie = "";
+            if(idWiersza == "")
+            {
+                zapytanie = "insert into GAL_WartAkorduTestowego values(" + MainForm.IDOperatora + ", " + idPracownika + ", " + idAkordu + ", '" + dataKalendarz + "', getdate(), " + wartoscAkr.ToString().Replace(',', '.') + ", " + czasAkr.ToString().Replace(',', '.') + ")";
+            }
+            else
+            {
+                zapytanie = "UPDATE [dbo].[GAL_WartAkorduTestowego] SET [WAT_DataModyfikacji] = getdate(), [WAT_Wartosc] =  " + wartoscAkr.ToString().Replace(',', '.') + ", [WAT_Czas] = " + czasAkr.ToString().Replace(',', '.') + " WHERE WAT_WatId = "+ idWiersza;
+            }
+
+            try
+            {
+                query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("WprowadzanieAkordowTestowychForm_ZapiszNowyAkord()", result);
                 return false;
             }
         }
@@ -620,8 +730,7 @@ namespace AstraAkodry
             {
                 result = error;
                 return false;
-            }
-            
+            }            
         }
 
         public bool PracownicyForm_UsunPracownika(string idPracownika, ref string result)
@@ -704,6 +813,22 @@ namespace AstraAkodry
             {
                 result = exc.Message;
                 ErrorReport("AkordyForm_UsunAkord()", exc.Message);
+                return false;
+            }
+        }
+
+        public bool ZarzadzanieTestowymiForm_UsunAkord(string IDAkordu, ref string result)
+        {
+            String zapytanieString = "UPDATE GAL_AkordyTestowe SET AKT_Archiwalny = 1 WHERE AKT_Id =" + IDAkordu;
+            try
+            {
+                query(zapytanieString);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("ZarzadzanieTestowymiForm_UsunAkord()", exc.Message);
                 return false;
             }
         }

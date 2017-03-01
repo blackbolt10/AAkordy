@@ -63,9 +63,29 @@ namespace AstraAkodry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap baza_danych_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("baza_danych_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dodaj {
             get {
                 object obj = ResourceManager.GetObject("dodaj", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dynamit_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("dynamit_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +106,16 @@ namespace AstraAkodry.Properties {
         internal static System.Drawing.Bitmap harmonogram_ustawienia_32x32 {
             get {
                 object obj = ResourceManager.GetObject("harmonogram_ustawienia_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap input_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("input_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,6 +193,16 @@ namespace AstraAkodry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nieaktywne_osoby_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("nieaktywne osoby_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap odswiez {
             get {
                 object obj = ResourceManager.GetObject("odswiez", resourceCulture);
@@ -216,6 +256,16 @@ namespace AstraAkodry.Properties {
         internal static System.Drawing.Bitmap Raport_Globalny_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Raport_Globalny_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap raport_testowy_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("raport_testowy_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

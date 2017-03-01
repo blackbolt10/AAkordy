@@ -23,8 +23,11 @@ namespace AstraAkodry
         private Recepcja.Raporty.RaportRecepcjaForm raportRecepcjaForm;
         private Recepcja.Raporty.RaportLeniRecepcjaForm raportLeniRecepcjaForm;
         private Recepcja.WprowadzanieAkordowForm wprowadzanieAkordowForm;
+        private Recepcja.WprowadzanieAkordowTesotwychForm wprowadzanieAkordowTesotwychForm;
         private Produkcja.Raporty.RaportyGlobalneProdukcjaForm raportGlobalneProdukcjaForm;
         private Produkcja.Raporty.RaportyPracownikaProdukcjaForm raportPracownikaProdukcjaForm;
+        private Produkcja.Akordy_testowe.RaportTestoweForm raportTestoweForm;
+        private Produkcja.Akordy_testowe.Zarządzanie.ZarzadzanieTestowymiForm zarzadzanieTestowymiForm;
         private Ksiegowosc.Raporty.RaportyPracownikaKsiegowoscForm raportPracownikaKsiegowoscForm;
         private Ksiegowosc.Raporty.RaportyGlobalneKsiegowoscForm raportGlobalneKsiegowoscForm;
 
@@ -424,6 +427,74 @@ namespace AstraAkodry
             else
             {
                 reindeksacjaForm.Activate();
+            }
+        }
+
+        private void raportAkorTestRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(raportTestoweForm == null || raportTestoweForm.IsDisposed)
+            {
+                raportTestoweForm = new Produkcja.Akordy_testowe.RaportTestoweForm();
+                raportTestoweForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportTestoweForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportTestoweForm.MdiParent = this;
+                raportTestoweForm.Dock = DockStyle.Fill;
+                raportTestoweForm.Show();
+            }
+            else
+            {
+                raportTestoweForm.Activate();
+            }
+        }
+
+        private void zarzadzenieTestoweRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(zarzadzanieTestowymiForm == null || zarzadzanieTestowymiForm.IsDisposed)
+            {
+                zarzadzanieTestowymiForm = new Produkcja.Akordy_testowe.Zarządzanie.ZarzadzanieTestowymiForm();
+                zarzadzanieTestowymiForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                zarzadzanieTestowymiForm.Shown += new System.EventHandler(mdiChild_Activate);
+                zarzadzanieTestowymiForm.MdiParent = this;
+                zarzadzanieTestowymiForm.Dock = DockStyle.Fill;
+                zarzadzanieTestowymiForm.Show();
+            }
+            else
+            {
+                zarzadzanieTestowymiForm.Activate();
+            }
+        }
+
+        private void wprowadzanieTestowychRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(wprowadzanieAkordowTesotwychForm == null || wprowadzanieAkordowTesotwychForm.IsDisposed)
+            {
+                wprowadzanieAkordowTesotwychForm = new Recepcja.WprowadzanieAkordowTesotwychForm();
+                wprowadzanieAkordowTesotwychForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                wprowadzanieAkordowTesotwychForm.Shown += new System.EventHandler(mdiChild_Activate);
+                wprowadzanieAkordowTesotwychForm.MdiParent = this;
+                wprowadzanieAkordowTesotwychForm.Dock = DockStyle.Fill;
+                wprowadzanieAkordowTesotwychForm.Show();
+            }
+            else
+            {
+                wprowadzanieAkordowTesotwychForm.Activate();
+            }
+        }
+
+        private void wprowadzanieTestProdRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(wprowadzanieAkordowTesotwychForm == null || wprowadzanieAkordowTesotwychForm.IsDisposed)
+            {
+                wprowadzanieAkordowTesotwychForm = new Recepcja.WprowadzanieAkordowTesotwychForm();
+                wprowadzanieAkordowTesotwychForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                wprowadzanieAkordowTesotwychForm.Shown += new System.EventHandler(mdiChild_Activate);
+                wprowadzanieAkordowTesotwychForm.MdiParent = this;
+                wprowadzanieAkordowTesotwychForm.Dock = DockStyle.Fill;
+                wprowadzanieAkordowTesotwychForm.Show();
+            }
+            else
+            {
+                wprowadzanieAkordowTesotwychForm.Activate();
             }
         }
     }
