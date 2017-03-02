@@ -95,6 +95,45 @@ namespace AstraAkodry
             }
         }
 
+        public bool RaportDziennyForm_ZaladujAkordyCB(ref DataTable akordyDT, ref string result)
+        {
+            String zapytanie = "Select 0 as AKT_AkrId, 'Wszyscy' as AKT_Nazwa union select AKT_AkrId, AKT_Nazwa from GAL_AkordyTestowe where AKT_Archiwalny <> 1";
+
+            try
+            {
+                akordyDT = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportDziennyForm_ZaladujAkordyCB()", result);
+                return false;
+            }
+        }
+
+        public bool RaportDziennyForm_ZaladujRaportDGV(String akr_AkrId, string data, ref DataTable pomDataTable, ref string result)
+        {
+            String zapytanie = "select Pra_Imie as Imię, PRA_Nazwisko as Nazwisko, AKT_Nazwa as [Nazwa akordu], WAT_Wartosc as Wartość, WAT_Czas as Czas from GAL_WartAkorduTestowego left join GAL_AkordyTestowe on WAT_AkrId = AKT_AkrId left join GAL_Pracownicy on PRA_PracId = WAT_PracId where WAT_datawykonania = '"+data+"'";
+
+            if(akr_AkrId != "0")
+            {
+                zapytanie += " and AKT_AkrId = " + akr_AkrId;
+            }
+
+            try
+            {
+                pomDataTable = query(zapytanie);
+                return true;
+            }
+            catch(Exception exc)
+            {
+                result = exc.Message;
+                ErrorReport("RaportDziennyForm_ZaladujRaportDGV()", result);
+                return false;
+            }
+        }
+
         public bool ZarzadzanieTestowymiForm_ZaladujAkordyDGV(ref DataTable pomDataTable, bool @checked, ref string result)
         {
             String zapytanie = "SELECT * FROM GAL_AkordyTestowe";
@@ -161,7 +200,7 @@ namespace AstraAkodry
 
         public bool RaportTestoweForm_ZaladujRaportDGV(String dataPocz, String dataKon, ref DataTable pomDataTable, ref string result)
         {
-            String zapytanie = "select WAT_AkrId, AKT_Nazwa, SUM(WAT_Wartosc) AS [WAT_Wartosc], SUM(WAT_Czas) as [WAT_Czas] from GAL_WartAkorduTestowego left join GAL_AkordyTestowe on WAT_AkrId = AKT_AkrId where WAT_datawykonania between '"+dataPocz+"' and '"+dataKon+ "' and AKT_Archiwalny <> 1 group by WAT_AkrId, AKT_Nazwa";
+            String zapytanie = "select WAT_AkrId, AKT_Nazwa as Nazwa, ROUND(SUM(WAT_Wartosc),2) AS [Wartość], ROUND(SUM(WAT_Czas),2) as [Czas] from GAL_WartAkorduTestowego left join GAL_AkordyTestowe on WAT_AkrId = AKT_AkrId where WAT_datawykonania between '" + dataPocz+"' and '"+dataKon+ "' and AKT_Archiwalny <> 1 group by WAT_AkrId, AKT_Nazwa";
             try
             {
                 pomDataTable = query(zapytanie);

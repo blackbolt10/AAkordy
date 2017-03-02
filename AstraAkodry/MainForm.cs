@@ -24,6 +24,7 @@ namespace AstraAkodry
         private Recepcja.Raporty.RaportLeniRecepcjaForm raportLeniRecepcjaForm;
         private Recepcja.WprowadzanieAkordowForm wprowadzanieAkordowForm;
         private Recepcja.WprowadzanieAkordowTesotwychForm wprowadzanieAkordowTesotwychForm;
+        private Recepcja.RaportDziennyTestowychForm raportDziennyTestowychForm;
         private Produkcja.Raporty.RaportyGlobalneProdukcjaForm raportGlobalneProdukcjaForm;
         private Produkcja.Raporty.RaportyPracownikaProdukcjaForm raportPracownikaProdukcjaForm;
         private Produkcja.Akordy_testowe.RaportTestoweForm raportTestoweForm;
@@ -495,6 +496,40 @@ namespace AstraAkodry
             else
             {
                 wprowadzanieAkordowTesotwychForm.Activate();
+            }
+        }
+
+        private void raportDziennyRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(raportDziennyTestowychForm == null || raportDziennyTestowychForm.IsDisposed)
+            {
+                raportDziennyTestowychForm = new Recepcja.RaportDziennyTestowychForm();
+                raportDziennyTestowychForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportDziennyTestowychForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportDziennyTestowychForm.MdiParent = this;
+                raportDziennyTestowychForm.Dock = DockStyle.Fill;
+                raportDziennyTestowychForm.Show();
+            }
+            else
+            {
+                raportDziennyTestowychForm.Activate();
+            }
+        }
+
+        private void raportDziennyProdRibbonButton_Click(object sender, EventArgs e)
+        {
+            if(raportDziennyTestowychForm == null || raportDziennyTestowychForm.IsDisposed)
+            {
+                raportDziennyTestowychForm = new Recepcja.RaportDziennyTestowychForm();
+                raportDziennyTestowychForm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(mdiChild_FormClosing);
+                raportDziennyTestowychForm.Shown += new System.EventHandler(mdiChild_Activate);
+                raportDziennyTestowychForm.MdiParent = this;
+                raportDziennyTestowychForm.Dock = DockStyle.Fill;
+                raportDziennyTestowychForm.Show();
+            }
+            else
+            {
+                raportDziennyTestowychForm.Activate();
             }
         }
     }

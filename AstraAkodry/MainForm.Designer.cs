@@ -30,44 +30,46 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon1 = new System.Windows.Forms.Ribbon();
-            this.logoutRibbonOrbMenuItem = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
-            this.closeRibbonOrbMenuItem = new System.Windows.Forms.RibbonOrbMenuItem();
             this.recepcjaRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.wprowadzanieRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.raportyRecepcjaRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.rapLeniRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
-            this.wprowadzanieTestowychRibbonButton = new System.Windows.Forms.RibbonButton();
             this.produkcjaRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
-            this.prodGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.prodPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.akordyTestoweRibbonPanel = new System.Windows.Forms.RibbonPanel();
-            this.raportAkorTestRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.zarzadzenieTestoweRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ksiegowoscRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel6 = new System.Windows.Forms.RibbonPanel();
-            this.ksiegGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.ksiegPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.konfiguracjaRibbonTab = new System.Windows.Forms.RibbonTab();
             this.ustawieniaRibbonPanel = new System.Windows.Forms.RibbonPanel();
-            this.pracownicyRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.akordyRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.operatorzyRibbonButton = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel7 = new System.Windows.Forms.RibbonPanel();
-            this.ustawieniaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.bazaRibbonPanel = new System.Windows.Forms.RibbonPanel();
-            this.niekatywPracRibbonButton = new System.Windows.Forms.RibbonButton();
-            this.reindeksacjaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.wersjaTSSL = new System.Windows.Forms.ToolStripStatusLabel();
             this.oknaCB = new System.Windows.Forms.ComboBox();
             this.zmienOknoLabel = new System.Windows.Forms.Label();
-            this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.logoutRibbonOrbMenuItem = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.closeRibbonOrbMenuItem = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.wprowadzanieRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.raportyRecepcjaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.rapLeniRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.wprowadzanieTestowychRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.raportDziennyRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.prodGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.prodPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
             this.wprowadzanieTestProdRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.raportAkorTestRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.zarzadzenieTestoweRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ksiegGlobalneRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ksiegPracownikaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.pracownicyRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.akordyRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.operatorzyRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ustawieniaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.niekatywPracRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.reindeksacjaRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ribbonOrbMenuItem1 = new System.Windows.Forms.RibbonOrbMenuItem();
+            this.raportDziennyProdRibbonButton = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,22 +107,6 @@
             this.ribbon1.Text = "ribbon1";
             this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
             // 
-            // logoutRibbonOrbMenuItem
-            // 
-            this.logoutRibbonOrbMenuItem.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.logoutRibbonOrbMenuItem.Image = global::AstraAkodry.Properties.Resources.password_32x32;
-            this.logoutRibbonOrbMenuItem.SmallImage = global::AstraAkodry.Properties.Resources.password_32x32;
-            this.logoutRibbonOrbMenuItem.Text = "Wyloguj";
-            this.logoutRibbonOrbMenuItem.Click += new System.EventHandler(this.logoutRibbonOrbMenuItem_Click);
-            // 
-            // closeRibbonOrbMenuItem
-            // 
-            this.closeRibbonOrbMenuItem.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.closeRibbonOrbMenuItem.Image = global::AstraAkodry.Properties.Resources.koniec_32x32;
-            this.closeRibbonOrbMenuItem.SmallImage = global::AstraAkodry.Properties.Resources.koniec_32x32;
-            this.closeRibbonOrbMenuItem.Text = "Zamknij";
-            this.closeRibbonOrbMenuItem.Click += new System.EventHandler(this.closeRibbonOrbMenuItem_Click);
-            // 
             // recepcjaRibbonTab
             // 
             this.recepcjaRibbonTab.Panels.Add(this.ribbonPanel1);
@@ -133,44 +119,17 @@
             this.ribbonPanel1.Items.Add(this.wprowadzanieRibbonButton);
             this.ribbonPanel1.Text = "Dodawanie";
             // 
-            // wprowadzanieRibbonButton
-            // 
-            this.wprowadzanieRibbonButton.Image = global::AstraAkodry.Properties.Resources.lista_dodawanie_32x32;
-            this.wprowadzanieRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieRibbonButton.SmallImage")));
-            this.wprowadzanieRibbonButton.Text = "Wprowadzanie akordów";
-            this.wprowadzanieRibbonButton.Click += new System.EventHandler(this.wprowadzanieribbonButton_Click);
-            // 
             // ribbonPanel2
             // 
             this.ribbonPanel2.Items.Add(this.raportyRecepcjaRibbonButton);
             this.ribbonPanel2.Items.Add(this.rapLeniRibbonButton);
             this.ribbonPanel2.Text = "Raporty";
             // 
-            // raportyRecepcjaRibbonButton
-            // 
-            this.raportyRecepcjaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_32x32;
-            this.raportyRecepcjaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportyRecepcjaRibbonButton.SmallImage")));
-            this.raportyRecepcjaRibbonButton.Text = "Raport recepcja";
-            this.raportyRecepcjaRibbonButton.Click += new System.EventHandler(this.raportyRecepcjaribbonButton_Click);
-            // 
-            // rapLeniRibbonButton
-            // 
-            this.rapLeniRibbonButton.Image = global::AstraAkodry.Properties.Resources.len_32x32;
-            this.rapLeniRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("rapLeniRibbonButton.SmallImage")));
-            this.rapLeniRibbonButton.Text = "Raport \"leni\"";
-            this.rapLeniRibbonButton.Click += new System.EventHandler(this.rapLeniRibbonButton_Click);
-            // 
             // ribbonPanel3
             // 
             this.ribbonPanel3.Items.Add(this.wprowadzanieTestowychRibbonButton);
+            this.ribbonPanel3.Items.Add(this.raportDziennyRibbonButton);
             this.ribbonPanel3.Text = "Testowe";
-            // 
-            // wprowadzanieTestowychRibbonButton
-            // 
-            this.wprowadzanieTestowychRibbonButton.Image = global::AstraAkodry.Properties.Resources.input_32x32;
-            this.wprowadzanieTestowychRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieTestowychRibbonButton.SmallImage")));
-            this.wprowadzanieTestowychRibbonButton.Text = "Wprowadzanie \"Testowych\"";
-            this.wprowadzanieTestowychRibbonButton.Click += new System.EventHandler(this.wprowadzanieTestowychRibbonButton_Click);
             // 
             // produkcjaRibbonTab
             // 
@@ -184,40 +143,13 @@
             this.ribbonPanel5.Items.Add(this.prodPracownikaRibbonButton);
             this.ribbonPanel5.Text = "Raporty produkcja";
             // 
-            // prodGlobalneRibbonButton
-            // 
-            this.prodGlobalneRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_Globalny_32x32;
-            this.prodGlobalneRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("prodGlobalneRibbonButton.SmallImage")));
-            this.prodGlobalneRibbonButton.Text = "Globalne";
-            this.prodGlobalneRibbonButton.Click += new System.EventHandler(this.globalneRibbonButton_Click);
-            // 
-            // prodPracownikaRibbonButton
-            // 
-            this.prodPracownikaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_32x32;
-            this.prodPracownikaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("prodPracownikaRibbonButton.SmallImage")));
-            this.prodPracownikaRibbonButton.Text = "Pracownika";
-            this.prodPracownikaRibbonButton.Click += new System.EventHandler(this.pracownikaRibbonButton_Click);
-            // 
             // akordyTestoweRibbonPanel
             // 
             this.akordyTestoweRibbonPanel.Items.Add(this.wprowadzanieTestProdRibbonButton);
             this.akordyTestoweRibbonPanel.Items.Add(this.raportAkorTestRibbonButton);
+            this.akordyTestoweRibbonPanel.Items.Add(this.raportDziennyProdRibbonButton);
             this.akordyTestoweRibbonPanel.Items.Add(this.zarzadzenieTestoweRibbonButton);
             this.akordyTestoweRibbonPanel.Text = "Akordy testowe";
-            // 
-            // raportAkorTestRibbonButton
-            // 
-            this.raportAkorTestRibbonButton.Image = global::AstraAkodry.Properties.Resources.raport_testowy_32x32;
-            this.raportAkorTestRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportAkorTestRibbonButton.SmallImage")));
-            this.raportAkorTestRibbonButton.Text = "Raport \"Testowe\"";
-            this.raportAkorTestRibbonButton.Click += new System.EventHandler(this.raportAkorTestRibbonButton_Click);
-            // 
-            // zarzadzenieTestoweRibbonButton
-            // 
-            this.zarzadzenieTestoweRibbonButton.Image = global::AstraAkodry.Properties.Resources.dynamit_32x32;
-            this.zarzadzenieTestoweRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("zarzadzenieTestoweRibbonButton.SmallImage")));
-            this.zarzadzenieTestoweRibbonButton.Text = "Zarządzanie \"Testowe\"";
-            this.zarzadzenieTestoweRibbonButton.Click += new System.EventHandler(this.zarzadzenieTestoweRibbonButton_Click);
             // 
             // ksiegowoscRibbonTab
             // 
@@ -229,20 +161,6 @@
             this.ribbonPanel6.Items.Add(this.ksiegGlobalneRibbonButton);
             this.ribbonPanel6.Items.Add(this.ksiegPracownikaRibbonButton);
             this.ribbonPanel6.Text = "Raporty księgowość";
-            // 
-            // ksiegGlobalneRibbonButton
-            // 
-            this.ksiegGlobalneRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_Globalny_32x32;
-            this.ksiegGlobalneRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegGlobalneRibbonButton.SmallImage")));
-            this.ksiegGlobalneRibbonButton.Text = "Globalne";
-            this.ksiegGlobalneRibbonButton.Click += new System.EventHandler(this.ksiegGlobalneRibbonButton_Click);
-            // 
-            // ksiegPracownikaRibbonButton
-            // 
-            this.ksiegPracownikaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_32x32;
-            this.ksiegPracownikaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegPracownikaRibbonButton.SmallImage")));
-            this.ksiegPracownikaRibbonButton.Text = "Pracownika";
-            this.ksiegPracownikaRibbonButton.Click += new System.EventHandler(this.ksiegPracownikaRibbonButton_Click);
             // 
             // konfiguracjaRibbonTab
             // 
@@ -258,58 +176,16 @@
             this.ustawieniaRibbonPanel.Items.Add(this.operatorzyRibbonButton);
             this.ustawieniaRibbonPanel.Text = "Ustawienia";
             // 
-            // pracownicyRibbonButton
-            // 
-            this.pracownicyRibbonButton.Image = global::AstraAkodry.Properties.Resources.Klienci_ustawienia_32x32;
-            this.pracownicyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("pracownicyRibbonButton.SmallImage")));
-            this.pracownicyRibbonButton.Text = "Pracownicy";
-            this.pracownicyRibbonButton.Click += new System.EventHandler(this.pracownicyRibbonButton_Click);
-            // 
-            // akordyRibbonButton
-            // 
-            this.akordyRibbonButton.Image = global::AstraAkodry.Properties.Resources.harmonogram_ustawienia_32x32;
-            this.akordyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("akordyRibbonButton.SmallImage")));
-            this.akordyRibbonButton.Text = "Akordy";
-            this.akordyRibbonButton.Click += new System.EventHandler(this.akordyRibbonButton_Click);
-            // 
-            // operatorzyRibbonButton
-            // 
-            this.operatorzyRibbonButton.Image = global::AstraAkodry.Properties.Resources.Operatorzy_ustawienia_32x32;
-            this.operatorzyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("operatorzyRibbonButton.SmallImage")));
-            this.operatorzyRibbonButton.Text = "Operatorzy";
-            this.operatorzyRibbonButton.Click += new System.EventHandler(this.operatorzyRibbonButton_Click);
-            // 
             // ribbonPanel7
             // 
             this.ribbonPanel7.Items.Add(this.ustawieniaRibbonButton);
             this.ribbonPanel7.Text = "Aplikacja";
-            // 
-            // ustawieniaRibbonButton
-            // 
-            this.ustawieniaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Ustawienia_32x32;
-            this.ustawieniaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ustawieniaRibbonButton.SmallImage")));
-            this.ustawieniaRibbonButton.Text = "Ustawienia";
-            this.ustawieniaRibbonButton.Click += new System.EventHandler(this.ustawieniaRibbonButton_Click);
             // 
             // bazaRibbonPanel
             // 
             this.bazaRibbonPanel.Items.Add(this.niekatywPracRibbonButton);
             this.bazaRibbonPanel.Items.Add(this.reindeksacjaRibbonButton);
             this.bazaRibbonPanel.Text = "Baza danych";
-            // 
-            // niekatywPracRibbonButton
-            // 
-            this.niekatywPracRibbonButton.Image = global::AstraAkodry.Properties.Resources.nieaktywne_osoby_32x32;
-            this.niekatywPracRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("niekatywPracRibbonButton.SmallImage")));
-            this.niekatywPracRibbonButton.Text = "Niekatywni pracownicy";
-            this.niekatywPracRibbonButton.Click += new System.EventHandler(this.niekatywPracRibbonButton_Click);
-            // 
-            // reindeksacjaRibbonButton
-            // 
-            this.reindeksacjaRibbonButton.Image = global::AstraAkodry.Properties.Resources.baza_danych_32x32;
-            this.reindeksacjaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("reindeksacjaRibbonButton.SmallImage")));
-            this.reindeksacjaRibbonButton.Text = "Reindeksacja";
-            this.reindeksacjaRibbonButton.Click += new System.EventHandler(this.reindeksacjaRibbonButton_Click);
             // 
             // statusStrip1
             // 
@@ -350,12 +226,70 @@
             this.zmienOknoLabel.Text = "Zmień okno";
             this.zmienOknoLabel.Visible = false;
             // 
-            // ribbonOrbMenuItem1
+            // logoutRibbonOrbMenuItem
             // 
-            this.ribbonOrbMenuItem1.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem1.Image")));
-            this.ribbonOrbMenuItem1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem1.SmallImage")));
-            this.ribbonOrbMenuItem1.Text = "ribbonOrbMenuItem1";
+            this.logoutRibbonOrbMenuItem.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.logoutRibbonOrbMenuItem.Image = global::AstraAkodry.Properties.Resources.password_32x32;
+            this.logoutRibbonOrbMenuItem.SmallImage = global::AstraAkodry.Properties.Resources.password_32x32;
+            this.logoutRibbonOrbMenuItem.Text = "Wyloguj";
+            this.logoutRibbonOrbMenuItem.Click += new System.EventHandler(this.logoutRibbonOrbMenuItem_Click);
+            // 
+            // closeRibbonOrbMenuItem
+            // 
+            this.closeRibbonOrbMenuItem.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.closeRibbonOrbMenuItem.Image = global::AstraAkodry.Properties.Resources.koniec_32x32;
+            this.closeRibbonOrbMenuItem.SmallImage = global::AstraAkodry.Properties.Resources.koniec_32x32;
+            this.closeRibbonOrbMenuItem.Text = "Zamknij";
+            this.closeRibbonOrbMenuItem.Click += new System.EventHandler(this.closeRibbonOrbMenuItem_Click);
+            // 
+            // wprowadzanieRibbonButton
+            // 
+            this.wprowadzanieRibbonButton.Image = global::AstraAkodry.Properties.Resources.lista_dodawanie_32x32;
+            this.wprowadzanieRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieRibbonButton.SmallImage")));
+            this.wprowadzanieRibbonButton.Text = "Wprowadzanie akordów";
+            this.wprowadzanieRibbonButton.Click += new System.EventHandler(this.wprowadzanieribbonButton_Click);
+            // 
+            // raportyRecepcjaRibbonButton
+            // 
+            this.raportyRecepcjaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_32x32;
+            this.raportyRecepcjaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportyRecepcjaRibbonButton.SmallImage")));
+            this.raportyRecepcjaRibbonButton.Text = "Raport recepcja";
+            this.raportyRecepcjaRibbonButton.Click += new System.EventHandler(this.raportyRecepcjaribbonButton_Click);
+            // 
+            // rapLeniRibbonButton
+            // 
+            this.rapLeniRibbonButton.Image = global::AstraAkodry.Properties.Resources.len_32x32;
+            this.rapLeniRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("rapLeniRibbonButton.SmallImage")));
+            this.rapLeniRibbonButton.Text = "Raport \"leni\"";
+            this.rapLeniRibbonButton.Click += new System.EventHandler(this.rapLeniRibbonButton_Click);
+            // 
+            // wprowadzanieTestowychRibbonButton
+            // 
+            this.wprowadzanieTestowychRibbonButton.Image = global::AstraAkodry.Properties.Resources.input_32x32;
+            this.wprowadzanieTestowychRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieTestowychRibbonButton.SmallImage")));
+            this.wprowadzanieTestowychRibbonButton.Text = "Wprowadzanie \"Testowych\"";
+            this.wprowadzanieTestowychRibbonButton.Click += new System.EventHandler(this.wprowadzanieTestowychRibbonButton_Click);
+            // 
+            // raportDziennyRibbonButton
+            // 
+            this.raportDziennyRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.raportDziennyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportDziennyRibbonButton.SmallImage")));
+            this.raportDziennyRibbonButton.Text = "Raport dzienny";
+            this.raportDziennyRibbonButton.Click += new System.EventHandler(this.raportDziennyRibbonButton_Click);
+            // 
+            // prodGlobalneRibbonButton
+            // 
+            this.prodGlobalneRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_Globalny_32x32;
+            this.prodGlobalneRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("prodGlobalneRibbonButton.SmallImage")));
+            this.prodGlobalneRibbonButton.Text = "Globalne";
+            this.prodGlobalneRibbonButton.Click += new System.EventHandler(this.globalneRibbonButton_Click);
+            // 
+            // prodPracownikaRibbonButton
+            // 
+            this.prodPracownikaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_32x32;
+            this.prodPracownikaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("prodPracownikaRibbonButton.SmallImage")));
+            this.prodPracownikaRibbonButton.Text = "Pracownika";
+            this.prodPracownikaRibbonButton.Click += new System.EventHandler(this.pracownikaRibbonButton_Click);
             // 
             // wprowadzanieTestProdRibbonButton
             // 
@@ -363,6 +297,90 @@
             this.wprowadzanieTestProdRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("wprowadzanieTestProdRibbonButton.SmallImage")));
             this.wprowadzanieTestProdRibbonButton.Text = "Wprowadzanie \"Testowych\"";
             this.wprowadzanieTestProdRibbonButton.Click += new System.EventHandler(this.wprowadzanieTestProdRibbonButton_Click);
+            // 
+            // raportAkorTestRibbonButton
+            // 
+            this.raportAkorTestRibbonButton.Image = global::AstraAkodry.Properties.Resources.raport_testowy_32x32;
+            this.raportAkorTestRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportAkorTestRibbonButton.SmallImage")));
+            this.raportAkorTestRibbonButton.Text = "Raport \"Testowe\"";
+            this.raportAkorTestRibbonButton.Click += new System.EventHandler(this.raportAkorTestRibbonButton_Click);
+            // 
+            // zarzadzenieTestoweRibbonButton
+            // 
+            this.zarzadzenieTestoweRibbonButton.Image = global::AstraAkodry.Properties.Resources.dynamit_32x32;
+            this.zarzadzenieTestoweRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("zarzadzenieTestoweRibbonButton.SmallImage")));
+            this.zarzadzenieTestoweRibbonButton.Text = "Zarządzanie \"Testowe\"";
+            this.zarzadzenieTestoweRibbonButton.Click += new System.EventHandler(this.zarzadzenieTestoweRibbonButton_Click);
+            // 
+            // ksiegGlobalneRibbonButton
+            // 
+            this.ksiegGlobalneRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_Globalny_32x32;
+            this.ksiegGlobalneRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegGlobalneRibbonButton.SmallImage")));
+            this.ksiegGlobalneRibbonButton.Text = "Globalne";
+            this.ksiegGlobalneRibbonButton.Click += new System.EventHandler(this.ksiegGlobalneRibbonButton_Click);
+            // 
+            // ksiegPracownikaRibbonButton
+            // 
+            this.ksiegPracownikaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Raport_32x32;
+            this.ksiegPracownikaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ksiegPracownikaRibbonButton.SmallImage")));
+            this.ksiegPracownikaRibbonButton.Text = "Pracownika";
+            this.ksiegPracownikaRibbonButton.Click += new System.EventHandler(this.ksiegPracownikaRibbonButton_Click);
+            // 
+            // pracownicyRibbonButton
+            // 
+            this.pracownicyRibbonButton.Image = global::AstraAkodry.Properties.Resources.Klienci_ustawienia_32x32;
+            this.pracownicyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("pracownicyRibbonButton.SmallImage")));
+            this.pracownicyRibbonButton.Text = "Pracownicy";
+            this.pracownicyRibbonButton.Click += new System.EventHandler(this.pracownicyRibbonButton_Click);
+            // 
+            // akordyRibbonButton
+            // 
+            this.akordyRibbonButton.Image = global::AstraAkodry.Properties.Resources.harmonogram_ustawienia_32x32;
+            this.akordyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("akordyRibbonButton.SmallImage")));
+            this.akordyRibbonButton.Text = "Akordy";
+            this.akordyRibbonButton.Click += new System.EventHandler(this.akordyRibbonButton_Click);
+            // 
+            // operatorzyRibbonButton
+            // 
+            this.operatorzyRibbonButton.Image = global::AstraAkodry.Properties.Resources.Operatorzy_ustawienia_32x32;
+            this.operatorzyRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("operatorzyRibbonButton.SmallImage")));
+            this.operatorzyRibbonButton.Text = "Operatorzy";
+            this.operatorzyRibbonButton.Click += new System.EventHandler(this.operatorzyRibbonButton_Click);
+            // 
+            // ustawieniaRibbonButton
+            // 
+            this.ustawieniaRibbonButton.Image = global::AstraAkodry.Properties.Resources.Ustawienia_32x32;
+            this.ustawieniaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ustawieniaRibbonButton.SmallImage")));
+            this.ustawieniaRibbonButton.Text = "Ustawienia";
+            this.ustawieniaRibbonButton.Click += new System.EventHandler(this.ustawieniaRibbonButton_Click);
+            // 
+            // niekatywPracRibbonButton
+            // 
+            this.niekatywPracRibbonButton.Image = global::AstraAkodry.Properties.Resources.nieaktywne_osoby_32x32;
+            this.niekatywPracRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("niekatywPracRibbonButton.SmallImage")));
+            this.niekatywPracRibbonButton.Text = "Niekatywni pracownicy";
+            this.niekatywPracRibbonButton.Click += new System.EventHandler(this.niekatywPracRibbonButton_Click);
+            // 
+            // reindeksacjaRibbonButton
+            // 
+            this.reindeksacjaRibbonButton.Image = global::AstraAkodry.Properties.Resources.baza_danych_32x32;
+            this.reindeksacjaRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("reindeksacjaRibbonButton.SmallImage")));
+            this.reindeksacjaRibbonButton.Text = "Reindeksacja";
+            this.reindeksacjaRibbonButton.Click += new System.EventHandler(this.reindeksacjaRibbonButton_Click);
+            // 
+            // ribbonOrbMenuItem1
+            // 
+            this.ribbonOrbMenuItem1.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
+            this.ribbonOrbMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem1.Image")));
+            this.ribbonOrbMenuItem1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem1.SmallImage")));
+            this.ribbonOrbMenuItem1.Text = "ribbonOrbMenuItem1";
+            // 
+            // raportDziennyProdRibbonButton
+            // 
+            this.raportDziennyProdRibbonButton.Image = global::AstraAkodry.Properties.Resources.greyGradient;
+            this.raportDziennyProdRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("raportDziennyProdRibbonButton.SmallImage")));
+            this.raportDziennyProdRibbonButton.Text = "Raport Dzienny";
+            this.raportDziennyProdRibbonButton.Click += new System.EventHandler(this.raportDziennyProdRibbonButton_Click);
             // 
             // MainForm
             // 
@@ -427,6 +445,8 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel3;
         private System.Windows.Forms.RibbonButton wprowadzanieTestowychRibbonButton;
         private System.Windows.Forms.RibbonButton wprowadzanieTestProdRibbonButton;
+        private System.Windows.Forms.RibbonButton raportDziennyRibbonButton;
+        private System.Windows.Forms.RibbonButton raportDziennyProdRibbonButton;
     }
 }
 

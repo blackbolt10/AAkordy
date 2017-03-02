@@ -191,6 +191,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Recepcja\RaportDziennyTestowychForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcja\RaportDziennyTestowychForm.Designer.cs">
+      <DependentUpon>RaportDziennyTestowychForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Recepcja\Raporty\RaportLeniRecepcjaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcja\RaportDziennyTestowychForm.resx">
+      <DependentUpon>RaportDziennyTestowychForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcja\Raporty\RaportLeniRecepcjaForm.resx">
       <DependentUpon>RaportLeniRecepcjaForm.cs</DependentUpon>

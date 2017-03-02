@@ -7,31 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AstraAkodry.Produkcja.Akordy_testowe
+namespace AstraAkodry.Recepcja
 {
-    public partial class RaportTestoweForm : Form
+    public partial class RaportDziennyTestowychForm : Form
     {
-        public RaportTestoweForm()
+        private DataTable akordyDT;
+
+        public RaportDziennyTestowychForm()
         {
             InitializeComponent();
 
+            ZaladujAkordyCB();
             ZaladujRaportDGV();
         }
 
-        private void RaportTestoweForm_Shown(object sender, EventArgs e)
+        private void RaportDziennyTestowychForm_Shown(object sender, EventArgs e)
         {
             dataOdLabel.Font = MainForm.czcionka;
-            dataDoLabel.Font = MainForm.czcionka;
-            raportLabel.Font = MainForm.czcionka;
-            raportDGV.Font = MainForm.czcionka;
 
-            kalendarzPoczMC.Location = new Point(dataOdLabel.Location.X, dataOdLabel.Location.Y + dataOdLabel.Size.Height + 10);
-            dataDoLabel.Location = new Point(dataOdLabel.Location.X, kalendarzPoczMC.Location.Y + kalendarzPoczMC.Size.Height + 10);
-            kalendarzKonMC.Location = new Point(dataOdLabel.Location.X, dataDoLabel.Location.Y + dataDoLabel.Size.Height + 10);
+            kalendarzMC.Location = new Point(dataOdLabel.Location.X, dataOdLabel.Location.Y + dataOdLabel.Size.Height + 10);
 
-            if(kalendarzPoczMC.Size.Width > dataOdLabel.Size.Width)
+            if(kalendarzMC.Size.Width > dataOdLabel.Size.Width)
             {
-                raportLabel.Location = new Point(kalendarzPoczMC.Location.X + kalendarzPoczMC.Size.Width + 10, raportLabel.Location.Y);
+                raportLabel.Location = new Point(kalendarzMC.Location.X + kalendarzMC.Size.Width + 10, raportLabel.Location.Y);
             }
             else
             {
@@ -57,24 +55,9 @@ namespace AstraAkodry.Produkcja.Akordy_testowe
             this.Close();
         }
 
-        private void kalendarzPoczMC_DateChanged(object sender, DateRangeEventArgs e)
+        private void kalendarzMC_DateChanged(object sender, DateRangeEventArgs e)
         {
-            WyczyscRaportDGV();
-
-            if(kalendarzKonMC.SelectionStart < kalendarzPoczMC.SelectionStart)
-            {
-                kalendarzPoczMC.SelectionStart = kalendarzKonMC.SelectionStart;
-            }
-        }
-
-        private void kalendarzKonMC_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            WyczyscRaportDGV();
-
-            if(kalendarzPoczMC.SelectionStart > kalendarzKonMC.SelectionStart)
-            {
-                kalendarzKonMC.SelectionStart = kalendarzPoczMC.SelectionStart;
-            }
+            ZaladujRaportDGV();
         }
 
         private void WyczyscRaportDGV()
@@ -82,8 +65,36 @@ namespace AstraAkodry.Produkcja.Akordy_testowe
             raportDGV.DataSource = null;
             raportDGV.Rows.Clear();
             raportDGV.Columns.Clear();
+        }
 
-            raportLabel.Text = "Raport:";
+        private void reloadButton_Click(object sender, EventArgs e)
+        {
+            ZaladujRaportDGV();
+        }
+
+        private void ZaladujAkordyCB()
+        {
+            akordCB.Items.Clear();
+
+            DBRepository db = new DBRepository();
+            String result = "";
+
+            if(db.RaportDziennyForm_ZaladujAkordyCB(ref akordyDT, ref result))
+            {
+                for(int i = 0; i < akordyDT.Rows.Count; i++)
+                {
+                    akordCB.Items.Add(akordyDT.Rows[i]["AKT_Nazwa"].ToString());
+                }
+
+                if(akordCB.Items.Count>0)
+                {
+                    akordCB.SelectedIndex = 0;
+                }
+            }
+            else  
+            {
+                MessageBox.Show("Wystąpił błąd wczytywania listy akordów:\n" + result, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ZaladujRaportDGV()
@@ -93,15 +104,17 @@ namespace AstraAkodry.Produkcja.Akordy_testowe
             DBRepository db = new DBRepository();
             String result = "";
             DataTable pomDataTable = new DataTable();
+            String akr_AkrId = akordyDT.Rows[akordCB.SelectedIndex]["AKT_AkrId"].ToString();
 
-            if(db.RaportTestoweForm_ZaladujRaportDGV(kalendarzPoczMC.SelectionStart.ToShortDateString(), kalendarzKonMC.SelectionStart.ToShortDateString(), ref pomDataTable, ref result))
+            if(db.RaportDziennyForm_ZaladujRaportDGV(akr_AkrId, kalendarzMC.SelectionStart.ToShortDateString(), ref pomDataTable, ref result))
             {
                 raportDGV.DataSource = pomDataTable;
 
                 if(raportDGV.Columns.Count>0)
                 {
-                    raportDGV.Columns["WAT_AkrId"].Visible = false;
-                    raportDGV.Columns["Nazwa"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    raportDGV.Columns["Imię"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    raportDGV.Columns["Nazwisko"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    raportDGV.Columns["Nazwa akordu"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     raportDGV.Columns["Wartość"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     raportDGV.Columns["Czas"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
@@ -112,7 +125,7 @@ namespace AstraAkodry.Produkcja.Akordy_testowe
             }
         }
 
-        private void reloadButton_Click(object sender, EventArgs e)
+        private void akordCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             ZaladujRaportDGV();
         }
